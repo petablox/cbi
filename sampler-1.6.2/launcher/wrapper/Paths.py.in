@@ -1,0 +1,4 @@
+common = '@commondir@'
+first_time = '@first_timedir@'
+home = '@wrapperdir@'
+glade = home + '/wrapper.glade'

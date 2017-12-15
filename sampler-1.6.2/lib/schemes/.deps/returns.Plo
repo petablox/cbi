@@ -1,0 +1,12 @@
+returns.lo: returns.c /usr/include/stdc-predef.h returns.h ../signature.h \
+ tuple-3.h samples.h
+
+/usr/include/stdc-predef.h:
+
+returns.h:
+
+../signature.h:
+
+tuple-3.h:
+
+samples.h:

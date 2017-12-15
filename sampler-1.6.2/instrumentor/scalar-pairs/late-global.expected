@@ -1,0 +1,7 @@
+late-global	scalar-pairs	late-global.c	13	decr	2	counter	global	direct	0LL	const	0	1	0
+late-global	scalar-pairs	late-global.c	13	decr	3	counter	global	direct	early	global	0	1	0
+late-global	scalar-pairs	late-global.c	13	decr	4	counter	global	direct	counter	global	1	0	0
+late-global	scalar-pairs	late-global.c	13	decr	5	counter	global	direct	late	global	0	1	0
+late-global	scalar-pairs	late-global.c	6	incr	2	counter	global	direct	0LL	const	0	0	1
+late-global	scalar-pairs	late-global.c	6	incr	3	counter	global	direct	early	global	0	0	1
+late-global	scalar-pairs	late-global.c	6	incr	4	counter	global	direct	counter	global	0	0	1

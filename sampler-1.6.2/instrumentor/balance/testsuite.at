@@ -1,0 +1,89 @@
+AT_INIT(balance)
+
+AT_SETUP(default)
+AT_CHECK([
+set -e
+cp $abs_srcdir/default.c $abs_srcdir/work.h .
+$abs_top_builddir/driver/sampler-cc-here --balance-paths --sampler-scheme=returns -c default.c
+])
+AT_CLEANUP
+
+AT_SETUP(goto-bottom)
+AT_CHECK([
+set -e
+cp $abs_srcdir/goto-bottom.c $abs_srcdir/work.h .
+$abs_top_builddir/driver/sampler-cc-here --balance-paths --sampler-scheme=returns -c goto-bottom.c
+])
+AT_CLEANUP
+
+AT_SETUP(goto-middle)
+AT_CHECK([
+set -e
+cp $abs_srcdir/goto-middle.c $abs_srcdir/work.h .
+$abs_top_builddir/driver/sampler-cc-here --balance-paths --sampler-scheme=returns -c goto-middle.c
+])
+AT_CLEANUP
+
+AT_SETUP(goto-top-post)
+AT_CHECK([
+set -e
+cp $abs_srcdir/goto-top-post.c $abs_srcdir/work.h .
+$abs_top_builddir/driver/sampler-cc-here --balance-paths --sampler-scheme=returns -c goto-top-post.c
+])
+AT_CLEANUP
+
+AT_SETUP(goto-top-pre)
+AT_CHECK([
+set -e
+cp $abs_srcdir/goto-top-pre.c $abs_srcdir/work.h .
+$abs_top_builddir/driver/sampler-cc-here --balance-paths --sampler-scheme=returns -c goto-top-pre.c
+])
+AT_CLEANUP
+
+AT_SETUP(if-both)
+AT_CHECK([
+set -e
+cp $abs_srcdir/if-both.c $abs_srcdir/work.h .
+$abs_top_builddir/driver/sampler-cc-here --balance-paths --sampler-scheme=returns -c if-both.c
+])
+AT_CLEANUP
+
+AT_SETUP(if-else)
+AT_CHECK([
+set -e
+cp $abs_srcdir/if-else.c $abs_srcdir/work.h .
+$abs_top_builddir/driver/sampler-cc-here --balance-paths --sampler-scheme=returns -c if-else.c
+])
+AT_CLEANUP
+
+AT_SETUP(if-then)
+AT_CHECK([
+set -e
+cp $abs_srcdir/if-then.c $abs_srcdir/work.h .
+$abs_top_builddir/driver/sampler-cc-here --balance-paths --sampler-scheme=returns -c if-then.c
+])
+AT_CLEANUP
+
+AT_SETUP(no-default)
+AT_CHECK([
+set -e
+cp $abs_srcdir/no-default.c $abs_srcdir/work.h .
+$abs_top_builddir/driver/sampler-cc-here --balance-paths --sampler-scheme=returns -c no-default.c
+])
+AT_CLEANUP
+
+AT_SETUP(switch-if)
+AT_CHECK([
+set -e
+cp $abs_srcdir/switch-if.c $abs_srcdir/work.h .
+$abs_top_builddir/driver/sampler-cc-here --balance-paths --sampler-scheme=returns -c switch-if.c
+])
+AT_CLEANUP
+
+AT_SETUP(loop-if)
+AT_CHECK([
+set -e
+cp $abs_srcdir/loop-if.c $abs_srcdir/work.h .
+$abs_top_builddir/driver/sampler-cc-here --balance-paths --sampler-scheme=returns -c loop-if.c
+])
+AT_CLEANUP

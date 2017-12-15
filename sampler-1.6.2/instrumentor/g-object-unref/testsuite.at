@@ -1,0 +1,13 @@
+AT_INIT(g-object-unref)
+
+AT_SETUP(test)
+AT_CHECK([
+set -e
+cp $abs_srcdir/test.c .
+cp $abs_srcdir/test.expected expout
+if test "$PKG_CONFIG" = no; then exit 77; fi
+$abs_top_builddir/driver/sampler-cc-here --relative-paths --sampler-scheme=g-object-unref `$PKG_CONFIG --cflags gobject-2.0` -o test test.c `$PKG_CONFIG --libs gobject-2.0`
+SAMPLER_FILE=trace SAMPLER_SPARSITY=1 ./test
+$abs_top_srcdir/tools/extract-report samples <trace | $abs_top_srcdir/tools/resolve-samples test | cut -f1,3- | sort -t '	'
+], 0, expout, ignore)
+AT_CLEANUP

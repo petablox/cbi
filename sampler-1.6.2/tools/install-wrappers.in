@@ -1,0 +1,112 @@
+#!@PERL@ -w
+# -*- cperl -*-
+
+use strict;
+
+use File::Basename;
+use File::Path;
+use File::stat;
+use FileHandle;
+use FindBin;
+use Getopt::Long;
+
+
+########################################################################
+#
+#  sampler install directories
+#
+
+
+my $prefix = '@prefix@';
+my $exec_prefix = "@exec_prefix@";
+my $libdir = "@libdir@";
+my $PACKAGE = '@PACKAGE@';
+my $pkglibdir = "@pkglibdir@";
+
+
+########################################################################
+#
+#  command line processing
+#
+
+
+my $name;
+my $version;
+my $release;
+my $installdir;
+my $template = "$FindBin::Bin/wrapper.in";
+
+sub usage () {
+  die <<"EOT";
+Usage: $0 [options] {executables}
+
+  --name=NAME
+  --version=X.Y.Z
+  --release=X.Y.Z
+  --install=PATH
+  --template=FILE
+
+All options are required except for \"--template\".  At least one
+executable is required.
+EOT
+}
+
+my $result = GetOptions ('name=s' => \$name,
+			 'version=s' => \$version,
+			 'release=s' => \$release,
+			 'install=s' => \$installdir,
+			 'template=s' => \$template);
+
+usage unless $result;
+usage unless $name;
+usage unless $version;
+usage unless $release;
+usage unless $installdir;
+
+usage unless @ARGV;
+
+
+########################################################################
+#
+#  helper subroutines
+#
+
+
+sub installdir ($) {
+  mkpath dirname $_[0];
+}
+
+
+sub instantiate ($$%) {
+  my ($input, $output, %substitutions) = @_;
+  my $infile = new FileHandle $input, 'r' or die "cannot read $input: $!\n";
+  my $outfile = new FileHandle $output, 'w' or die "cannot write $output: $!\n";
+
+  while (<$infile>) {
+    s/@([[:word:]]+)@/$substitutions{$1}/g;
+    $outfile->print($_);
+  }
+}
+
+
+########################################################################
+#
+#  main activity
+#
+
+
+foreach (@ARGV) {
+  s{^/*}{/};
+  my $original = "$installdir$_";
+  my $wrapped = "$installdir$pkglibdir/wrapped$_";
+  installdir $wrapped;
+  rename $original, $wrapped or die "cannot move $original to $wrapped: $!\n";
+  instantiate($template, $original,
+	      'name' => $name,
+	      'version' => $version,
+	      'release' => $release,
+	      'path' => $_);
+  my $stat = stat $wrapped or die "cannot stat $wrapped: $!\n";
+  chmod($stat->mode, $original) == 1 or die "cannot chmod $original: $!\n";
+  chown($stat->uid, $stat->gid, $original) == 1 or die "cannot chown $original: $!\n";
+}

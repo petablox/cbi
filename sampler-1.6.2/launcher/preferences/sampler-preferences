@@ -1,0 +1,7 @@
+#!/usr/bin/python -O
+
+import sys
+sys.path.extend(['/usr/local/share/sampler/preferences', '/usr/local/share/sampler/common'])
+
+import Main
+Main.main()

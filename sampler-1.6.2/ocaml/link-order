@@ -1,0 +1,29 @@
+#!/usr/bin/perl -w
+
+use strict;
+use Carp;
+
+
+sub parse_dependencies ($$) {
+    my ($target, $dependencies) = @_;
+    croak 'caller forgot to remove trailing backslash' if $dependencies =~ /\\$/;
+    my @dependencies = split ' ', $dependencies;
+    my @roots = map { s/\.cmi$//; $_ eq $target ? "$_.\$(cmo)" : "\$($_)" } @dependencies;
+    return @roots;
+}
+
+
+$_ = <>;
+exit unless defined $_;
+
+die unless /^([^ ]+)\.cmo:(.*[^\\])\\?\n$/;
+my $target = $1;
+my @dependencies = parse_dependencies $target, $2;
+
+while (/\\$/) {
+    $_ = <>;
+    /(.*[^\\])\\?\n$/;
+    push @dependencies, parse_dependencies $target, $1;
+};
+
+print "$target = @dependencies\n";

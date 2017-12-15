@@ -1,0 +1,1 @@
+transitive = $(../../../ocaml/queueClass) $(../../../ocaml/hashClass) transitive.$(cmo)

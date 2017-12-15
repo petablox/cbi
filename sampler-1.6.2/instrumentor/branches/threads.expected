@@ -1,0 +1,4 @@
+threads	branches	threads.c	11	drop_x	6	tmp	1	17000
+threads	branches	threads.c	14	drop_x	14	x % 10 == 0	15300	1700
+threads	branches	threads.c	22	drop_y	6	tmp	1	12000
+threads	branches	threads.c	25	drop_y	14	y % 5 == 0	9600	2400

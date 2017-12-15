@@ -1,0 +1,1 @@
+function = $(types) $(symtab) $(statement) $(location) $(basics) function.$(cmo)

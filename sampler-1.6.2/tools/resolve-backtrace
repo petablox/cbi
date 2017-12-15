@@ -1,0 +1,68 @@
+#!/usr/bin/perl -w
+#-*- cperl -*-
+
+use strict;
+use 5.008;
+
+use FileHandle;
+use FindBin;
+use IPC::Open2;
+
+
+########################################################################
+
+
+unless (@ARGV == 1) {
+    die <<EOT;
+Usage: $0 <executable>
+
+Reads a raw CBI "main-backtrace" report on standard input.  For each
+frame of the stack, prints one line with the following columns of
+tab-delimited information:
+
+    1. hexadecimal PC address
+    2. function name
+    3. source file name
+    4. source line number
+
+The hexadecimal PC address is always present.  Each of the columns may
+be empty if the corresponding information is unavailable.
+
+Typically this script will be placed in a pipeline with "extract-report"
+extracting the report and "resolve-backtrace" resolving it, as in:
+
+    % extract-report main-backtrace | resolve-backtrace <executable>
+EOT
+}
+
+
+my %resolver;
+open2 $resolver{read}, $resolver{write}, 'addr2line', '-f', '-e', $ARGV[0];
+
+while (<STDIN>) {
+    # grab next PC and send it to resolver
+    /^.*\[(0x[0-9a-f]+)\]$/
+	or die 'malformed backtrace';
+    my $pc = sprintf "%#x", hex($1) - 1;
+    $resolver{write}->print("$pc\n");
+
+    # read back resolved function name
+    my $function = $resolver{read}->getline;
+    chomp $function;
+    $function = '' if $function eq '??';
+
+    # read back resolved source file and line number
+    my $location = $resolver{read}->getline;
+    chomp $location;
+    my ($file, $line);
+    if ($location eq '??:0') {
+	($file, $line) = ('', '');
+    } else {
+	$location =~ /^(.*):([0-9]+)$/;
+	($file, $line) = ($1, $2);
+    }
+
+    # print what we've figured out
+    local ($,, $\) = ("\t", "\n");
+    print $pc, $function, $file, $line;
+}

@@ -1,0 +1,1 @@
+floatKindScheme = $(testHarness) $(schemeName) $(schemeFactory) $(scheme) $(interesting) $(floatKindFinder) $(counters) floatKindScheme.$(cmo)

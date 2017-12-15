@@ -1,0 +1,1649 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="sampler-guide.xsl"?>
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+  [<!ENTITY % config SYSTEM "../../config.xml"> %config;]>
+
+<article>
+  <articleinfo>
+    <title>Guide to the Bug Isolation Sampler</title>
+    <author>
+      <firstname>Ben</firstname>
+      <surname>Liblit</surname>
+    </author>
+  </articleinfo>
+
+  <section id="installing">
+    <title>Getting and Installing the Sampler</title>
+
+    <remark>Not yet written.</remark>
+  </section>
+
+  <section id="compiling">
+    <title>Compiling Instrumented Executables</title>
+
+    <para>The instrumentor provides a driver script that acts as a
+    transparent wrapper around <application>GCC</application>.  It is
+    run as follows:
+
+      <cmdsynopsis>
+	<command>sampler-cc</command>
+	<group choice="req" rep="repeat">
+	  <arg choice="plain"><replaceable>C source file</replaceable></arg>
+	  <arg choice="plain"><replaceable>GCC compiler flag</replaceable></arg>
+	  <arg choice="plain"><replaceable>instrumentor flag</replaceable></arg>
+	</group>
+      </cmdsynopsis>
+    </para>
+
+    <para>Recognized instrumentor flags are as follows:</para>
+
+    <variablelist>
+      <title>Instrumentor flags</title>
+
+      <varlistentry id="sampler-scheme">
+	<term><option>--sampler-scheme=<replaceable>scheme</replaceable></option></term>
+	<listitem>
+	  <para>Activate the named instrumentation scheme.  This flag
+	  may be used multiple times to activate multiple schemes.
+	  However, the order in which active schemes are applied is
+	  fixed and does not depend on the order in which they are
+	  named on the command line.</para>
+
+	  <important>
+	    <para>If this flag never appears on the command line, then
+	    no instrumentation scheme is activated and no
+	    instrumentation is added to the compiled code.</para>
+	  </important>
+
+	  <para>The following instrumentation schemes are currently
+	  available:</para>
+
+	  <variablelist id="schemes">
+	    <title>Instrumentation schemes</title>
+
+	    <varlistentry>
+	      <term><option>bounds</option></term>
+	      <listitem>
+		<para>At each assignment of a scalar value, record the
+		minimum and maximum values ever assigned.  Each
+		assignment induces one instrumentation point with one
+		global min/max pair:
+
+		  <orderedlist>
+		    <listitem>
+		      <para>minimum value</para>
+		    </listitem>
+
+		    <listitem>
+		      <para>maximum value</para>
+		    </listitem>
+		  </orderedlist>
+		</para>
+
+		<para>The minimum component is initialized to the
+		maximum representable value for the assigned type,
+		whereas the maximum component is initialized to the
+		minimum representable value for the assigned type.  A
+		site which has never been sampled, then, will have a
+		minimum which is greater than the corresponding
+		maximum.</para>
+
+		<para>See also the <link
+		linkend="assign-across-pointer"><option>--assign-across-pointer</option></link>,
+		<link
+		linkend="assign-into-field"><option>--assign-into-field</option></link>,
+		and <link
+		linkend="assign-into-index"><option>--assign-into-index</option></link>
+		flags for ways to customize which kinds of assignments
+		are instrumented.</para>
+	      </listitem>
+	    </varlistentry>
+
+	    <varlistentry>
+	      <term><option>branches</option></term>
+	      <listitem>
+		<para>For each conditional (branch), count how many
+		times the branch predicate is false or true.  This
+		includes <literal>if</literal> statements as well as
+		branches that are implicit in looping control
+		structures and certain operators
+		(<literal>&amp;&amp;</literal>, <literal>||</literal>,
+		<literal>?:</literal>).  Each branch induces one
+		instrumentation point with a pair of counters:
+
+		  <orderedlist>
+		    <listitem>
+		      <para>branch predicate false</para>
+		    </listitem>
+
+		    <listitem>
+		      <para>branch predicate true</para>
+		    </listitem>
+		  </orderedlist>
+		</para>
+	      </listitem>
+	    </varlistentry>
+
+	    <varlistentry>
+	      <term><option>float-kinds</option></term>
+	      <listitem>
+		<para>At each assignment of a floating point value,
+		count how many times the assigned value is in each of
+		nine possible categories.  Each such assignment
+		induces one instrumentation point with a nonuple of
+		counters:
+
+		  <orderedlist>
+		    <listitem>
+		      <para>assigned value is <literal>-Inf</literal></para>
+		    </listitem>
+
+		    <listitem>
+		      <para>assigned value is negative and normalized, but neither <literal>-Inf</literal> nor <literal>-0</literal></para>
+		    </listitem>
+
+		    <listitem>
+		      <para>assigned value is negative and denormalized</para>
+		    </listitem>
+
+		    <listitem>
+		      <para>assigned value is <literal>-0</literal></para>
+		    </listitem>
+
+		    <listitem>
+		      <para>assigned value is <literal>NaN</literal></para>
+		    </listitem>
+
+		    <listitem>
+		      <para>assigned value is <literal>+0</literal></para>
+		    </listitem>
+
+		    <listitem>
+		      <para>assigned value is positive and denormalized</para>
+		    </listitem>
+
+		    <listitem>
+		      <para>assigned value is positive and normalized, but neither <literal>+Inf</literal> nor <literal>+0</literal></para>
+		    </listitem>
+
+		    <listitem>
+		      <para>assigned value is <literal>+Inf</literal></para>
+		    </listitem>
+		  </orderedlist>
+		</para>
+
+		<para>This scheme applies to all real floating point
+		types:  <type>float</type>, <type>double</type>, and
+		<type>long double</type>.  It does not apply to
+		complex floating types.</para>
+
+		<para>See also the <link
+		linkend="assign-across-pointer"><option>--assign-across-pointer</option></link>,
+		<link
+		linkend="assign-into-field"><option>--assign-into-field</option></link>,
+		and <link
+		linkend="assign-into-index"><option>--assign-into-index</option></link>
+		flags for ways to customize which kinds of assignments
+		are instrumented.</para>
+	      </listitem>
+	    </varlistentry>
+
+	    <varlistentry>
+	      <term><option>function-entries</option></term>
+	      <listitem>
+		<para>Count how many times each function is
+		called. Each function body induces one instrumentation
+		point with one counter:
+
+		  <orderedlist>
+		    <listitem>
+		      <para>function entered</para>
+		    </listitem>
+		  </orderedlist>
+		</para>
+	      </listitem>
+	    </varlistentry>
+
+	    <varlistentry>
+	      <term><option>g-object-unref</option></term>
+	      <listitem>
+		<para>This scheme is intended for use with the GLib
+		Object System.  Before each call to
+		<function>g_object_unref</function>, check the current
+		reference count for the object about to be unref'd.
+		Each such call induces one instrumentation point with
+		a quadruple of counters:
+
+		  <orderedlist>
+		    <listitem>
+		      <para>zero references: object already being
+		      reclaimed</para>
+		    </listitem>
+
+		    <listitem>
+		      <para>one reference: object about to be
+		      reclaimed</para>
+		    </listitem>
+
+		    <listitem>
+		      <para>more than one reference: object not about
+		      to be reclaimed</para>
+		    </listitem>
+
+		    <listitem>
+		      <para>invalid: argument is not a
+		      <type>GObject</type> instance</para>
+		    </listitem>
+		  </orderedlist>
+		</para>
+	      </listitem>
+	    </varlistentry>
+
+	    <varlistentry>
+	      <term><option>returns</option></term>
+	      <listitem>
+		<para>At each scalar-returning call site, count how
+		many times the called function returned a negative,
+		zero, or positive value.  Each such call induces one
+		instrumentation point with a triple of
+		counters:
+
+		  <orderedlist>
+		    <listitem>
+		      <para>return value negative</para>
+		    </listitem>
+
+		    <listitem>
+		      <para>return value zero</para>
+		    </listitem>
+
+		    <listitem>
+		      <para>return value positive</para>
+		    </listitem>
+		  </orderedlist>
+		</para>
+	      </listitem>
+	    </varlistentry>
+
+	    <varlistentry>
+	      <term><option>scalar-pairs</option></term>
+	      <listitem>
+		<para>At each assignment of a scalar value, count how
+		many times the assigned value is less than, equal to,
+		or greater than each other same-typed in-scope
+		variable. Each such comparable variable at each such
+		assignment induces one instrumentation point with a
+		triple of counters:
+
+		  <orderedlist>
+		    <listitem>
+		      <para>assigned value less than other</para>
+		    </listitem>
+
+		    <listitem>
+		      <para>assigned value equal to other</para>
+		    </listitem>
+
+		    <listitem>
+		      <para>assigned value greater than other</para>
+		    </listitem>
+		  </orderedlist>
+		</para>
+
+		<para>This scheme can also optionally compare each
+		assigned value to each constant-valued integer
+		expression seen in the program.  This can be useful to
+		trap problems relating to fixed-size buffers,
+		structure sizes, or other <quote>magic</quote> values.
+		To turn on constant expression comparisons, add <link
+		linkend="compare-constants"><option>--compare-constants</option></link>
+		to the compiler command line.</para>
+
+		<para>See also the <link
+		linkend="assign-across-pointer"><option>--assign-across-pointer</option></link>,
+		<link
+		linkend="assign-into-field"><option>--assign-into-field</option></link>,
+		and <link
+		linkend="assign-into-index"><option>--assign-into-index</option></link>
+		flags for ways to customize which kinds of assignments
+		are instrumented.</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><option>--sample</option></term>
+	<term><option>--no-sample</option></term>
+	<listitem>
+	  <para>Enable or disable sampling of instrumentation
+	  points.  If sampling is disabled, instrumentation points
+	  are run unconditionally.  Default is to sample.</para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><option>--include-function=<function><replaceable>function</replaceable></function></option></term>
+	<term><option>--include-function=<literal>*</literal></option></term>
+	<term><option>--exclude-function=<function><replaceable>function</replaceable></function></option></term>
+	<term><option>--exclude-function=<literal>*</literal></option></term>
+	<listitem>
+	  <para>Function filtering.  Each of these flags takes one
+	  mandatory argument which can be the name of a function or
+	  the special wildcard <literal>*</literal> which names
+	  every function.  These flags can be given multiple times,
+	  creating an ordered include/exclude list.  Each function
+	  that might be instrumented is checked against this list.
+	  The first match determines whether that function should be
+	  included or excluded from instrumentation.</para>
+
+	  <para>These flags are useful for filtering out boring
+	  functions:
+
+	    <informalexample>
+	      <para><userinput>&hellip; <option>--exclude-function=<function>boringFunction</function></option>
+	      &hellip;</userinput></para>
+	    </informalexample>
+	  </para>
+
+	  <para>They can also be used to create executables with
+	  just a few selected functions instrumented:
+
+	    <informalexample>
+	      <para><userinput>&hellip;
+	      <option>--include-function=<function>interestingFunction</function></option>
+	      <option>--exclude-function=<literal>*</literal></option>
+	      &hellip;</userinput></para>
+	    </informalexample>
+	  </para>
+
+	  <para>Default is to include all functions, as though
+	  <option>--include-function=<literal>*</literal></option>
+	  were implicitly the last flag given.</para>
+
+	  <tip>
+	    <para>If you use the wildcard, remember to protect it from
+	    expansion by the shell such as by quoting it as
+	    <userinput>'*'</userinput> or
+	    <userinput>"*"</userinput>.</para>
+	  </tip>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><option>--include-file=<filename><replaceable>filename</replaceable></filename></option></term>
+	<term><option>--include-file=<literal>*</literal></option></term>
+	<term><option>--exclude-file=<filename><replaceable>filename</replaceable></filename></option></term>
+	<term><option>--exclude-file=<literal>*</literal></option></term>
+	<listitem>
+	  <para>File filtering.  Each of these flags takes one
+	  mandatory argument which can be the name of a source file
+	  or the special wildcard <literal>*</literal> which names
+	  every file.  These flags can be given multiple times,
+	  creating an ordered include/exclude list.  Each potential
+	  instrumentation point is checked against this list, using
+	  the name of the source file containing that point.  The
+	  first match determines whether that instrumentation point
+	  should be retained or discarded.</para>
+
+	  <para>Included and excluded file names are checked against
+	  names as seen by the compiler.  These will tend to be
+	  simple file names for source files given on the command
+	  line, but may be relative or absolute path names for
+	  header files pulled in by the preprocessor.  File names
+	  must match exactly to be considered.  In some cases it may
+	  be necessary to examine the preprocessor output to learn
+	  what file name the compiler is seeing for a given fragment
+	  of code.</para>
+
+	  <para>Note that checks are done using the name of the file
+	  actually containing the potential instrumentation point.
+	  If source file <filename>code.c</filename> brings in
+	  header file <filename
+	  class="headerfile">header.h</filename>, and that header
+	  contains a complete function definition, then
+	  instrumentation points in that function body will be
+	  included or excluded based on <filename
+	  class="headerfile">header.h</filename> as their file name,
+	  not <filename>code.c</filename>.</para>
+
+	  <para>Also note that this check is performed at each
+	  individual instrumentation point.  If a single function
+	  contains code from multiple source files, this filter can
+	  include some instrumentation points while excluding
+	  others.  This can happen, for example, in
+	  <application>Bison</application> parsers and
+	  <application>Flex</application> lexers which mix
+	  user-specified actions with fixed boilerplate.  One can
+	  instrument the actions while excluding the
+	  boilerplate:
+
+	    <informalexample>
+	      <para><userinput>&hellip; <option>--exclude-file=<filename>/usr/gnu/share/bison.simple</filename></option>
+	      <option>--exclude-file=<filename>lex.yy.c</filename></option>
+	      &hellip;</userinput></para>
+	    </informalexample>
+	  </para>
+
+	  <para>Default is to include instrumentation points from all
+	  files, as though
+	  <option>--include-file=<literal>*</literal></option> were
+	  implicitly the last flag given.</para>
+
+	  <tip>
+	    <para>If you use the wildcard, remember to protect it from
+	    expansion by the shell such as by quoting it as
+	    <userinput>'*'</userinput> or
+	    <userinput>"*"</userinput>.</para>
+	  </tip>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><option>--sampler-random=<replaceable>randomizer</replaceable></option></term>
+	<listitem>
+	  <para>Random countdown management.
+	  <replaceable>randomizer</replaceable> must be one of the
+	  following:
+
+	    <variablelist>
+	      <varlistentry>
+		<term><option>online</option></term>
+		<listitem>
+		  <para>Random countdowns are generated dynamically,
+		  as needed, while the program runs.</para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><option>offline</option></term>
+		<listitem>
+		  <para>A fixed bank of random countdowns is generated
+		  and stored before the instrumented program is
+		  launched.</para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><option>fixed</option></term>
+		<listitem>
+		  <para>Countdowns are not random.  Samples are taken
+		  according to some fixed period determined when the
+		  program is launched.</para>
+		</listitem>
+	      </varlistentry>
+	    </variablelist>
+	  </para>
+
+	  <para>See <xref linkend="envars" /> for how this choice
+	  affects which environment variables should be set at run
+	  time.  Default is <option>online</option>.</para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><option>--show-stats</option></term>
+	<term><option>--no-show-stats</option></term>
+	<listitem>
+	  <para>Static metrics.  Used for data collection when
+	  writing papers.  Default is silent operation.  Safe to
+	  ignore.</para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><option>--specialize-empty-regions</option></term>
+	<term><option>--no-specialize-empty-regions</option></term>
+	<term><option>--specialize-singleton-regions</option></term>
+	<term><option>--no-specialize-singleton-regions</option></term>
+	<listitem>
+	  <para>Region specialization optimizations.  Default is to
+	  perform all specializations.  Safe to ignore.</para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><option>--use-points-to</option></term>
+	<term><option>--no-use-points-to</option></term>
+	<listitem>
+	  <para>Use a conservative points-to analysis to identify
+	  possible callees at indirect function call sites.  This
+	  feature is experimental and should be used with
+	  caution.</para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry id="compare-constants">
+	<term><option>--compare-constants</option></term>
+	<term><option>--no-compare-constants</option></term>
+	<listitem>
+	  <para>When using the <option>scalar-pairs</option>
+	  instrumentation scheme, compare each assigned value to
+	  each constant-valued integer expression seen anywhere in
+	  the program.  This can be useful to trap problems relating
+	  to fixed-size buffers, structure sizes, or other
+	  <quote>magic</quote> values, but may substantially
+	  increase the amount of instrumentation in the code.
+	  Defaults to not comparing with constant
+	  expressions.</para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry id="assign-across-pointer">
+	<term><option>--assign-across-pointer</option></term>
+	<term><option>--no-assign-across-pointer</option></term>
+	<listitem>
+	  <para>When using the <option>float-kinds</option> or
+	  <option>scalar-pairs</option> instrumentation scheme,
+	  instrument an assignment whose left-hand side crosses a
+	  pointer.  Defaults to not instrumenting pointer-crossing
+	  assignments.</para>
+
+	  <remark>Clarification is needed here about treatment of
+	  complex lvalues with a mix of pointer, field, and array
+	  accesses.</remark>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry id="assign-into-field">
+	<term><option>--assign-into-field</option></term>
+	<term><option>--no-assign-into-field</option></term>
+	<listitem>
+	  <para>When using the <option>float-kinds</option> or
+	  <option>scalar-pairs</option> instrumentation scheme,
+	  instrument an assignment whose left-hand side is a structure
+	  field access.  Defaults to not instrumenting structure field
+	  assignments.</para>
+
+	  <remark>Clarification is needed here about treatment of
+	  complex lvalues with a mix of pointer, field, and array
+	  accesses.</remark>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry id="assign-into-index">
+	<term><option>--assign-into-index</option></term>
+	<term><option>--no-assign-into-index</option></term>
+	<listitem>
+	  <para>When using the <option>float-kinds</option> or
+	  <option>scalar-pairs</option> instrumentation scheme,
+	  instrument an assignment whose left-hand side is an array
+	  index access.  Defaults to not instrumenting indexed array
+	  assignments.</para>
+
+	  <remark>Clarification is needed here about treatment of
+	  complex lvalues with a mix of pointer, field, and array
+	  accesses.</remark>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><option>--threads</option></term>
+	<term><option>--no-threads</option></term>
+	<listitem>
+	  <para>Generate code suitable for multi-threaded execution.
+	  Defaults to generating single-threaded code.  Multi-threaded
+	  code is also generated if the standard
+	  <application>GCC</application> <option>-pthread</option>
+	  flag is observed on the command line.</para>
+
+	  <para>If both <option>--no-threads</option> and
+	  <option>-pthread</option> are given, then the former
+	  overrides the later regardless of the order in which they
+	  appear.  This can be useful to override automatically
+	  generated <application>GCC</application> command lines which
+	  use <option>-pthread</option> but which do not actually need
+	  thread support.</para>
+
+	  <para>Multithreaded code requires a native C compiler with
+	  support for thread-local storage:
+	  <application>GCC</application> 3.2 at a minimum, 3.3
+	  preferred.  Linux distributions with support for the
+	  Native POSIX Threads Library (<acronym>NPTL</acronym>)
+	  will offer the best performance.  Even so, there will be
+	  some additional overhead beyond that of single-threaded
+	  code, so do not enable multithreaded code generation
+	  unless your application is really multithreaded.</para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><option>--rename-locals</option></term>
+	<term><option>--no-rename-locals</option></term>
+	<listitem>
+	  <para>Uniquely rename all local variables and formal
+	  parameters.  This can be useful to avoid confusing multiple
+	  same-named variables when examining instrumentation site
+	  information.  A variable
+	  <varname><replaceable>var</replaceable></varname> within a
+	  function
+	  <function><replaceable>func</replaceable></function> is
+	  renamed as
+	  <varname><replaceable>func</replaceable>$<replaceable>var</replaceable></varname>.
+	  Defaults to no renaming.</para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><option>--cache-countdown</option></term>
+	<term><option>--no-cache-countdown</option></term>
+	<listitem>
+	  <para>Cache the global next sample countdown in local
+	  variables.  This is an important performance optimization.
+	  Defaults to caching, and should only be disabled when
+	  benchmarking the effect of this particular
+	  optimization.</para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><option>--predict-checks</option></term>
+	<term><option>--no-predict-checks</option></term>
+	<listitem>
+	  <para>Emit static branch prediction hints when checking the
+	  global next sample countdown.  This is a minor performance
+	  optimization.  Defaults to emitting prediction hints, and
+	  should only be disabled when benchmarking the effect of this
+	  particular optimization.</para>
+	</listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section id="running">
+    <title>Running Instrumented Programs</title>
+    <section id="launchers">
+      <title>High-Level Control Via Launchers</title>
+
+      <remark>We have created wrapper tools which launch instrumented
+      applications, collect sample reports, and upload them to a
+      central collection sever based on some simple configuration
+      files.  Documentation for these tools is not yet available, but
+      should be coming along soon.  Most readers should wait for that
+      documentation rather than fretting over the environment
+      variables described in <link linkend="envars">the next
+      section</link>.</remark>
+
+      <remark>The launchers currently assume that the program was
+      compiled using <option>--sampler-random=online</option>.  We
+      should either remove that restriction or document it clearly
+      here.</remark>
+    </section>
+
+    <section id="envars">
+      <title>Low-Level Control Via Environment Variables</title>
+
+      <para>The instrumented executable uses a set of environment
+      variables to control sampling and post-execution reporting.
+      Most applications should not need to deal with these directly,
+      and can instead use a launcher as described in <link
+      linkend="launchers">the previous section</link>.</para>
+
+      <para>The following environment variables influence the behavior
+      of an instrumented executable:</para>
+
+      <variablelist>
+	<varlistentry>
+	  <term><envar>$SAMPLER_EVENT_COUNTDOWNS</envar></term>
+	  <listitem>
+	    <para>Used when the executable was built with
+	    <option>--sampler-random=offline</option>.  Set this to
+	    the name of a file containing pre-generated random
+	    countdowns.  See <xref linkend="precompute" /> for
+	    information on a tool for building these countdown
+	    files.</para>
+
+	    <para>If not set, countdowns are always initialized to
+	    <symbol>UINT_MAX</symbol>, effectively disabling
+	    sampling.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><envar>$SAMPLER_SPARSITY</envar></term>
+	  <listitem>
+	    <para>Used when the executable was built with
+	    <option>--sampler-random=online</option> or
+	    <option>--sampler-random=fixed</option>.</para>
+
+	    <para>For <option>online</option> random sampling, set
+	    this to a positive integer or floating point number: the
+	    mean number of samples skipped between samples taken.
+	    <userinput>1000</userinput>, for example, will sample
+	    approximately one instrumentation point per thousand
+	    opportunities.</para>
+
+	    <para>For <option>fixed</option> random sampling, set this
+	    to a positive integer: the exact number of samples skipped
+	    between samples taken.  <userinput>1000</userinput>, for
+	    example, will sample exactly one instrumentation point per
+	    thousand opportunities.</para>
+
+	    <para>If not set, countdowns are always initialized to
+	    <symbol>UINT_MAX</symbol>, effectively disabling
+	    sampling.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><envar>$SAMPLER_SEED</envar></term>
+	  <listitem>
+	    <para>Used when the executable was built with
+	    <option>--sampler-random=online</option>.  Seeds the
+	    random number generator.  In multithreaded code, each new
+	    thread seeds its own generator using this same
+	    value.</para>
+
+	    <para>If not set, the seed is selected at runtime using
+	    some system entropy source
+	    (e.g. <filename>/dev/urandom</filename>).  In
+	    multithreaded code, each new thread seeds its own
+	    generator using a new seed drawn from this system entropy
+	    source.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry id="output">
+	  <term><envar>$SAMPLER_REPORT_FD</envar></term>
+	  <term><envar>$SAMPLER_FILE</envar></term>
+	  <listitem>
+	    <para>If <envar>$SAMPLER_REPORT_FD</envar> is set, then it
+	    gives the number of a file descriptor into which the
+	    sampler report will be written at program exit time.  This
+	    file descriptor must already be open, and will be closed
+	    once the report is complete.</para>
+
+	    <para> <envar>$SAMPLER_FILE</envar> is set, then names a
+	    file which is to receive the report.  The named file will
+	    be created if it does not already exist.  If the file does
+	    already exist, any existing contents will be
+	    overwritten.</para>
+
+	    <para>If neither of these environment variables is set,
+	    then no post-execution report will be produced.  This does
+	    not disable sampling while the program runs, but it does
+	    mean that the results of the sampling will not be recorded
+	    anywhere once the program exits.</para>
+
+	    <para>If both of these environment variables are set, then
+	    <envar>$SAMPLER_REPORT_FD</envar> is used and
+	    <envar>$SAMPLER_FILE</envar> is disregarded.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><envar>$SAMPLER_VERBOSE</envar></term>
+	  <listitem>
+	    <para>If <envar>$SAMPLER_VERBOSE</envar> is set, then
+	    instrumented applications will print some additional CBI
+	    debugging information to standard error.  This is intended
+	    as a tool for debugging the instrumentation
+	    infrastructure.  The exact messages printed may vary from
+	    release to release.</para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </section>
+
+    <section id="tools">
+      <title>Supporting Tools</title>
+      <section id="precompute">
+	<title><command>precompute</command></title>
+
+	<para><filename>&prefix;/lib/sampler/tools/precompute</filename>
+	is a tool for producing pre-generated countdowns.  This should
+	be used in conjunction with the
+	<option>--sampler-random=offline</option> flag and the
+	<envar>$SAMPLER_EVENT_COUNTDOWNS</envar> environment variable.
+	Before starting the instrumented program:</para>
+
+	<procedure>
+	  <step>
+	    <para>Set <envar>$SAMPLER_SEED</envar> to some random seed
+	    integer.</para>
+	  </step>
+
+	  <step>
+	    <para>Run <userinput><command>precompute</command>
+	    <filename><replaceable>outfile</replaceable></filename></userinput>
+	    to generate and store random countdowns in
+	    <filename><replaceable>outfile</replaceable></filename>.</para>
+	  </step>
+
+	  <step>
+	    <para>Set <envar>$SAMPLER_EVENT_COUNTDOWNS</envar> to name
+	    this same file when running the instrumented
+	    program.</para>
+	  </step>
+	</procedure>
+      </section>
+    </section>
+  </section>
+
+  <section id="files">
+    <title>File Formats</title>
+
+    <section>
+      <title>Static Information Files</title>
+
+      <para>Static information files are generated by
+      <command>sampler-cc</command> during program compilation.  They
+      describe instrumented code but contain no information about any
+      individual run.  Think of them as an extension of the symbolic
+      debugging information generated during normal
+      compilation.</para>
+
+      <section>
+	<title>Embedding and Extraction</title>
+
+	<para><quote>File</quote> is a bit of a misnomer.  These
+	pieces of information are not initially placed in their own
+	files.  Rather, static information is embedded directly within
+	each instrumented object file, shared library, or executable.
+	Custom <acronym>ELF</acronym> sections hold each piece of
+	static data.</para>
+
+	<para>Embedding ensures that the static information remains
+	tightly associated with the code it describes even across
+	renaming, linking, archive extraction, etc.  However, it is
+	often useful to extract this information into a standalone
+	form for additional analysis.  The
+	<filename>&prefix;/lib/sampler/tools/extract-section</filename>
+	tool may be used for this purpose.  It is run as
+	follows:
+
+	  <cmdsynopsis>
+	    <command>extract-section</command>
+	    <arg choice="req"><replaceable>section-name</replaceable></arg>
+	    <group choice="req" rep="repeat">
+	      <arg choice="plain"><replaceable>executable</replaceable></arg>
+	      <arg choice="plain"><replaceable>shared-library</replaceable></arg>
+	      <arg choice="plain"><replaceable>object</replaceable></arg>
+	    </group>
+	  </cmdsynopsis>
+	</para>
+
+	<para><replaceable>section-name</replaceable> names the
+	<acronym>ELF</acronym> section containing the desired data,
+	including a leading <quote>.</quote>.  Remaining arguments are
+	ELF executables, shared libraries, or object files.  The named
+	section is read from each of these and written to standard
+	output in sequence.</para>
+
+	<note>
+	  <para>Although <command>extract-section</command> will
+	  happily copy data from any <acronym>ELF</acronym> section
+	  you name, it should only be used for extracting static
+	  sampler information.  Normalization applied during
+	  extraction means that you are not seeing a byte-for-byte
+	  copy of the named section.  Use <command>objcopy</command>
+	  for more general manipulation tasks.</para>
+	</note>
+
+	<para>When shipping precompiled binaries to large numbers of
+	users, you should extract, save, and then
+	<emphasis>remove</emphasis> the sampler's static data sections
+	from your binaries.  This data can be large, and the typical
+	end user does not need to download, store, or use it.  Removal
+	is made easier by the fact that all of these extra
+	<acronym>ELF</acronym>sections are marked as debugging
+	sections: the standard <command>strip</command> will remove
+	them along with all other debug information.  Our
+	<acronym>RPM</acronym> building tools do exactly this, and
+	save the extracted static data files in auxiliary
+	<computeroutput>*-samplerinfo</computeroutput> packages
+	analogous to Red Hat's
+	<computeroutput>*-debuginfo</computeroutput> packages.  The
+	<computeroutput>*-samplerinfo</computeroutput> packages are
+	available for all to see, but typically only a developer would
+	download and install them.</para>
+
+      </section>
+
+      <section id="static-site-information">
+	<title>Site Information</title>
+
+	<para>The site information file lists the instrumentation
+	sites added to each compilation unit.  This is the main key
+	used to decode dynamic feedback reports.  When embedded within
+	an instrumented binary, it is always found in the
+	<quote><literal>.debug_site_info</literal></quote>
+	<acronym>ELF</acronym> section.  When extracted into a
+	standalone file, it is conventionally stored with the
+	extension <quote><filename
+	class="extension">.sites</filename></quote>.</para>
+
+	<para>The format of this file is a hybrid of XML and
+	tab-delimited columnar data.  This is intended as a compromise
+	between structure, efficiency of storage, and ease of
+	processing.</para>
+
+	<section>
+	  <title>Compilation Units and Schemes</title>
+
+	  <para>At the top level, a static site information file
+	  consists of a sequence of sections marked by XML-style
+	  <sgmltag class="element">sites</sgmltag> tags:
+
+	    <screen>&lt;<sgmltag class="element">sites</sgmltag> <sgmltag class="attribute">unit</sgmltag>="<sgmltag class="attvalue"><replaceable>unit signature</replaceable></sgmltag>" <sgmltag class="attribute">scheme</sgmltag>="<sgmltag class="attvalue"><replaceable>scheme name</replaceable></sgmltag>"&gt;
+&hellip;
+<sgmltag class="endtag">sites</sgmltag>
+&lt;<sgmltag class="element">sites</sgmltag> <sgmltag class="attribute">unit</sgmltag>="<sgmltag class="attvalue"><replaceable>unit signature</replaceable></sgmltag>" <sgmltag class="attribute">scheme</sgmltag>="<sgmltag class="attvalue"><replaceable>scheme name</replaceable></sgmltag>"&gt;
+&hellip;
+<sgmltag class="endtag">sites</sgmltag>
+&vellip;
+&lt;<sgmltag class="element">sites</sgmltag> <sgmltag class="attribute">unit</sgmltag>="<sgmltag class="attvalue"><replaceable>unit signature</replaceable></sgmltag>" <sgmltag class="attribute">scheme</sgmltag>="<sgmltag class="attvalue"><replaceable>scheme name</replaceable></sgmltag>"&gt;
+&hellip;
+<sgmltag class="endtag">sites</sgmltag>
+</screen>
+	  </para>
+
+	  <note>
+	    <para>Unlike true XML, there is no prologue and no single
+	    root tag.  The first line is the <sgmltag
+	    class="starttag">sites</sgmltag> start tag for the first
+	    compilation unit and the last line is the <sgmltag
+	    class="endtag">sites</sgmltag> end tag for the last
+	    compilation unit.</para>
+	  </note>
+
+	  <para>A single <sgmltag class="starttag">sites</sgmltag>
+	  &hellip; <sgmltag class="endtag">sites</sgmltag> section
+	  describes the instrumentation sites for one compilation unit
+	  with one instrumentation scheme.  Each <sgmltag
+	  class="element">sites</sgmltag> start tag carries two
+	  attributes:
+
+	    <variablelist id="unit-scheme-attrs">
+	      <varlistentry>
+		<term>unit</term>
+		<listitem>
+		  <para>a 128-bit identifying signature for this
+		  compilation unit expressed as 32 lower case hexadecimal
+		  digits</para>
+		</listitem>
+	      </varlistentry>
+
+	      <varlistentry>
+		<term>scheme</term>
+		<listitem>
+		  <para>the name of an instrumentation scheme as given to
+		  <command>sampler-cc</command>'s <link
+		  linkend="sampler-scheme"><option>--sampler-scheme</option></link>
+		  flag</para>
+		</listitem>
+	      </varlistentry>
+	    </variablelist>
+	  </para>
+
+	  <para>When data is collected during a run, it is also marked
+	  with these same two attributes.  Thus this
+	  (<replaceable>unit signature</replaceable>,
+	  <replaceable>scheme name</replaceable>) pair serves to
+	  connect dynamic data with the static sites that collected
+	  it.</para>
+
+	  <para>A complex application that links together several
+	  object files will contain several <sgmltag
+	  class="element">sites</sgmltag> sections.  If multiple
+	  instrumentation schemes were used within a single
+	  compilation unit, then multiple <sgmltag
+	  class="element">sites</sgmltag> sections will appear with
+	  the same compilation unit signature but differing scheme
+	  names.  It is even possible, though rare, for a single
+	  object file to be linked into an executable multiple times,
+	  in which case all of its <sgmltag
+	  class="element">sites</sgmltag> sections will be duplicated
+	  as well.  <phrase id="arbitrary-order">In all cases where
+	  multiple <sgmltag class="element">sites</sgmltag> sections
+	  are present, their order is arbitrary.  In particular, do
+	  not assume that the dynamic data in feedback reports appears
+	  in the same order as these static <sgmltag
+	  class="element">sites</sgmltag> sections.</phrase></para>
+	</section>
+
+	<section>
+	  <title>Site Details</title>
+
+	  <para>Within a single <sgmltag
+	  class="element">sites</sgmltag> section, each line describes
+	  one instrumentation site for the given compilation unit and
+	  scheme.  The order here is fixed and matches the order of
+	  counters appearing in the corresponding section of the
+	  dynamic feedback report from each run.</para>
+
+	  <para>Details for each site are given as a sequence of
+	  tab-delimited fields.  The initial fields are common to all
+	  instrumentation schemes:
+
+	    <orderedlist>
+	      <listitem>
+		<para>source file name</para>
+	      </listitem>
+	      <listitem>
+		<para>source line number</para>
+	      </listitem>
+	      <listitem>
+		<para>name of function containing site</para>
+	      </listitem>
+	      <listitem>
+		<para>control flow graph number of site (unique within
+		function)</para>
+	      </listitem>
+	    </orderedlist>
+	  </para>
+
+	  <para>Additional fields are specific to the instrumentation
+	  scheme that induced this site:
+
+	    <itemizedlist>
+	      <listitem>
+		<para><option>bounds</option></para>
+		<orderedlist continuation="continues">
+		  <listitem>
+		    <para>the left hand side of the instrumented assignment</para>
+		  </listitem>
+		  <listitem>
+		    <para>one of:
+		      <variablelist>
+			<varlistentry>
+			  <term><computeroutput>local</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to a named local variable</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term><computeroutput>global</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to a named global variable</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term><computeroutput>mem</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to an indirectly
+			    addressed memory location</para>
+			  </listitem>
+			</varlistentry>
+		      </variablelist>
+		    </para>
+		  </listitem>
+		  <listitem>
+		    <para>one of:
+		      <variablelist>
+			<varlistentry>
+			  <term><computeroutput>direct</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to a direct base
+			    location with no offset</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term><computeroutput>field</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to a named field within
+			    a structure</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term><computeroutput>index</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to an indexed element
+			    within an array</para>
+			  </listitem>
+			</varlistentry>
+		      </variablelist>
+		    </para>
+		  </listitem>
+		</orderedlist>
+	      </listitem>
+	      <listitem>
+		<para><option>branches</option></para>
+		<orderedlist>
+		  <?dbhtml start="5"?>
+		  <listitem>
+		    <para>the predicate of the instrumented branch</para>
+		  </listitem>
+		</orderedlist>
+	      </listitem>
+	      <listitem>
+		<para>float-kinds</para>
+		<orderedlist>
+		  <?dbhtml start="5"?>
+		  <listitem>
+		    <para>the left hand side of the instrumented assignment</para>
+		  </listitem>
+		  <listitem>
+		    <para>one of:
+		      <variablelist>
+			<varlistentry>
+			  <term><computeroutput>local</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to a named local variable</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term><computeroutput>global</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to a named global variable</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term><computeroutput>mem</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to an indirectly
+			    addressed memory location</para>
+			  </listitem>
+			</varlistentry>
+		      </variablelist>
+		    </para>
+		  </listitem>
+		  <listitem>
+		    <para>one of:
+		      <variablelist>
+			<varlistentry>
+			  <term><computeroutput>direct</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to a direct base
+			    location with no offset</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term><computeroutput>field</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to a named field within
+			    a structure</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term><computeroutput>index</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to an indexed element
+			    within an array</para>
+			  </listitem>
+			</varlistentry>
+		      </variablelist>
+		    </para>
+		  </listitem>
+		</orderedlist>
+	      </listitem>
+	      <listitem>
+		<para><option>function-entries</option>: no additional fields</para>
+	      </listitem>
+	      <listitem>
+		<para>g-object-unref</para>
+		<orderedlist>
+		  <?dbhtml start="5"?>
+		  <listitem>
+		    <para>the object argument in the instrumented call
+		    to <function>g_object_unref</function></para>
+		  </listitem>
+		</orderedlist>
+	      </listitem>
+	      <listitem>
+		<para>returns</para>
+		<orderedlist>
+		  <?dbhtml start="5"?>
+		  <listitem>
+		    <para>the callee in the instrumented function call</para>
+		  </listitem>
+		</orderedlist>
+	      </listitem>
+	      <listitem>
+		<para>scalar-pairs</para>
+		<orderedlist>
+		  <?dbhtml start="5"?>
+		  <listitem>
+		    <para>the left hand side of the instrumented assignment</para>
+		  </listitem>
+		  <listitem>
+		    <para>one of:
+		      <variablelist>
+			<varlistentry>
+			  <term><computeroutput>local</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to a named local variable</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term><computeroutput>global</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to a named global variable</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term><computeroutput>mem</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to an indirectly
+			    addressed memory location</para>
+			  </listitem>
+			</varlistentry>
+		      </variablelist>
+		    </para>
+		  </listitem>
+		  <listitem>
+		    <para>one of:
+		      <variablelist>
+			<varlistentry>
+			  <term><computeroutput>direct</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to a direct base
+			    location with no offset</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term><computeroutput>field</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to a named field within
+			    a structure</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term><computeroutput>index</computeroutput></term>
+			  <listitem>
+			    <para>assignment is to an indexed element
+			    within an array</para>
+			  </listitem>
+			</varlistentry>
+		      </variablelist>
+		    </para>
+		  </listitem>
+		  <listitem>
+		    <para>the right hand side of the instrumented assignment</para>
+		  </listitem>
+		  <listitem>
+		    <para>one of:
+		      <variablelist>
+			<varlistentry>
+			  <term><computeroutput>local</computeroutput></term>
+			  <listitem>
+			    <para>site is comparing the assigned value
+			    with a named local variable</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term><computeroutput>global</computeroutput></term>
+			  <listitem>
+			    <para>site is comparing the assigned value
+			    with a named global variable</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term><computeroutput>const</computeroutput></term>
+			  <listitem>
+			    <para>site is comparing the assigned value
+			    with a compile-time constant</para>
+			  </listitem>
+			</varlistentry>
+		      </variablelist>
+		    </para>
+		  </listitem>
+		</orderedlist>
+	      </listitem>
+	    </itemizedlist>
+	  </para>
+	</section>
+      </section>
+
+      <section>
+	<title>Control Flow Graph</title>
+
+	<remark>Not yet written.  Will eventually document our
+	representation of program control flow graphs as stored in the
+	<quote><literal>.debug_sampler_cfg</literal></quote>
+	<acronym>ELF</acronym> section or in <quote><filename
+	class="extension">.cfg</filename></quote> standalone
+	files.</remark>
+      </section>
+    </section>
+
+    <section>
+      <title>Dynamic Feedback Reports</title>
+
+      <para>A dynamic feedback report consists of instrumentation data
+      and possibly other debugging information collected from a single
+      run of an instrumented program.  When using <link
+      linkend="launchers">high-level program launchers</link> in
+      conjunction with a <link linkend="server">report collection
+      server</link>, a dynamic report arrives at the server each time
+      an instrumented application exits.  When using <link
+      linkend="envars">low-level environment variables</link>, a
+      dynamic report is written into <link linkend="output">the
+      selected file descriptor or file name</link> as the program
+      exits.</para>
+
+      <para>At the top level, a dynamic feedback report consists of a
+      sequence of sections marked by XML-style <sgmltag
+      class="element">report</sgmltag> tags:
+
+        <screen>&lt;<sgmltag class="element">report</sgmltag> <sgmltag class="attribute">id</sgmltag>="<sgmltag class="attvalue"><replaceable>subreport name</replaceable></sgmltag>"&gt;
+&hellip;
+<sgmltag class="endtag">report</sgmltag>
+&lt;<sgmltag class="element">report</sgmltag> <sgmltag class="attribute">id</sgmltag>="<sgmltag class="attvalue"><replaceable>subreport name</replaceable></sgmltag>"&gt;
+&hellip;
+<sgmltag class="endtag">report</sgmltag>
+&vellip;
+&lt;<sgmltag class="element">report</sgmltag> <sgmltag class="attribute">id</sgmltag>="<sgmltag class="attvalue"><replaceable>subreport name</replaceable></sgmltag>"&gt;
+&hellip;
+<sgmltag class="endtag">report</sgmltag>
+</screen>
+      </para>
+
+      <note>
+	<para>Unlike true XML, there is no prologue and no single root
+	tag.  The first line is the <sgmltag
+	class="starttag">report</sgmltag> start tag for the first
+	subreport and the last line is the <sgmltag
+	class="endtag">report</sgmltag> end tag for the last
+	subreport.</para>
+      </note>
+
+      <para>The following subsections describe the subreports currently in use.</para>
+
+      <section>
+	<title><computeroutput>samples</computeroutput> subreport</title>
+
+	<para>The first subreport always has <sgmltag
+	class="attribute">id</sgmltag>="<sgmltag class="attvalue">samples</sgmltag>".
+	The <computeroutput>samples</computeroutput> subreport
+	contains the final recorded values for all instrumentation
+	sites.  It is designed to be small and therefore easy to send
+	to a central collection server.  For this reason, it cannot be
+	understood by itself.  A
+	<computeroutput>samples</computeroutput> subreport must be
+	decoded using the <link
+	linkend="static-site-information">static site information
+	files</link> generated when the application was built.  Taken
+	together, the <computeroutput>samples</computeroutput>
+	subreport and the static site information files connect
+	observed dynamic behaviors with static source features such as
+	functions, files, and line numbers.</para>
+
+	<para>A <computeroutput>samples</computeroutput> subreport
+	consists of a sequence of sections marked by XML-style
+	<sgmltag class="element">samples</sgmltag> tags:
+
+	  <screen>&lt;<sgmltag class="element">samples</sgmltag> <sgmltag class="attribute">unit</sgmltag>="<sgmltag class="attvalue"><replaceable>unit signature</replaceable></sgmltag>" <sgmltag class="attribute">scheme</sgmltag>="<sgmltag class="attvalue"><replaceable>scheme name</replaceable></sgmltag>"&gt;
+&hellip;
+<sgmltag class="endtag">samples</sgmltag>
+&lt;<sgmltag class="element">samples</sgmltag> <sgmltag class="attribute">unit</sgmltag>="<sgmltag class="attvalue"><replaceable>unit signature</replaceable></sgmltag>" <sgmltag class="attribute">scheme</sgmltag>="<sgmltag class="attvalue"><replaceable>scheme name</replaceable></sgmltag>"&gt;
+&hellip;
+<sgmltag class="endtag">samples</sgmltag>
+&vellip;
+&lt;<sgmltag class="element">samples</sgmltag> <sgmltag class="attribute">unit</sgmltag>="<sgmltag class="attvalue"><replaceable>unit signature</replaceable></sgmltag>" <sgmltag class="attribute">scheme</sgmltag>="<sgmltag class="attvalue"><replaceable>scheme name</replaceable></sgmltag>"&gt;
+&hellip;
+<sgmltag class="endtag">samples</sgmltag>
+</screen>
+	</para>
+
+	<para>Each <sgmltag class="element">samples</sgmltag> section
+	gives the final instrumentation data for one instrumentation
+	scheme in one compilation unit.  As noted <link
+	linkend="arbitrary-order">earlier</link>, <sgmltag
+	class="element">sites</sgmltag> sections in the static site
+	information file and <sgmltag
+	class="element">samples</sgmltag> sections in a samples
+	subreport are not guaranteed to appear in the same order.
+	However, the mandatory <sgmltag
+	class="attribute">unit</sgmltag> and <sgmltag
+	class="attribute">scheme</sgmltag> attributes have <link
+	linkend="unit-scheme-attrs">the same meaning</link> in both
+	cases.  For any given (<replaceable>unit
+	signature</replaceable>, <replaceable>scheme
+	name</replaceable>) pair, the corresponding section of the
+	<computeroutput>samples</computeroutput> subreport gives the
+	measured values for a run and the corresponding section of the
+	static site information file relates that information to the
+	application source code.</para>
+
+	<para>Within one <sgmltag class="element">samples</sgmltag>
+	section, each instrumentation site reports its measurements on
+	one line, with multiple values delimited by tabs.  See <xref
+	linkend="schemes"/> for a description of each scheme's
+	recorded data values.  The order of lines
+	<emphasis>within</emphasis> a <sgmltag
+	class="element">samples</sgmltag> section is fixed and
+	corresponds, line by line, with the corresponding <sgmltag
+	class="element">sites</sgmltag> section of some static site
+	information file.  Usually the static site information is
+	drawn from the main instrumented application, but it may also
+	come from shared libraries or dynamically loaded plugins, each
+	of which has its own static lists of instrumentation
+	sites.</para>
+
+	<para>Dynamically loaded plugins are a special case, in that
+	they may appear multiple times in a single
+	<computeroutput>samples</computeroutput> subreport.  If a
+	plugin is loaded and unloaded multiple times while the
+	application is running, each unload reports on all of that
+	plugin's sites just before unloading.  Each reload of the
+	plugin resets all of the plugin's instrumentation site data to
+	its initial values (e.g. 0 for counters), with no memory of
+	the earlier load.  When examining feedback reports from
+	applications with instrumented plugins, it is up to you to
+	merge these repeated <sgmltag
+	class="element">samples</sgmltag> sections appropriately.  For
+	counter-based schemes, the right thing to do is simply sum
+	corresponding counters from multiple sections.  For the
+	<option>bounds</option> scheme, which is not counter-based,
+	take the minimum of all corresponding minima and the maximum
+	of all corresponding maxima.</para>
+
+	<para id="resolve-samples">Aligning and merging multiple
+	<sgmltag class="element">samples</sgmltag> and <sgmltag
+	class="element">sites</sgmltag> sections can be tedious.  The
+	<filename>&prefix;/lib/sampler/tools/resolve-samples</filename>
+	tool provides simple merging to support basic data analysis.
+	It is run as follows:
+
+	  <cmdsynopsis>
+	    <command>resolve-samples</command>
+	    <arg choice="req"><replaceable>section-name</replaceable></arg>
+	    <group choice="req" rep="repeat">
+	      <arg choice="plain"><replaceable>executable</replaceable></arg>
+	      <arg choice="plain"><replaceable>shared-library</replaceable></arg>
+	      <arg choice="plain"><replaceable>object</replaceable></arg>
+	      <arg choice="plain"><replaceable>standalone site information file</replaceable></arg>
+	    </group>
+	  </cmdsynopsis>
+	</para>
+
+	<para>Standard input to <command>resolve-samples</command>
+	should be a <computeroutput>samples</computeroutput>
+	subreport, starting with the first <sgmltag
+	class="starttag">samples</sgmltag> start tag and ending after
+	the last <sgmltag class="endtag">samples</sgmltag> end tag.
+	Arguments on the command line may be any mixture of extracted
+	site information files or instrumented binary files with
+	static site information still embedded within them.  Output is
+	a sequence of lines containing only tab-delimited columnar
+	data, with no XML-like tags.  Each instrumentation site
+	appears on a single line with the following initial
+	fields:
+
+	  <orderedlist>
+	    <listitem>
+	      <para>file name from <command>resolve-samples</command>
+	      in which this site was found</para>
+	    </listitem>
+	    <listitem>
+	      <para>signature of the compilation unit in which this
+	      site was found</para>
+	    </listitem>
+	    <listitem>
+	      <para>name of the instrumentation scheme that induced
+	      this site</para>
+	    </listitem>
+	  </orderedlist>
+	</para>
+
+	<para>These initial fields are followed by:
+
+	  <itemizedlist>
+	    <listitem>
+	      <para>all static information fields for this site</para>
+	    </listitem>
+	    <listitem>
+	      <para>all dynamic values reported for this site</para>
+	    </listitem>
+	  </itemizedlist>
+	</para>
+
+	<para>The flat, uniform structure of a fully resolved samples
+	report can be convenient for basic data analysis on small
+	numbers of runs.  However, the size and redundancy of the
+	static information fields make this approach undesirable when
+	processing hundreds or thousands of feedback reports.</para>
+
+	<remark>Add documentation about <sgmltag
+	class="element">timestamps</sgmltag> sections, which will also
+	appear in the <computeroutput>samples</computeroutput>
+	subreport when site time stamping is enabled at
+	instrumentation time.  Also document the
+	<filename>&prefix;/lib/sampler/tools/resolve-timestamps</filename>
+	tool.</remark>
+      </section>
+
+      <section>
+	<title><computeroutput>main-backtrace</computeroutput> subreport</title>
+
+	<para>In the event of a crash, the dynamic feedback report
+	contains an additional subreport describing the execution
+	stack of the running thread at the point of failure.  Output
+	is as generated by the <function>backtrace_symbols</function>
+	function from the GNU C library.  For example:
+
+	  <screen>ccrypt[0x804ff1c]
+/lib/tls/libc.so.6[0xaa78c8]
+ccrypt[0x804c3df]
+ccrypt[0x804c80e]
+ccrypt[0x804a34b]
+/lib/tls/libc.so.6(__libc_start_main+0xd3)[0xa94e23]
+ccrypt[0x8049171]
+</screen>
+	</para>
+
+	<para>Using debug information recorded when the application
+	was built, these raw addresses can be further resolved to
+	function names and line numbers, as one would expect to see in
+	a debugger:
+
+	  <informaltable frame="none">
+	    <tgroup cols="5">
+	      <colspec align="right"/>
+	      <colspec align="left"/>
+	      <colspec align="left"/>
+	      <colspec align="left"/>
+	      <colspec align="right"/>
+	      <thead>
+		<row>
+		  <entry>return</entry>
+		  <entry>module</entry>
+		  <entry>function</entry>
+		  <entry>file</entry>
+		  <entry>line</entry>
+		</row>
+	      </thead>
+	      <tbody>
+		<row>
+		  <entry>0x804ff1c</entry>
+		  <entry>ccrypt</entry>
+		  <entry>handleSignal</entry>
+		  <entry>report.c</entry>
+		  <entry>87</entry>
+		</row>
+		<row>
+		  <entry>0xaa78c8</entry>
+		  <entry>/lib/tls/libc.so.6</entry>
+		  <entry>??</entry>
+		  <entry>??</entry>
+		  <entry>0</entry>
+		</row>
+		<row>
+		  <entry>0x804c3df</entry>
+		  <entry>ccrypt</entry>
+		  <entry>traverse_file</entry>
+		  <entry>traverse.c</entry>
+		  <entry>451</entry>
+		</row>
+		<row>
+		  <entry>0x804c80e</entry>
+		  <entry>ccrypt</entry>
+		  <entry>traverse_files</entry>
+		  <entry>traverse.c</entry>
+		  <entry>485</entry>
+		</row>
+		<row>
+		  <entry>0x804a34b</entry>
+		  <entry>ccrypt</entry>
+		  <entry>main</entry>
+		  <entry>main.c</entry>
+		  <entry>516</entry>
+		</row>
+		<row>
+		  <entry>0xa94e23</entry>
+		  <entry>/lib/tls/libc.so.6</entry>
+		  <entry>??</entry>
+		  <entry>??</entry>
+		  <entry>0</entry>
+		</row>
+		<row>
+		  <entry>0x8049171</entry>
+		  <entry>ccrypt</entry>
+		  <entry>_start</entry>
+		  <entry>??</entry>
+		  <entry>0</entry>
+		</row>
+	      </tbody>
+	    </tgroup>
+	  </informaltable>
+	</para>
+
+	<para>Note that this only reveals code locations.  Values of
+	local variables or other program data are not reported.</para>
+      </section>
+
+      <section>
+	<title>Subreport Extraction</title>
+
+	<para>It is often useful to extract a single subreport from a
+	dynamic feedback report.  For example, <link
+	linkend="resolve-samples">the
+	<command>resolve-samples</command> tool</link> expects to see
+	just a <computeroutput>samples</computeroutput> subreport, not
+	an entire feedback report.  The
+	<filename>&prefix;/lib/sampler/tools/extract-section</filename>
+	tool may be used for this purpose.  It is run as
+	follows:
+
+	  <cmdsynopsis>
+	    <command>extract-report</command>
+	    <arg choice="req"><replaceable>report id</replaceable></arg>
+	  </cmdsynopsis>
+	</para>
+
+	<para>Standard input to <command>extract-report</command>
+	should be a raw dynamic feedback report.  It prints the report
+	with the requested ID on standard output and discards the
+	rest.  For example, one might use this in conjunction with
+	<command>extract-section</command> as follows:
+
+	  <informalexample>
+	    <para><userinput><command>extract-report</command> samples
+	    &lt;<filename>raw-report.log</filename> | <command>resolve-samples</command>
+	    <filename>myapp</filename> <filename>myplugin.so</filename>
+	    <filename>libmylib.so</filename></userinput></para>
+	  </informalexample>
+	</para>
+      </section>
+    </section>
+  </section>
+
+  <section id="server">
+    <title>Managing a Report Collection Server</title>
+
+    <remark>Not yet written.  Will eventually document setting up the
+    report collection script as a CGI service running under the
+    <application>Apache</application> web server.</remark>
+  </section>
+</article>

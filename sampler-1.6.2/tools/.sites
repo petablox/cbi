@@ -1,0 +1,5 @@
+<sites unit="5771b6184395596785e0ddd718615ab4" scheme="branches">
+/home/wslee/project/cbi/sampler-1.6.2/driver/test.c	8	main	5	k == 0
+/home/wslee/project/cbi/sampler-1.6.2/driver/test.c	9	main	14	i < 100
+/home/wslee/project/cbi/sampler-1.6.2/driver/test.c	10	main	21	i % 50 == 0
+</sites>

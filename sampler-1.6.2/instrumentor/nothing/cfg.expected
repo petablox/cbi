@@ -1,0 +1,27 @@
+object cfg.o
+	unit cfg.c
+		function conditional at cfg.c:14
+			node 0 at cfg.c:16
+				successors: 2 1
+			node 1 at cfg.c:17
+				successors: 3
+				callees: loopy
+			node 2 at cfg.c:19
+				successors: 3
+				callees: conditional
+			node 3 at cfg.c:20
+		function loopy at cfg.c:7
+			node 0 at cfg.c:9
+				successors: 1
+			node 1 at cfg.c:9
+				successors: 2
+				callees: (opaque)
+			node 2 at cfg.c:9
+				successors: 4 3
+			node 3 at (unknown):0
+				successors: 5
+			node 4 at cfg.c:9
+				successors: 6
+			node 5 at cfg.c:10
+				successors: 0
+			node 6 at cfg.c:11

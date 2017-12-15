@@ -1,0 +1,39 @@
+Source: sampler
+Section: devel
+Priority: optional
+Maintainer: Sampler Package Builder <liblit@cs.wisc.edu>
+Build-Depends: autoconf, cdbs, cil-dev, debhelper (>> 4.1.0), fakeroot, file, flex, gconf2, libbonobo2-dev, libgsl0-dev, libgtk2.0-dev, liborbit2-dev, libxml2-utils, lsb-release, ocaml-base-nox, ocaml-interp, ocaml-native-compilers, ocaml-nox, perl-base (>= 5.8), pkg-config, python, python-dev, python-gnome2-dev, python-gtk2-dev, scrollkeeper, xsltproc
+Standards-Version: 3.6.1
+
+Package: sampler
+Architecture: any
+Depends: ${misc:Depends}, ${python:Depends}, ${shlibs:Depends}, python-glade2, python-gnome2
+Description: support for applications with sampled instrumentation
+ This package supports instrumented applications at run time.  It
+ includes tools for launching instrumented applications, collecting
+ sample and crash reports, and uploading those reports to the central
+ bug isolation server.
+
+Package: sampler-dev
+Architecture: any
+Depends: ${perl:Depends}, ${shlibs:Depends}
+Description: tools for building applications with sampled instrumentation
+ This package provides tools for building applications with sampled
+ instrumentation.  It includes an instrumenting C compiler and utility
+ tools for collecting and decoding sampled instrumentation reports.
+
+Package: sampler-doc
+Architecture: all
+Description: documentation for sampler
+ This package contains the documentation files for sampler in general,
+ and sampler-dev in particular.
+
+Package: sampler-server
+Architecture: all
+Depends: ${perl:Depends}, apache-common
+Recommends: apache-ssl | libapache-mod-ssl
+Description: CGI script to receive uploaded instrumentation reports
+ This package provides a CGI script that manages the server end of
+ sampled instrumentation reporting.  It can be added to any standard
+ Apache web server installation that supports CGI scripts and the
+ $UNIQUE_ID environment variable.

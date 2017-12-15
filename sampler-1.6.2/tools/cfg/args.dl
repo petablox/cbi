@@ -1,0 +1,1 @@
+args = $(statement) $(phase) $(object) $(graphlib/graph) args.$(cmo)

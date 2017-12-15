@@ -1,0 +1,18 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+@ARGV == 1 or die "Usage: $0 <report-id>\n";
+my $target = shift;
+my $found;
+
+while (<STDIN>) {
+    next unless $_ eq "<report id=\"$target\">\n";
+    $found = 1;
+    while (<STDIN>) {
+	last if $_ eq "</report>\n";
+	print $_;
+    }
+}
+
+exit !$found;

@@ -1,0 +1,1 @@
+main = $(testHarness) $(printer) $(options) $(locals) $(instrumentor) $(idents) main.$(cmo)

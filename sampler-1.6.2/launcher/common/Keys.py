@@ -1,0 +1,5 @@
+root = '/apps/sampler'
+asked = root + '/asked'
+master = root + '/enabled'
+show_tray_icon = root + '/show_tray_icon'
+applications = root + '/applications'

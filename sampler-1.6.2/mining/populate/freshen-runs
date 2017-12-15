@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+cd "`dirname $0`"
+
+test -x ./insertRuns.py
+
+find $(cat uploads) -name environment |
+./insertRuns.py
+# while read run && ! [ -e orderly-shutdown ]; do echo $run | ./insertRuns.py; done
+
+touch sync-stamp

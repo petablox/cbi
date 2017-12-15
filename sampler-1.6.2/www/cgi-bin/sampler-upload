@@ -1,0 +1,55 @@
+#!/usr/bin/perl -wT
+
+use strict;
+
+use CGI qw(:standard -private_tempfiles);
+use CGI::Carp qw(fatalsToBrowser);
+
+use File::Copy;
+use FileHandle;
+
+use POSIX qw(strftime);
+
+
+########################################################################
+
+
+my $query = new CGI;
+
+$ENV{REQUEST_METHOD} eq 'POST' or die "\$REQUEST_METHOD looks suspicious: \"$ENV{REQUEST_METHOD}\"\n";
+
+exists $ENV{UNIQUE_ID} or die "\$UNIQUE_ID missing from environment\n";
+$ENV{UNIQUE_ID} =~ /^([-0-9A-Za-z@]+)$/ or die "\$UNIQUE_ID looks suspicious: \"$ENV{UNIQUE_ID}\"\n";
+my $uid = $1;
+print($query->header({-sampler_unique_id => $uid}));
+
+umask 0007;
+
+my $dir = "/var/www/sampler-uploads/$uid";
+mkdir $dir or die "cannot build upload directory $dir: $!\n";
+END { rmdir $dir if $dir; }
+
+
+sub stash_environ () {
+    my $environment = new FileHandle "$dir/environment", 'w' or die $!;
+    local ($,, $\) = ("\t", "\n");
+    while (my ($key, $value) = each %ENV) {
+	$environment->print($key, $value)
+	    if $key =~ /^HTTP_SAMPLER_/;
+    }
+    $environment->print('DATE', strftime('%F %T', gmtime));
+}
+
+
+sub stash_file ($) {
+    my $name = shift;
+    $name =~ /^([-_0-9A-Za-z]+)$/ or die "uploaded file name looks suspicious: $name\n";
+    my $filename = $1;
+    my $in = $query->upload($name) or die "cannot read uploaded file: $!\n";
+    my $out = new FileHandle "$dir/$filename.gz", 'w' or die "cannot stash uploaded file: $!\n";
+    copy($in, $out);
+}
+
+
+stash_environ();
+stash_file $_ foreach $query->param;

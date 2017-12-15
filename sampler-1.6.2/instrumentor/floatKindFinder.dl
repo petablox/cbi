@@ -1,0 +1,1 @@
+floatKindFinder = $(siteFinder) $(scalarPairSiteInfo) $(locals) $(isolateInstructions) $(interesting) $(floatKindSiteInfo) $(findFunction) $(counters) floatKindFinder.$(cmo)

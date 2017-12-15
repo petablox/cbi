@@ -1,0 +1,3 @@
+home = '@traydir@'
+bin = '@bindir@'
+glade = home + '/tray.glade'

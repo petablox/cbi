@@ -1,0 +1,1 @@
+boundManager = $(../ocaml/stackClass) $(siteInfo) $(../ocaml/queueClass) $(findFunction) boundManager.$(cmo)

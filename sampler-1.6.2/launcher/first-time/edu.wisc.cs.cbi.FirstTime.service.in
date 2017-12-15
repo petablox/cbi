@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=edu.wisc.cs.cbi.FirstTime
+Exec=@first_timedir@/first-time

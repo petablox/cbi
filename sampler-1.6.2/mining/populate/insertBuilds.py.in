@@ -1,0 +1,161 @@
+#!@PYTHON@ -O
+# @configure_input@
+
+from itertools import imap, starmap
+from optparse import OptionParser
+from subprocess import PIPE, Popen
+from time import gmtime, strftime
+import re
+import sys
+
+from common import Upload, connect, results
+
+
+class Build(object):
+
+    __slots__ = ['application_name', 'application_version', 'application_release', 'build_distribution']
+
+    def __init__(self, application_name, application_version, application_release, build_distribution):
+        self.application_name = application_name
+        self.application_version = application_version
+        self.application_release = application_release
+        self.build_distribution = build_distribution
+
+    def __summarize(self):
+        return (self.application_name, self.application_version, self.application_release, self.build_distribution)
+
+    def __cmp__(self, other):
+        return cmp(self.__summarize(), other.__summarize())
+
+    def __hash__(self):
+        return hash(self.__summarize())
+
+    def __str__(self):
+        return str(self.__summarize())
+
+
+def getKnown(db):
+    """get the list of already-known builds"""
+    cursor = db.cursor()
+    cursor.execute('SELECT DISTINCT application_name, application_version, application_release, build_distribution FROM build')
+    tuples = imap(tuple, results(cursor))
+    builds = starmap(Build, tuples)
+    known = set(builds)
+    return known
+
+
+distroPattern = re.compile('/((?:fedora|redhat)-\\d+-i386)(?:-older)?/')
+appIdPattern = re.compile('/([^/]+)-samplerinfo-([^-/]+)-([^-/]+)\\.[^./]+\\.rpm$')
+
+
+class MalformedBuild(StandardError):
+    def __init__(self, build, reason):
+        StandardError.__init__(self, 'malformed build: %s: %s' % (reason, build))
+
+
+def uploadBuilds(db, packages):
+    """upload any builds not already known"""
+
+    known = getKnown(db)
+    print 'already known:', len(known)
+
+    upload = Upload(db, 'upload_build')
+
+    for package in packages:
+
+        # deduce build distribution
+        distro = distroPattern.search(package)
+        if not distro:
+            raise MalformedBuild(package, 'cannot find distribution')
+        distro = distro.group(1)
+
+        # deduce deployment
+        if package.startswith('/afs/cs.wisc.edu/'):
+            deployment = 'default'
+        elif package.startswith('/afs/cs.stanford.edu/'):
+            deployment = 'stanford'
+        else:
+            raise MalformedBuild(package, 'cannot find deployment')
+
+        # parse application-identifying triple from package name
+        appId = appIdPattern.search(package)
+        if not appId:
+            raise MalformedBuild(package, 'mangled samplerinfo file name')
+        appId = appId.groups() + (distro,)
+
+        # have we seen this build before?
+        build = Build(*appId)
+        if build in known:
+            continue
+
+        # not previously seen, so also need build date
+        rpm = Popen(['rpm', '-qp', '--qf', '%{buildtime}\n', package], stdout=PIPE)
+        date = rpm.communicate()[0]
+        if rpm.returncode != 0:
+            raise MalformedBuild(package, 'rpm command failed')
+        date = int(date.rstrip())
+        date = strftime('%F %T', gmtime(date))
+
+        # add to uploads for build table
+        row = appId + (date, deployment)
+        print 'new:', row, package
+        upload.append(row)
+
+    upload.commit()
+
+
+def main():
+    parser = OptionParser(usage='%prog [options]')
+    parser.add_option('-n', '--dry-run', action='store_true', default=False,
+                      help='show what would be inserted without actually doing it')
+    options, args = parser.parse_args()
+    if args: parser.error('too many positional arguments')
+
+    db = connect()
+
+    db.cursor().execute("""
+      CREATE TEMPORARY TABLE upload_build (
+        application_name VARCHAR(50) NOT NULL,
+        application_version VARCHAR(50) NOT NULL,
+        application_release VARCHAR(50) NOT NULL,
+        build_distribution VARCHAR(50) NOT NULL,
+        build_date TIMESTAMP NOT NULL,
+        deployment_name VARCHAR(50) NOT NULL
+      )
+    """)
+
+    if args:
+        packages = args
+    else:
+        packages = sys.stdin
+        packages = imap(str.rstrip, packages)
+
+    # upload new builds into temporary table
+    uploadBuilds(db, packages)
+
+    # merge new builds into main table
+    if not options.dry_run:
+        db.cursor().execute("""
+          INSERT INTO build (
+            application_name,
+            application_version,
+            application_release,
+            build_distribution,
+            build_date,
+            deployment_name
+          )
+          SELECT *
+          FROM upload_build
+          """)
+
+    # finish up with database
+    if options.dry_run:
+        db.rollback()
+    else:
+        db.commit()
+
+    db.close()
+
+
+if __name__ == '__main__':
+    main()

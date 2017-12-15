@@ -1,0 +1,33 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+
+my @max_width;
+my @lines;
+
+
+while (my $line = <STDIN>) {
+    chomp $line;
+    my @fields = split /\t/, $line;
+
+    foreach (0 .. $#fields) {
+	my $length = length $fields[$_];
+	$max_width[$_] = $length if ! defined $max_width[$_] || $max_width[$_] < $length;
+    }
+
+    push @lines, \@fields;
+}
+
+
+pop @max_width;
+my @format = map { '%-' . ($_ + 2) . 's' } @max_width;
+my $format = join('', @format) . "%s\n";
+
+exit unless @lines;
+
+my $header = shift @lines;
+my @hline = map { my $line = $_; $line =~ s/./-/g; $line } @{$header};
+unshift @lines, $header, \@hline;
+
+printf $format, @{$_} foreach @lines;

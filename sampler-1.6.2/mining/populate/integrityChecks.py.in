@@ -1,0 +1,82 @@
+#!@PYTHON@ -O
+# @configure_input@
+
+import sys
+
+from common import connect, results
+
+
+########################################################################
+
+
+def checkResult(cursor, condition):
+    first = True
+    for result in results(cursor):
+        for value in result.values():
+            if first:
+                print condition
+                first = False
+            print >>sys.stderr, '\t%s' % value
+
+
+def checkQuery(db, condition, query, parameters={}):
+    print 'checking for', condition
+    cursor = db.cursor()
+    cursor.execute(query, parameters)
+    checkResult(cursor, condition)
+
+
+def checkValue(db, table, fieldId, fieldCheck, op, bad):
+    __pychecker__ = 'no-argsused'
+    badStr = bad
+    if isinstance(badStr, str): badStr = '"%s"' % badStr
+    condition = '%(table)s.%(fieldCheck)s %(op)s %(badStr)s' % vars()
+    query = 'SELECT DISTINCT %(fieldId)s FROM %(table)s WHERE %(fieldCheck)s %(op)s %%(bad)s' % vars()
+    checkQuery(db, condition, query, {'bad': bad})
+
+
+def checkDeploymentServer(db, deployment, server):
+    checkQuery(db,
+               'non-%s reports received by %s' % (deployment, server),
+               'SELECT run_id from run NATURAL JOIN build WHERE server_name = %(server)s AND deployment_name != %(deployment)s',
+               vars())
+
+
+def main():
+    db = connect()
+
+    checkValue(db, 'build', 'build_id', 'build_id', '<=', 0)
+    checkValue(db, 'build', 'build_id', 'application_name', '=', '')
+    checkValue(db, 'build', 'build_id', 'application_version', '=', '')
+    checkValue(db, 'build', 'build_id', 'application_release', '=', '')
+    checkValue(db, 'build', 'build_id', 'build_distribution', '=', '')
+    checkValue(db, 'build', 'build_id', 'build_date', '<=', '2002-1-1')
+
+    checkValue(db, 'run', 'run_id', 'run_id', '=', '')
+    checkValue(db, 'run', 'run_id', 'version', '=', '')
+    checkValue(db, 'run', 'run_id', 'sparsity', '<=', 0)
+    checkValue(db, 'run', 'run_id', 'exit_status', '<', 0)
+    checkValue(db, 'run', 'run_id', 'exit_status', '>', 255)
+    checkValue(db, 'run', 'run_id', 'exit_signal', '<', 0)
+    checkValue(db, 'run', 'run_id', 'exit_signal', '>', 255)
+    checkValue(db, 'run', 'run_id', 'date', '<=', '2002-1-1')
+
+    checkValue(db, 'build_suppress', 'build_id', 'reason', '=', '')
+    checkValue(db, 'run_suppress', 'run_id', 'reason', '=', '')
+    checkValue(db, 'distribution', 'distribution_name', 'distribution_name', '=', '')
+
+    checkDeploymentServer(db, 'default', 'www.cs.wisc.edu')
+    checkDeploymentServer(db, 'default', 'sampler.cs.berkeley.edu')
+    checkDeploymentServer(db, 'stanford', 'www.cs.stanford.edu')
+
+    checkQuery(db,
+               'runs with both fatal signal and non-zero exit status',
+               'SELECT run_id FROM run WHERE exit_status != 0 AND exit_signal != 0')
+
+    checkQuery(db,
+               'checking for runs from suppressed builds',
+               'SELECT run_id FROM run NATURAL JOIN build_suppress')
+
+
+if __name__ == '__main__':
+    main()

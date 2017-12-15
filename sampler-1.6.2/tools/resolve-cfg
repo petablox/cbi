@@ -1,0 +1,118 @@
+#!/usr/bin/perl -w
+
+use strict;
+use 5.008;			# for safe pipe opens using list form of open
+
+use Fcntl qw(SEEK_SET);
+use FileHandle;
+use FindBin;
+use Getopt::Long;
+
+use lib $FindBin::RealBin;
+use SymbolTable;
+use Function;
+use Object;
+
+
+########################################################################
+
+
+my $problem = 0;
+
+
+sub error ($) {
+    warn shift;
+    $problem = 1;
+}
+
+
+sub malformed ($$$$) {
+    my ($filename, $handle, $context, $actual) = @_;
+    die "$filename:", $handle->input_line_number, ": malformed $context: $actual\n";
+}
+
+
+sub check_signature ($$$) {
+    my ($filename, $handle, $signature) = @_;
+    malformed $filename, $handle, 'signature', $signature
+	unless $signature eq '*0.0';
+}
+
+
+my @objects;
+
+
+########################################################################
+
+
+sub print_dump () {
+    $_->dump foreach @objects;
+}
+
+
+sub print_dot () {
+    print "digraph CFG {\n";
+    print "\tcompound=true;\n";
+    print "\tcolor=red;\n";
+    $_->dot foreach @objects;
+    print "}\n";
+}
+
+
+sub print_dot_calls () {
+    print "digraph CallGraph {\n";
+    $_->dot_calls foreach @objects;
+    print "}\n";
+}
+
+
+my $printer = \&print_dump;
+
+
+GetOptions
+    'dump' => sub { $printer = \&print_dump },
+    'dot' => sub { $printer = \&print_dot },
+    'dot-calls' => sub { $printer = \&print_dot_calls },
+    'verbose' => \$Unit::verbose;
+
+
+########################################################################
+
+
+foreach my $objectName (@ARGV) {
+    my $handle;
+
+    if ($objectName =~ /\.cfg$/) {
+	$handle = new FileHandle $objectName, 'r';
+	unless ($handle) {
+	    error "warning: cannot read $objectName: $!\n";
+	    next;
+	}
+
+    } elsif (-d $objectName) {
+	next;
+
+    } else {
+	$handle = new FileHandle;
+	my $extractor = "$FindBin::RealBin/extract-section";
+	if (! open $handle, '-|', $extractor, '.debug_sampler_cfg', $objectName) {
+	    error "warning: cannot run $extractor for $objectName: $!\n";
+	    next;
+	}
+    }
+
+    push @objects, new Object $handle, $objectName;
+
+    $handle->close or error "error after reading CFG from $objectName\n";
+}
+
+
+my $exports = new SymbolTable;
+$_->collectExports($exports) foreach @objects;
+$_->resolveCallees($exports) foreach @objects;
+
+
+&{$printer} unless $problem;
+
+
+exit $problem;

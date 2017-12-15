@@ -1,0 +1,19 @@
+#!/bin/sh
+
+top_srcdir='@top_srcdir@'
+XMLLINT="@XMLLINT@"
+
+case $1 in
+  (*.desktop)
+    exec desktop-file-validate $1
+    ;;
+  (*.py)
+    exec pychecker --quiet --stdlib $1
+    ;;
+  (*.glade|*.server|*.schemas)
+    XML_CATALOG_FILES="/etc/xml/catalog $top_srcdir/catalog.xml" exec $XMLLINT --valid --noout $1
+    ;;
+  (*)
+    false
+    ;;
+esac

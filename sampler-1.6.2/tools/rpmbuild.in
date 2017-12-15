@@ -1,0 +1,82 @@
+#!@PERL@ -w
+# -*- cperl -*-
+
+use strict;
+use FindBin;
+
+
+########################################################################
+
+
+my $prefix = '@prefix@';
+my $exec_prefix = "@exec_prefix@";
+my $bindir = "@bindir@";
+my $PACKAGE = '@PACKAGE@';
+my $libdir = "@libdir@";
+my $datarootdir = "@datarootdir@";
+my $datadir = "@datadir@";
+my $pkglibdir = "@pkglibdir@";
+my $pkgdatadir = "@pkgdatadir@";
+
+
+########################################################################
+
+
+my %macros = (
+	      sampler_sparsity => '%{error:sampler_sparsity undefined}',
+	      sampler_reporting_host => '%{error:sampler_reporting_host undefined}',
+	      sampler_reporting_url => 'https://%{sampler_reporting_host}/cgi-bin/sampler-upload',
+
+	      sampler_datadir => "$pkgdatadir",
+	      sampler_libdir => "$pkglibdir",
+
+	      sampler_cc => "$bindir/sampler-cc",
+
+	      'sampler_tags(s:)' => <<'EOF',
+Requires: sampler >= 1.5
+BuildRequires: sampler-devel >= 1.5
+%{nil}
+EOF
+
+	      sampler_description => 'This package has been built with sampled bug feedback instrumentation.',
+
+	      sampler_package => <<'EOF',
+%package samplerinfo
+Summary: Sampler information for package %{name}
+Group: Development/Debug
+AutoReqProv: 0
+%description samplerinfo
+This package provides sampler information for package %{name}.  You do
+not need this to use %{name}.  Most users have no need to install this
+package.
+%files samplerinfo
+%defattr(-,root,root)
+%{sampler_libdir}/sites/*
+%{nil}
+EOF
+
+	      sampler_prebuild => 'export CC=\'%{sampler_cc} %{?sampler_cc_flags}\'',
+
+	      'sampler_install()' => <<'EOF',
+%{sampler_libdir}/tools/install-gconf --name='%{name}' --sparsity='%{sampler_sparsity}' --reporting-url='%{sampler_reporting_url}' --install="$RPM_BUILD_ROOT" %{?sampler_install_gconf_flags}
+%{sampler_libdir}/tools/install-wrappers --name='%{name}' --version='%{version}' --release='%{release}' --install="$RPM_BUILD_ROOT" %{?sampler_install_wrappers_flags} -- %*
+%{sampler_libdir}/tools/find-sampler-info --extract="$RPM_BUILD_ROOT" --save="$RPM_BUILD_ROOT" --edit-source="$RPM_BUILD_DIR::/usr/src/debug"
+%{nil}
+EOF
+
+	      sampler_files => '%attr(-, root, root) %{sampler_libdir}/wrapped/*',
+	      sampler_files_gconf => '%attr(-, root, root) %{_sysconfdir}/gconf/schemas/sampler-%{name}.schemas',
+	      sampler_post => 'env GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source` gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/sampler-%{name}.schemas >/dev/null'
+);
+
+
+########################################################################
+
+
+while (my ($name, $value) = each %macros) {
+    $value =~ s/\n(?=.)/\\\n/g;
+    unshift @ARGV, '--define', "$name $value";
+}
+
+exec 'rpmbuild', @ARGV;
+die "cannot exec rpmbuild: $!\n";

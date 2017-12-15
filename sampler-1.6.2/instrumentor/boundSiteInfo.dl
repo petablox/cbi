@@ -1,0 +1,1 @@
+boundSiteInfo = $(siteInfo) boundSiteInfo.$(cmo)

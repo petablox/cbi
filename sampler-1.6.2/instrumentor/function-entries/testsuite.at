@@ -1,0 +1,12 @@
+AT_INIT(function-entries)
+
+AT_SETUP(test)
+AT_CHECK([
+set -e
+cp $abs_srcdir/test.c .
+cp $abs_srcdir/test.expected expout
+$abs_top_builddir/driver/sampler-cc-here --relative-paths --sampler-scheme=function-entries -o test test.c
+SAMPLER_FILE=trace SAMPLER_SPARSITY=1 ./test
+$abs_top_srcdir/tools/resolve-samples test <trace | cut -f1,3- | sort -t '	'
+], 0, expout)
+AT_CLEANUP

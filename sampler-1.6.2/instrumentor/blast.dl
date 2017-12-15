@@ -1,0 +1,1 @@
+blast = $(options) $(findFunction) blast.$(cmo)

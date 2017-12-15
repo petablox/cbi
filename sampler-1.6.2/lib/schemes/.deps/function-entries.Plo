@@ -1,0 +1,14 @@
+function-entries.lo: function-entries.c /usr/include/stdc-predef.h \
+ function-entries.h ../signature.h tuple-1.h samples.h tuple-2.h
+
+/usr/include/stdc-predef.h:
+
+function-entries.h:
+
+../signature.h:
+
+tuple-1.h:
+
+samples.h:
+
+tuple-2.h:

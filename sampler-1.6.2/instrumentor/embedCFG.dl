@@ -1,0 +1,1 @@
+embedCFG = $(testHarness) $(paths) $(options) $(isolateInstructions) $(functionBodyVisitor) $(dynamic) $(cfgUtils) embedCFG.$(cmo)

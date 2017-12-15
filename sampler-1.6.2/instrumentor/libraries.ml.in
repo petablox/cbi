@@ -1,0 +1,9 @@
+let functions =
+  let functions = [
+    @LIBRARY_FUNCTIONS@
+  ] in
+
+  let collection = new StringHash.c @LIBRARY_COUNT@ in
+
+  List.iter (fun func -> collection#add func ()) functions;
+  collection

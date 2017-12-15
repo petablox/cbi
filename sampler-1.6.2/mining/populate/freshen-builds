@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+cd "`dirname $0`"
+find $(cat repositories) -type f -name '*-samplerinfo-*.rpm' -print | ./insertBuilds.py "$@"
+touch sync-stamp

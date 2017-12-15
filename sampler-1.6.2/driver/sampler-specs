@@ -1,0 +1,87 @@
+*embedding:
+-fsave-cfg %g.cfg \
+-fsave-site-info %g.sites \
+%{fadd-blast-markers:-fsave-blast-spec %g.spc} \
+%{fsampler-implications:-fsave-implications %g.impls} \
+%{fsampler-dataflow:-fsave-dataflow %g.dataflow}
+
+*cpp_threads_yes:
+-D CBI_THREADS
+
+*cpp_threads:
+%{fthreads:%(cpp_threads_yes)} \
+%{!fthreads:%{!fno-threads:%{pthread:%(cpp_threads_yes)}}}
+
+*cpp_timestamps:
+%{ftimestamp-first:-D CBI_TIMESTAMP_FIRST} \
+%{ftimestamp-last:-D CBI_TIMESTAMP_LAST} \
+%{ftimestamp-*:-include sampler/timestamps.h%s}
+
+*cpp_random:
+%{fsampler-random=fixed:-include sampler/threads/random-fixed.h%s} \
+%{fsampler-random=online:-include sampler/threads/random-online.h%s} \
+%{fsampler-random=offline:-include sampler/threads/random-offline.h%s} \
+%{!fsampler-random=*:-include sampler/threads/random-online.h%s} \
+%{!fsampler-random=*:-lsampler-online}
+
+*cpp_schemes:
+%{fsampler-scheme=bounds:-include sampler/schemes/bounds-unit.h%s} \
+%{fsampler-scheme=branches:-include sampler/schemes/branches-unit.h%s} \
+%{fsampler-scheme=float-kinds:-include sampler/schemes/float-kinds-unit.h%s} \
+%{fsampler-scheme=function-entries:-include sampler/schemes/function-entries-unit.h%s} \
+%{fsampler-scheme=g-object-unref:-include sampler/schemes/g-object-unref-unit.h%s} \
+%{fsampler-scheme=returns:-include sampler/schemes/returns-unit.h%s} \
+%{fsampler-scheme=scalar-pairs:-include sampler/schemes/scalar-pairs-unit.h%s} \
+%{fsampler-scheme=*:-include sampler/unit.h%s}
+
+*cpp_blast:
+%{fadd-blast-markers:-include sampler/blast-markers.h%s}
+
+*cpp:
++ -DCIL \
+%(cpp_blast) \
+%(cpp_threads) \
+%(cpp_timestamps) \
+-include sampler/threads/countdown.h%s \
+%(cpp_random) \
+%(cpp_schemes)
+
+*cc1:
++ %{v} \
+%{!fno-threads:%{!fthreads:%{pthread:-fthreads}}} \
+-finstrumentor-input %u.i \
+-finstrumentor-output %u.inst.i \
+%(embedding)
+
+*asm_final:
++ %{v:--verbose} \
+%(embedding)
+
+*lib_threads_yes:
+%{fsampler-random=*:-lsampler-%*_r} \
+%{!fsampler-random=*:-lsampler-online_r} \
+-lpthread -lm -lsampler
+
+*lib_threads_no:
+%{fsampler-random=*:-lsampler-%*} \
+%{!fsampler-random=*:-lsampler-online} \
+-lm -lsampler
+
+*link:
++ --wrap fork
+
+*lib_threads:
+--wrap pthread_create \
+%{fthreads:%(lib_threads_yes)} \
+%{fno-threads:%(lib_threads_no)} \
+%{!fthreads:%{!fno-threads:%{pthread:%(lib_threads_yes)}}} \
+%{!fthreads:%{!fno-threads:%{!pthread:%(lib_threads_no)}}}
+
+%rename libgcc old_libgcc
+
+*libgcc:
+--undefined=cbi_initialize \
+%{fsampler-lib-dir=*:-L%* -rpath %*} \
+%{fsampler-scheme=*:-lsampler-%*} \
+%(lib_threads) \
+%(old_libgcc)

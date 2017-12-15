@@ -1,0 +1,1 @@
+siteRegistry = $(../ocaml/hashClass) siteRegistry.$(cmo)

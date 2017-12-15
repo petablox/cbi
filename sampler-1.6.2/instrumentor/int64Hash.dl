@@ -1,0 +1,1 @@
+int64Hash = $(../ocaml/hashClass) int64Hash.$(cmo)

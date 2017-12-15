@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE gconfschemafile SYSTEM "gconf-1.0.dtd">
+<gconfschemafile>
+  <schemalist>
+    <schema>
+      <key>/schemas/apps/sampler/asked</key>
+      <applyto>/apps/sampler/asked</applyto>
+      <owner>sampler</owner>
+      <type>bool</type>
+      <default>false</default>
+      <locale name="C">
+	<short>Seen the first-time opt-in dialog</short>
+	<long>Set to true once the user has seen and responded to the first-time opt-in dialog.  If changed back to false, the first-time opt-in dialog will be presented again the next time an instrumented application runs.</long>
+      </locale>
+    </schema>
+    <schema>
+      <key>/schemas/apps/sampler/enabled</key>
+      <applyto>/apps/sampler/enabled</applyto>
+      <owner>sampler</owner>
+      <type>bool</type>
+      <default>true</default>
+      <locale name="C">
+	<short>Sampling and reporting is enabled</short>
+	<long>Set to true if the user has decided to participate in the bug isolation project: samples will be collected during each run and reported to the central bug isolation server after each run concludes.  Set to false if the user has decided not to participate: no samples will be collected or reported.  Note that if the sibling "asked" key is false, then this key only sets the default for the first-time opt-in dialog.  Sampling only begins once both "asked" and "enabled" are true.</long>
+      </locale>
+    </schema>
+    <schema>
+      <key>/schemas/apps/sampler/show_tray_icon</key>
+      <applyto>/apps/sampler/show_tray_icon</applyto>
+      <owner>sampler</owner>
+      <type>bool</type>
+      <default>true</default>
+      <locale name="C">
+	<short>Show tray icon while instrumented applications are running</short>
+	<long>Set to true if the "Bug Isolation Monitor" tray icon should be displayed whenever the user is running any instrumented application.  The tray icon, which appears in the GNOME Panel notification area, serves as a visual reminder that instrumented code is in use.  The icon shows a green blip if automatic reporting is enabled, or no blip if reporting is disabled.</long>
+      </locale>
+    </schema>
+  </schemalist>
+</gconfschemafile>

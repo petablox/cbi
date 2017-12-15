@@ -1,0 +1,18 @@
+<report id="samples">
+<samples unit="98bec7b3ed3d47ebe96913362a6e5184" scheme="scalar-pairs">
+0	1	0
+0	0	0
+0	0	0
+0	0	0
+0	0	0
+0	0	0
+</samples>
+</report>
+<report id="main-backtrace">
+/usr/local/lib/libsampler.so.0(+0x1488)[0x7fd3d6241488]
+/usr/local/lib/libsampler.so.0(+0x1545)[0x7fd3d6241545]
+/lib/x86_64-linux-gnu/libc.so.6(+0x350e0)[0x7fd3d5ec50e0]
+./a.out[0x400b05]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf5)[0x7fd3d5eb1b45]
+./a.out[0x400869]
+</report>

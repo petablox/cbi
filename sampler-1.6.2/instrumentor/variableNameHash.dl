@@ -1,0 +1,1 @@
+variableNameHash = $(../ocaml/hashClass) variableNameHash.$(cmo)

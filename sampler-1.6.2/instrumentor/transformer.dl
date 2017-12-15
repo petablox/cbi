@@ -1,0 +1,1 @@
+transformer = $(weightyCalls) $(weight) $(weighPaths) $(statistics) $(sites) $(scanners) $(returns) $(removeLoops) $(functionEntry) $(funcInfo) $(forwardJumps) $(filterLabels) $(duplicate) $(classifyJumps) $(cfgUtils) $(calls) $(balancePaths) $(balance) $(backwardJumps) transformer.$(cmo)

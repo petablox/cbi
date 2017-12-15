@@ -1,0 +1,3 @@
+libplugin.so	branches	plugin.c	6	function	2	direction	0	1
+library.so	branches	library.c	9	libraryFunction	2	direction	0	1
+sharing	branches	sharing.c	12	dlcheck	5	message	3	0

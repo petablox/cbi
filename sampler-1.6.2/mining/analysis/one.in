@@ -1,0 +1,117 @@
+#!@PERL@ -w
+#-*- perl -*-
+#line 4 one.in
+
+use strict;
+
+use DBI;
+use File::Basename;
+use File::Path;
+
+use lib '../populate';
+use Common;
+use Site;
+
+use lib '.';
+use Utils;
+
+
+########################################################################
+#
+#  parse and validate command line
+#
+
+sub usage () {
+    die "Usage: $0 <samplerinfo-rpm-file> <analysis-output-directory>\n";
+}
+
+usage unless @ARGV == 2;
+my ($rpm_samplerinfo, $outdir) = @ARGV;
+die "$!: $rpm_samplerinfo\n" unless -r $rpm_samplerinfo;
+
+print "rpm_samplerinfo: $rpm_samplerinfo\n";
+print "outdir: $outdir\n";
+
+my $rpm_debuginfo = $rpm_samplerinfo;
+$rpm_debuginfo =~ s/-samplerinfo-/-debuginfo-/;
+unless (-r $rpm_debuginfo) {
+    my $rpm_debug = $rpm_debuginfo;
+    $rpm_debug =~ s/-debuginfo-/-debug-/;
+    if (-r $rpm_debug) {
+	$rpm_debuginfo = $rpm_debug;
+    } else {
+	die "$!: $rpm_debuginfo, $rpm_debug\n";
+    }
+}
+
+$ENV{rpm} = $rpm_samplerinfo;
+print "rpm contains: $ENV{rpm}\n";
+my $target = `rpm -qp --queryformat '%{name}\t%{version}\t%{release}' \$rpm`;
+die "rpm error\n" if $?;
+
+my @target = split /\t/, $target;
+die "malformed rpm output: $target\n" unless @target == 3;
+
+my ($name, $version, $release) = @target;
+die "not a samplerinfo rpm\n" unless $name =~ s/-samplerinfo$//;
+
+my $build = "$name-$version-$release";
+die if $build =~ /\//;
+
+my $distro = basename dirname $outdir;
+
+rmtree $outdir;
+Utils::try_mkpath $outdir;
+
+sub stamp() {
+    open STAMP, '>', "$outdir/stamp";
+    close STAMP;
+    utime undef, undef, "$outdir/stamp";
+}
+
+
+########################################################################
+#
+#  identify the report IDs for this build
+#
+
+warn "Counting reports for $build on $distro ...\n";
+
+# Get report ID's from the database - we want the ones that match this release,
+# but that are not supposed to be repressed
+
+my $dbh = Common::connect;
+my @runs =
+    @{$dbh->selectall_arrayref(q{
+	SELECT run_id, extract(year from date)::int as year, extract(month from date)::int as month
+	    FROM run NATURAL JOIN build NATURAL LEFT JOIN run_suppress
+	    WHERE application_name = ?
+	    AND application_version = ?
+	    AND application_release = ?
+	    AND build_distribution = ?
+	    AND reason IS NULL
+	},
+			       { Slice => {} }, $name, $version, $release, $distro)};
+
+$dbh->disconnect;
+
+unless (@runs) {
+    warn "no reports for $build on $distro\n";
+    stamp;
+    exit 0;
+}
+
+
+########################################################################
+#
+#  convert and analyze these reports
+#
+
+my @schemes = Utils::guess_schemes $name;
+my @sites = Utils::unpack_sites $outdir, @schemes, $rpm_samplerinfo;
+my @debugs = Utils::unpack_debuginfo $outdir, $rpm_debuginfo;
+Utils::convert_reports $outdir, @schemes, @runs;
+Utils::analyze_reports $outdir, $name, @schemes, @runs, @sites, @debugs;
+
+Utils::clean $outdir;
+stamp;

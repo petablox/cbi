@@ -1,0 +1,43 @@
+AT_INIT(nothing)
+
+AT_SETUP(pipes)
+AT_CHECK([
+set -e
+cp $abs_srcdir/pipes.c .
+cc="$abs_top_builddir/driver/sampler-cc-here --relative-paths"
+$cc -pipe -c pipes.c
+$abs_top_srcdir/tools/extract-section .debug_sampler_cfg pipes.o >/dev/null
+])
+AT_CLEANUP
+
+AT_SETUP(last-switch)
+AT_CHECK([
+set -e
+cp $abs_srcdir/last-switch.c .
+cc="$abs_top_builddir/driver/sampler-cc-here --relative-paths"
+$cc -c last-switch.c
+])
+AT_CLEANUP
+
+AT_SETUP(sharing)
+AT_CHECK([
+set -e
+cc="$abs_top_builddir/driver/sampler-cc-here --relative-paths"
+$cc -shared -o libplugin.so -fpic $abs_srcdir/plugin.c
+$cc -shared -o library.so -fpic $abs_srcdir/library.c
+$cc -c $abs_srcdir/main.c
+$cc -Wl,-rpath,. -o main main.o library.so -ldl
+SAMPLER_SPARSITY=1 ./main
+], 0)
+AT_CLEANUP
+
+AT_SETUP(cfg)
+AT_CHECK([
+set -e
+cp $abs_srcdir/cfg.expected expout
+cp $abs_srcdir/cfg.c .
+cc="$abs_top_builddir/driver/sampler-cc-here --relative-paths"
+$cc -c cfg.c
+$abs_top_srcdir/tools/resolve-cfg cfg.o
+], 0, expout)
+AT_CLEANUP

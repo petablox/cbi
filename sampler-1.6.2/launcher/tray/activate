@@ -1,0 +1,10 @@
+#!/usr/bin/python
+
+from bonobo.activation import activate
+monitor = activate("iid == 'OAFIID:SamplerMonitor:0.1'")
+
+print 'sleeping'
+import time
+time.sleep(5)
+
+monitor.unref()

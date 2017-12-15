@@ -1,0 +1,55 @@
+AT_INIT(branches)
+
+AT_SETUP(simple)
+AT_CHECK([
+set -e
+cp $abs_srcdir/simple.c .
+cp $abs_srcdir/simple.expected expout
+$abs_top_builddir/driver/sampler-cc-here --relative-paths --sampler-scheme=branches -o simple simple.c
+SAMPLER_FILE=trace SAMPLER_SPARSITY=1 ./simple
+$abs_top_srcdir/tools/resolve-samples simple <trace | cut -f1,3- | sort -t '	'
+], 0, expout)
+AT_CLEANUP
+
+AT_SETUP(modular)
+AT_CHECK([
+set -e
+cp $abs_srcdir/modular-a.c .
+cp $abs_srcdir/modular-b.c .
+cp $abs_srcdir/modular.expected expout
+$abs_top_builddir/driver/sampler-cc-here --relative-paths --sampler-scheme=branches -o modular *.c
+SAMPLER_FILE=trace SAMPLER_SPARSITY=1 ./modular
+$abs_top_srcdir/tools/resolve-samples modular <trace | cut -f1,3- | sort -t '	'
+], 0, expout)
+AT_CLEANUP
+
+AT_SETUP(sharing)
+AT_CHECK([
+set -e
+cp $abs_srcdir/plugin.c .
+cp $abs_srcdir/library.c .
+cp $abs_srcdir/library.h .
+cp $abs_srcdir/sharing.c .
+cp $abs_srcdir/sharing.expected expout
+cc="$abs_top_builddir/driver/sampler-cc-here --no-sample -g --relative-paths --sampler-scheme=branches"
+$cc -shared -o libplugin.so -fpic plugin.c
+$cc -shared -o library.so -fpic library.c
+$cc -c sharing.c
+$cc -Wl,-rpath,. -o sharing sharing.o library.so -ldl
+SAMPLER_FILE=trace SAMPLER_SPARSITY=1 ./sharing
+$abs_top_srcdir/tools/resolve-samples sharing library.so libplugin.so <trace | cut -f1,3- | sort -t '	'
+], 0, expout)
+AT_CLEANUP
+
+AT_SETUP(threads)
+m4_include(config.m4)
+AT_CHECK([
+set -e
+cp $abs_srcdir/threads.c .
+cp $abs_srcdir/threads.expected expout
+if test 'HAVE_THREAD_STORAGE' != 1; then exit 77; fi
+$abs_top_builddir/driver/sampler-cc-here --relative-paths --sampler-scheme=branches -pthread -o threads threads.c
+SAMPLER_FILE=trace SAMPLER_SPARSITY=1 ./threads >/dev/null
+$abs_top_srcdir/tools/resolve-samples threads <trace | cut -f1,3- | sort -t '	'
+], 0, expout)
+AT_CLEANUP

@@ -1,0 +1,1 @@
+locals = $(scanners) $(options) locals.$(cmo)

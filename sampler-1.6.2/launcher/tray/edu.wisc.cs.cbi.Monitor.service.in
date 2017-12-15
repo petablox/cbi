@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=edu.wisc.cs.cbi.Monitor
+Exec=@traydir@/tray

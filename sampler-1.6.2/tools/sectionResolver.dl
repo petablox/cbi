@@ -1,0 +1,1 @@
+sectionResolver = $(siteRegistry) $(attributes) sectionResolver.$(cmo)

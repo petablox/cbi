@@ -1,0 +1,1 @@
+isolateInstructions = $(functionBodyVisitor) isolateInstructions.$(cmo)

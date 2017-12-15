@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE gconfschemafile SYSTEM "gconf-1.0.dtd">
+<gconfschemafile>
+  <schemalist>
+    <schema>
+      <key>/schemas/apps/sampler/applications/@name@/enabled</key>
+      <applyto>/apps/sampler/applications/@name@/enabled</applyto>
+      <owner>@name@</owner>
+      <type>bool</type>
+      <default>true</default>
+      <locale name="C">
+	<short>Sampling and reporting is enabled</short>
+	<long>Set to true if the user has decided to participate in the bug isolation project: samples will be collected during each run and reported to the central bug isolation server after each run concludes.  Set to false if the user has decided not to participate: no samples will be collected or reported.  Note that if the sibling "asked" key is false, then this key only sets the default for the first-time opt-in dialog.  Sampling only begins once both "asked" and "enabled" are true.</long>
+      </locale>
+    </schema>
+    <schema>
+      <key>/schemas/apps/sampler/applications/@name@/sparsity</key>
+      <applyto>/apps/sampler/applications/@name@/sparsity</applyto>
+      <owner>@name@</owner>
+      <type>int</type>
+      <default>@sparsity@</default>
+      <locale name="C">
+	<short>Sparsity of sampled data</short>
+	<long>Gives the reciprocal of the average sampling rate.  That is, a sparsity of @sparsity@ means that on average 1/@sparsity@ of potentially interesting events will be sampled.  A larger value for this key make sampling more sparse, which provides less useful information in exchange for less overhead.  A smaller value for this key makes sampling more dense, which provides more useful information in exchange for more overhead.  As a special case, sampling is disabled entirely if sparsity is set to 0.  The central bug isolation server may request a change in sparsity when a report is uploaded; this gives the project coordinators the ability to fine tune overhead or disable sampling entirely once the project concludes.</long>
+      </locale>
+    </schema>
+    <schema>
+      <key>/schemas/apps/sampler/applications/@name@/reporting-url</key>
+      <applyto>/apps/sampler/applications/@name@/reporting-url</applyto>
+      <owner>@name@</owner>
+      <type>string</type>
+      <default>@reporting_url@</default>
+      <locale name="C">
+	<short>Report submission address</short>
+	<long>Gives the URL used to submit reports to the central bug isolation server.  This must be either an "http:" or "https:" URL.  Proxying is possible, but uses the Python proxy configuration (as expressed in environment variables) rather than the GNOME proxy configuration.  The central bug isolation server may request a change in reporting URL when a report is uploaded; this gives the project coordinators the ability to change collection servers should the need arise.</long>
+      </locale>
+    </schema>
+  </schemalist>
+</gconfschemafile>

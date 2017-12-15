@@ -1,0 +1,73 @@
+#!@PERL@ -w
+# -*- cperl -*-
+
+use strict;
+
+use File::Temp;
+use FileHandle;
+
+
+########################################################################
+#
+#  command line processing
+#
+
+
+die "Usage: $0 {package}\n" unless @ARGV == 1;
+
+my $base = shift;
+my $info = "$base-samplerinfo";
+
+
+########################################################################
+#
+#  build temporary control file for extra package
+#
+
+
+my $control = new File::Temp
+  or die "cannot create temporary control file: $!\n";
+
+my $standard = new FileHandle 'debian/control', 'r'
+  or die "cannot read debian/control: $!\n";
+
+while (<$standard>) {
+  last if $_ eq "\n";
+  $control->print($_) if /^(Source|Maintainer|Uploaders):/;
+}
+
+$control->print(<<EOT);
+Section: devel
+Priority: extra
+
+Package: $info
+Architecture: any
+Description: sampler information for package $base
+ This package provides sampler information for package $base.  You do
+ not need this to use $base.  Most users have no need to install this
+ package.
+EOT
+
+$control->flush;
+
+
+########################################################################
+#
+#  prepare and build the package
+#
+#  This duplicates many steps from dh_gencontrol, dh_md5sums, and
+#  dh_builddeb.  Unfortunately, all debhelper scripts are hard wired
+#  to look at "debian/control" only and therefore cannot be used here.
+#
+
+exec 'sh', '-ec', <<EOT;
+mkdir debian/$info/DEBIAN
+dpkg-gencontrol -isp -p$info -c$control -Pdebian/$info
+(
+  cd debian/$info
+  find . -type f ! -regex '.*/DEBIAN/.*' -printf '%P\\0' |
+  xargs -r0 md5sum > DEBIAN/md5sums
+  test -s DEBIAN/md5sums || rm -f DEBIAN/md5sums
+)
+dpkg-deb --build debian/$info ..
+EOT

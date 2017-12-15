@@ -1,0 +1,22 @@
+pre.screen {
+  background: #dddddd;
+  margin-left: 0.5in;
+  margin-right: 0.5in;
+}
+
+div.informaltable table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  border-top: medium solid black;
+  border-bottom: medium solid black;
+}
+
+div.informaltable table th {
+  border-bottom: thin solid black;
+}
+
+div.informaltable table th, div.informaltable table td {
+  padding-left: 1em;
+  padding-right: 1em;
+}

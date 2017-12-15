@@ -1,0 +1,5 @@
+sampler (1.1.1-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Sampler Package Builder <liblit@cs.wisc.edu>  Fri, 25 Mar 2005 01:54:14 -0600

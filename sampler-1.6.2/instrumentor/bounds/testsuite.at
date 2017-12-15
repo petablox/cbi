@@ -1,0 +1,12 @@
+AT_INIT(bounds)
+
+AT_SETUP(enum)
+AT_CHECK([
+set -e
+cp $abs_srcdir/enum.c .
+cp $abs_srcdir/enum.expected expout
+$abs_top_builddir/driver/sampler-cc-here --relative-paths --sampler-scheme=bounds --assign-across-pointer -o enum enum.c
+SAMPLER_FILE=trace SAMPLER_SPARSITY=1 ./enum
+$abs_top_srcdir/tools/resolve-samples enum <trace | cut -f1,3- | sort -t '	'
+], 0, expout)
+AT_CLEANUP

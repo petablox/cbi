@@ -1,0 +1,115 @@
+ocamlflags = -w Ale -warn-error A $(ocamlflags_profile) $(ocamlflags_native)
+
+OCAMLOPT = @OCAMLOPT@
+OCAMLC = @OCAMLC@
+
+DTYPES = @DTYPES@
+
+cil_libdir = @cil_libdir@
+
+
+########################################################################
+
+
+if ENABLE_PROFILING
+ocamlflags_profile = -p
+endif
+
+if ENABLE_NATIVE
+ocamlc := $(OCAMLOPT)
+cma := cmxa
+cmo := cmx
+else
+ocamlflags_native = -g $(DTYPES)
+ocamlc := $(OCAMLC)
+cma := cma
+cmo := cmo
+endif
+
+
+########################################################################
+
+
+linkorder = $(top_srcdir)/ocaml/link-order
+
+libdirs = $(cil_libdir)
+includes = -I $(srcdir) $(libdirs:%=-I %)
+compiler = $(ocamlc) $(ocamlflags)
+
+depend = ocamldep $(includes) $(F) $< >$@
+compile = $(compiler) $(includes) -o $@ -c $<
+archive = $(compiler) -a -o $@ $^
+link = $(compiler) $(includes) -o $@ $(syslibs) $^
+
+force ?= force
+recurse = $(MAKE) -C $(@D) $(@F) force=
+
+
+########################################################################
+
+
+libcil = $(cil_libdir)/cil.$(cma)
+libcommon = $(top_builddir)/ocaml/common.$(cma)
+libharness = $(error harness library is no longer used)
+
+
+########################################################################
+
+
+ml = $(notdir $(wildcard $(srcdir)/*.ml))
+mli = $(notdir $(wildcard $(srcdir)/*.mli))
+EXTRA_DIST += $(filter-out $(nodist_ml), $(sort $(ml) $(mli)))
+
+impls = $(sort $(extra_impls) $(ml:.ml=))
+ifaces = $(mli:.mli=)
+implicits = $(filter-out $(ifaces), $(impls))
+
+
+########################################################################
+
+
+$(ifaces:%=%.cmi): %.cmi: %.mli
+	$(compile)
+
+$(implicits:%=%.cmi): %.cmi: %.ml
+	$(compile)
+
+$(impls:%=%.cmo): %.cmo: %.ml
+	$(compile)
+
+$(impls:%=%.cmx): %.cmx: %.ml
+	$(compile)
+
+$(ifaces:%=%.di): %.di: %.mli
+	$(depend)
+
+$(impls:%=%.do): %.do: %.ml
+	$(depend)
+
+$(impls:%=%.dl): %.dl: %.do $(linkorder)
+	$(linkorder) <$< >$@
+
+browse: force
+	ocamlbrowser $(includes)
+.PHONY: browse
+
+force:
+.PHONY: force
+
+
+MOSTLYCLEANFILES = $(targets) *.annot *.cma *.cmxa *.cmi *.cmo *.cmx *.o *.a
+CLEANFILES = *.d[ilo]
+
+.DELETE_ON_ERROR:
+
+
+########################################################################
+
+
+peek:
+	@echo $(ifaces:=.di)
+
+
+-include $(ifaces:%=%.di)
+-include $(impls:%=%.do)
+-include $(impls:%=%.dl)

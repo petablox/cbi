@@ -1,0 +1,1 @@
+scalarPairFinder = $(statistics) $(siteFinder) $(scalarPairSiteInfo) $(options) $(locals) $(isolateInstructions) $(interesting) $(initialized) $(implications) $(counters) $(constants) $(cfgUtils) scalarPairFinder.$(cmo)

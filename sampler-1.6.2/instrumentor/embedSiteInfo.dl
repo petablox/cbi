@@ -1,0 +1,1 @@
+embedSiteInfo = $(testHarness) $(options) embedSiteInfo.$(cmo)

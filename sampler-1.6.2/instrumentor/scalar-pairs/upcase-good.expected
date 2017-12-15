@@ -1,0 +1,9 @@
+upcase-good	scalar-pairs	upcase-good.c	15	main	14	chr	local	direct	(char *)0	const	0	0	4
+upcase-good	scalar-pairs	upcase-good.c	15	main	15	chr	local	direct	chr	local	0	0	4
+upcase-good	scalar-pairs	upcase-good.c	15	main	26	chr	local	direct	(char *)0	const	0	0	13
+upcase-good	scalar-pairs	upcase-good.c	15	main	27	chr	local	direct	chr	local	0	0	13
+upcase-good	scalar-pairs	upcase-good.c	8	main	2	arg	local	direct	0LL	const	0	0	1
+upcase-good	scalar-pairs	upcase-good.c	8	main	3	arg	local	direct	argc	local	1	0	0
+upcase-good	scalar-pairs	upcase-good.c	8	main	31	arg	local	direct	0LL	const	0	0	4
+upcase-good	scalar-pairs	upcase-good.c	8	main	32	arg	local	direct	arg	local	0	0	4
+upcase-good	scalar-pairs	upcase-good.c	8	main	33	arg	local	direct	argc	local	3	1	0

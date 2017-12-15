@@ -1,0 +1,18 @@
+#!/usr/bin/perl -w
+
+use strict;
+use File::Find;
+
+
+########################################################################
+
+
+sub wanted () {
+    my $iface = $_;
+    if ($iface =~ s/\.ml$/.mli/) {
+	warn "implicit interface: $File::Find::dir/$_\n" unless -e $iface;
+    }
+}
+
+
+find \&wanted, '.';

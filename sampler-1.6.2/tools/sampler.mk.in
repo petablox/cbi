@@ -1,0 +1,134 @@
+ifndef _cdbs_bootstrap
+_cdbs_scripts_path ?= /usr/lib/cdbs
+_cdbs_rules_path ?= /usr/share/cdbs/1/rules
+_cdbs_class_path ?= /usr/share/cdbs/1/class
+endif
+
+ifndef _cdbs_rules_sampler
+_cdbs_rules_sampler := 1
+
+
+include $(_cdbs_rules_path)/debhelper.mk$(_cdbs_makefile_suffix)
+
+
+########################################################################
+#
+#  configuration and default settings
+#
+
+SAMPLER_SCHEMES = $(error SAMPLER_SCHEMES undefined)
+SAMPLER_CC_FLAGS_SCHEMES = $(foreach scheme, $(SAMPLER_SCHEMES), --sampler-scheme=$(scheme))
+SAMPLER_CC_FLAGS = $(SAMPLER_CC_FLAGS_SCHEMES)
+SAMPLER_CC = sampler-cc
+CC = $(SAMPLER_CC) $(SAMPLER_CC_FLAGS)
+
+SAMPLER_TOOLS = @toolsdir@
+
+SAMPLER_NAME = $(DEB_SOURCE_PACKAGE)
+SAMPLER_VERSION = $(firstword $(subst -, , $(DEB_NOEPOCH_VERSION)))
+SAMPLER_RELEASE = $(shell echo $(DEB_NOEPOCH_VERSION) | sed 's/^[^-]*-//')
+SAMPLER_SPARSITY = $(error SAMPLER_SPARSITY undefined)
+SAMPLER_REPORTING_HOST = $(error SAMPLER_REPORTING_HOST undefined)
+SAMPLER_REPORTING_URL = https://$(SAMPLER_REPORTING_HOST)/cgi-bin/sampler-upload
+SAMPLER_INSTALL = $(CURDIR)/debian/$(cdbs_curpkg)
+
+SAMPLER_WRAP_PACKAGES = $(basename $(notdir $(wildcard debian/*.sampler-wrap)))
+SAMPLER_INFO_PACKAGES = $(filter-out %-dbg, $(DEB_ARCH_PACKAGES))
+
+
+########################################################################
+#
+#  extra cleanup
+#
+
+common-install-prehook-arch::
+	rm -rf debian/$(SAMPLER_NAME)-samplerinfo
+
+
+########################################################################
+#
+#  install GConf schemas defining sampler preferences
+#
+
+$(SAMPLER_WRAP_PACKAGES:%=sampler-gconf/%) :: sampler-gconf/%:
+	$(SAMPLER_TOOLS)/install-gconf			\
+	  --name=$(SAMPLER_NAME)			\
+	  --sparsity=$(SAMPLER_SPARSITY)		\
+	  --reporting-url=$(SAMPLER_REPORTING_URL)	\
+	  --install=$(SAMPLER_INSTALL)
+	dh_gconf -p$(cdbs_curpkg) $(DEB_DH_GCONF_ARGS)
+
+.PHONY: sampler-gconf/%
+
+$(SAMPLER_WRAP_PACKAGES:%=binary-install/%) :: binary-install/%: sampler-gconf/%
+
+
+########################################################################
+#
+#  wrap instrumened binaries in launcher scripts
+#
+
+$(SAMPLER_WRAP_PACKAGES:%=sampler-wrap/%) :: sampler-wrap/%: binary-install/%
+	$(SAMPLER_TOOLS)/install-wrappers	\
+	  --name=$(SAMPLER_NAME)		\
+	  --version=$(SAMPLER_VERSION)		\
+	  --release=$(SAMPLER_RELEASE)		\
+	  --install=$(SAMPLER_INSTALL)		\
+	  --					\
+	  `cat debian/$(@F).sampler-wrap`
+
+.PHONY: sampler-wrap/%
+
+$(SAMPLER_WRAP_PACKAGES:%=binary-post-install/%) :: binary-post-install/%: sampler-wrap/%
+
+
+########################################################################
+#
+#  extract and save samplerinfo
+#
+
+$(SAMPLER_WRAP_PACKAGES:%=sampler-extract/%) :: sampler-extract/%: sampler-wrap/%
+
+$(SAMPLER_INFO_PACKAGES:%=sampler-extract/%) :: sampler-extract/%: binary-install/%
+	$(SAMPLER_TOOLS)/find-sampler-info	\
+	  --extract=$(SAMPLER_INSTALL)		\
+	  --save=debian/$(SAMPLER_NAME)-samplerinfo
+	dh_fixperms -p$(cdbs_curpkg)
+
+.PHONY: sampler-extract/%
+
+$(SAMPLER_INFO_PACKAGES:%=binary-post-install/%) :: binary-post-install/%: sampler-extract/%
+
+sampler-extract: $(SAMPLER_INFO_PACKAGES:%=sampler-extract/%)
+
+
+########################################################################
+#
+#  add sampler runtime dependencies to ${misc:Depends}
+#
+
+$(SAMPLER_WRAP_PACKAGES:%=sampler-depends/%) :: sampler-depends/%
+	$(SAMPLER_TOOLS)/add-depends $(cdbs_curpkg)
+
+.PHONY: sampler-depends/%
+
+$(SAMPLER_WRAP_PACKAGES:%=binary-predeb/%) :: binary-predeb/%: sampler-depends/%
+
+
+########################################################################
+#
+#  create samplerinfo package
+#
+
+binary/$(SAMPLER_NAME)-samplerinfo: sampler-extract
+	$(SAMPLER_TOOLS)/build-info-deb $(SAMPLER_NAME)
+
+.PHONY: binary/$(SAMPLER_NAME)-samplerinfo
+
+binary-arch: binary/$(SAMPLER_NAME)-samplerinfo
+
+
+########################################################################
+
+
+endif

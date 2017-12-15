@@ -1,0 +1,1 @@
+sectionCollector = $(../ocaml/queueClass) sectionCollector.$(cmo)

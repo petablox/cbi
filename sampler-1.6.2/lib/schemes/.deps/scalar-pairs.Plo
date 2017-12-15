@@ -1,0 +1,12 @@
+scalar-pairs.lo: scalar-pairs.c /usr/include/stdc-predef.h samples.h \
+ ../signature.h scalar-pairs.h tuple-3.h
+
+/usr/include/stdc-predef.h:
+
+samples.h:
+
+../signature.h:
+
+scalar-pairs.h:
+
+tuple-3.h:

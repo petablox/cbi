@@ -1,0 +1,21 @@
+#!/usr/bin/perl -w
+
+use strict;
+use File::Find;
+
+
+########################################################################
+
+
+sub wanted () {
+    my $obj = $_;
+
+    if ($obj =~ s/\.ml$/.cmo/) {
+	warn "$File::Find::dir/$_\n" unless -e $obj;
+    } elsif ($obj =~ s/\.mli$/.cmi/) {
+	warn "$File::Find::dir/$_\n" unless -e $obj;
+    }
+}
+
+
+find \&wanted, '.';

@@ -1,0 +1,46 @@
+#!@PERL@ -w
+
+use strict;
+
+use FileHandle;
+
+
+########################################################################
+
+
+my @libraries = ('/usr/lib/libc_nonshared.a',
+		 '-D /lib/libc.so.6',
+		 '-D /lib/libm.so.6');
+
+my %funcs;
+
+
+foreach my $library (@libraries) {
+    my $nm = new FileHandle "nm --defined-only -g -p $library |";
+    while ($_ = $nm->getline) {
+	chomp;
+	my (undef, $kind, $name) = split;
+	next unless defined $kind;
+	next unless $kind eq 'T' || $kind eq 'W';
+	$funcs{$name} = 1;
+    }
+}
+
+my $count = keys %funcs;
+
+
+########################################################################
+
+
+my $srcdir = '@srcdir@';
+my $template = new FileHandle "$srcdir/libraries.ml.in"
+    or die "cannot read $srcdir/libraries.ml.in: $!\n";
+
+while (<$template>) {
+    if ($_ =~ /^(\s*)\@LIBRARY_FUNCTIONS\@$/) {
+	print "$1\"$_\";\n" while $_ = each %funcs;
+    } else {
+	$_ =~ s/\@LIBRARY_COUNT\@/$count/g;
+	print $_;
+    }
+}

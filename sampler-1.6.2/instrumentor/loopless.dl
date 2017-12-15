@@ -1,0 +1,1 @@
+loopless = $(../ocaml/stringHash) $(scanners) $(removeLoops) $(options) $(libraries) $(functionBodyVisitor) $(classifyJumps) loopless.$(cmo)

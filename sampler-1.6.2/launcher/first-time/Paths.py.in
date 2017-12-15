@@ -1,0 +1,2 @@
+home = '@first_timedir@'
+glade = home + '/first-time.glade'

@@ -1,0 +1,33 @@
+#!@PERL@ -w
+# -*- cperl -*-
+
+use strict;
+
+use Debian::Debhelper::Dh_Lib;
+
+
+########################################################################
+#
+#  command line processing
+#
+
+
+sub usage () {
+  die <<"EOT";
+Usage: $0 {packages}
+
+At least one package is required.
+EOT
+}
+
+usage unless @ARGV;
+
+
+########################################################################
+#
+#  main activity
+#
+
+
+addsubstvar($_, 'misc:Depends', 'sampler (>= 1.1)')
+  foreach @ARGV;

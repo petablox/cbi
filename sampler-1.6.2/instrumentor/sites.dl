@@ -1,0 +1,1 @@
+sites = $(site) $(options) $(../ocaml/hashClass) $(functionNameHash) $(clonesMap) $(balancePaths) sites.$(cmo)

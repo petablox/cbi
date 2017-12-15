@@ -1,0 +1,3 @@
+debian/tmp/usr/bin/sampler-cc
+debian/tmp/usr/lib/sampler/driver
+debian/tmp/usr/lib/sampler/tools

@@ -1,0 +1,7 @@
+#!/usr/bin/python -O
+
+import sys
+sys.path.extend(['@traydir@', '@traylibdir@', '@commondir@'])
+
+import Main
+Main.main()

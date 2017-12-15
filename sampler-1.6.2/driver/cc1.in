@@ -1,0 +1,257 @@
+#!/usr/bin/perl -w
+
+use strict;
+use File::Basename;
+use FileHandle;
+use FindBin;
+
+
+########################################################################
+
+
+my $verbose;
+my $preprocessed;
+my $preprocessing;
+
+my @inputs;
+my $input;
+my $instrumentor_input;
+my $instrumentor_output;
+
+my @cpp0 = '@cpp0@' ? ('@cpp0@') : ('@cc1@', '-E', '-quiet');
+my $cpp0_output_slot;
+
+my @cc1 = ('@cc1@', '-fpreprocessed');
+my $cc1_input_slot;
+
+my @inst;
+
+
+sub slurp_0 (@) {
+    push @cpp0, @_;
+    push @cc1, @_;
+}
+
+
+sub slurp_1 ($) {
+    slurp_0 @_, shift @ARGV;
+}
+
+
+sub verbose ($) {
+    &slurp_0;
+    push @inst, '--show-phase-times';
+    $verbose = 1;
+}
+
+
+sub dumpbase ($) {
+    my $value = shift @ARGV;
+    push @cc1, @_, $value;
+    push @inst, '--dumpbase', $value;
+}
+
+
+sub inst_toggle ($) {
+    $_[0] =~ /\A-f([-a-z]+)\Z/
+	or die "internal error: malformed instrumentor flag @_\n";
+    push @inst, "--$1";
+}
+
+
+sub inst_embed ($) {
+    &inst_toggle;
+    push @inst, shift @ARGV;
+}
+
+
+my %flag_specs =
+    (
+     # Sampler Options
+     '-fsampler-scheme=nothing' => sub { },
+     '-fthreads' => \&inst_toggle,
+     '-fno-threads' => \&inst_toggle,
+     '-fsample' => \&inst_toggle,
+     '-fno-sample' => \&inst_toggle,
+     '-frename-locals' => \&inst_toggle,
+     '-fno-rename-locals' => \&inst_toggle,
+     '-fassign-across-pointer' => \&inst_toggle,
+     '-fno-assign-across-pointer' => \&inst_toggle,
+     '-fassign-into-field' => \&inst_toggle,
+     '-fno-assign-into-field' => \&inst_toggle,
+     '-fassign-into-index' => \&inst_toggle,
+     '-fno-assign-into-index' => \&inst_toggle,
+     '-fcompare-constants' => \&inst_toggle,
+     '-fno-compare-constants' => \&inst_toggle,
+     '-ftimestamp-first' => \&inst_toggle,
+     '-fno-timestamp-first' => \&inst_toggle,
+     '-ftimestamp-last' => \&inst_toggle,
+     '-fno-timestamp-last' => \&inst_toggle,
+     '-frelative-paths' => \&inst_toggle,
+     '-fno-relative-paths' => \&inst_toggle,
+     '-fbalance-paths' => \&inst_toggle,
+     '-fno-balance-paths' => \&inst_toggle,
+     '-fcache-countdown' => \&inst_toggle,
+     '-fno-cache-countdown' => \&inst_toggle,
+     '-fpredict-checks' => \&inst_toggle,
+     '-fno-predict-checks' => \&inst_toggle,
+     '-fspecialize-empty-regions' => \&inst_toggle,
+     '-fno-specialize-empty-regions' => \&inst_toggle,
+     '-fspecialize-singleton-regions' => \&inst_toggle,
+     '-fno-specialize-singleton-regions' => \&inst_toggle,
+     '-fassume-weighty-externs' => \&inst_toggle,
+     '-fno-assume-weighty-externs' => \&inst_toggle,
+     '-fassume-weighty-interns' => \&inst_toggle,
+     '-fno-assume-weighty-interns' => \&inst_toggle,
+     '-fassume-weighty-libraries' => \&inst_toggle,
+     '-fno-assume-weighty-libraries' => \&inst_toggle,
+     '-fuse-points-to' => \&inst_toggle,
+     '-fno-use-points-to' => \&inst_toggle,
+     '-fcompare-uninitialized' => \&inst_toggle,
+     '-fno-compare-uninitialized' => \&inst_toggle,
+     '-fadd-blast-markers' => \&inst_toggle,
+     '-fno-add-blast-markers' => \&inst_toggle,
+     '-fsave-blast-spec' => \&inst_embed,
+     '-fshow-stats' => \&inst_toggle,
+     '-fno-show-stats' => \&inst_toggle,
+     '-fsave-cfg' => \&inst_embed,
+     '-fsave-dataflow' => \&inst_embed,
+     '-fsave-dataflow-fields' => \&inst_toggle,
+     '-fno-save-dataflow-fields' => \&inst_toggle,
+     '-fsave-site-info' => \&inst_embed,
+     '-fsave-implications' => \&inst_embed,
+     '-fsampler-dataflow' => sub { },
+     '-fsampler-implications' => sub { },
+     '-finstrumentor-input' => sub { $instrumentor_input = shift @ARGV },
+     '-finstrumentor-output' => sub { $instrumentor_output = shift @ARGV },
+
+     # Overall Options
+     '-E' => sub { $preprocessing = 1; },
+     '-o' => sub { slurp_1 $_; $cpp0_output_slot = \$cpp0[@cpp0 - 1]; },
+     '-v' => \&verbose,
+
+     # C Language Options
+     '-aux-info' => sub { push @cc1, $_ },
+
+     # Optimization Options
+     '--param' => sub { push @cc1, $_, shift @ARGV },
+
+     # Preprocessor Options
+     '-A' => \&slurp_1,
+     '-D' => \&slurp_1,
+
+     '-MT' => sub { push @cpp0, $_, shift @ARGV },
+     '-MQ' => sub { push @cpp0, $_, shift @ARGV },
+     '-MP' => sub { push @cpp0, $_ },
+
+     '-MF' => sub { push @cpp0, $_, shift @ARGV },
+     '-MD' => sub { push @cpp0, $_, shift @ARGV },
+     '-MMD' => sub { push @cpp0, $_, shift @ARGV },
+     '-I' => \&slurp_1,
+     '-idirafter' => \&slurp_1,
+     '-include' => \&slurp_1,
+     '-imacros' => \&slurp_1,
+     '-iprefix' => \&slurp_1,
+     '-iwithprefix' => \&slurp_1,
+     '-iwithprefixbefore' => \&slurp_1,
+     '-isystem' => \&slurp_1,
+     '-fpreprocessed' => sub { $preprocessed = 1 },
+     '-U' => \&slurp_1,
+
+     # Undocumented Options
+     '-auxbase' => \&slurp_1,
+     '-auxbase-strip' => \&slurp_1,
+     '-dumpbase' => \&dumpbase,
+     '-quiet' => sub { push @cc1, $_ }
+     );
+
+
+while (@ARGV) {
+    local $_ = shift;
+
+    if (/^-./) {
+	if (exists $flag_specs{$_}) {
+	    my $handler = $flag_specs{$_};
+	    $handler->($_);
+	} elsif (/^-O\d*$/) {
+	    push @cc1, $_;
+	} elsif (/^-g\d*$/) {
+	    push @cc1, $_;
+	} elsif (/^-m(arch|cpu)=/) {
+	    push @cc1, $_;
+	} elsif (/^-fsampler-scheme=(.*)/) {
+	    push @inst, "--scheme-$1";
+	} elsif (/^-fsampler-scales=(.*)/) {
+	    push @inst, '--load-scales', $1;
+	} elsif (/^-f((in|ex)clude-(file|function))=(.*)/) {
+	    push @inst, "--$1", $4;
+	} elsif (/^-fsampler-random=/) {
+	    ;
+	} elsif (/^-fsampler-lib-dir=/) {
+	    ;
+	} elsif (/^-f/) {
+	    push @cc1, $_
+	} else {
+	    slurp_0 $_;
+	}
+    } elsif (/\.[ci]$/ || $_ eq '-') {
+	push @inputs, $_;
+	slurp_0 $_;
+	$cc1_input_slot = \$cc1[@cc1 - 1];
+    } else {
+	warn "warning: $0: unhandled option: $_\n";
+	push @cpp0, $_;
+	push @cc1, $_;
+    }
+}
+
+
+########################################################################
+
+
+sub run_stage (@) {
+    warn "  @_\n" if $verbose;
+    system {$_[0]} @_;
+    exit ($? >> 8 || $? & 127 || 1) if $?;
+}
+
+
+if ($preprocessing) {
+    run_stage @cpp0;
+    exit 0;
+} elsif (@inputs == 1) {
+    $input = shift @inputs;
+} else {
+    warn "expected one input file, but got: @inputs\n";
+    die "  cc1 command line was probably parsed incorrectly\n";
+}
+
+
+########################################################################
+
+
+die "internal error: instrumentor output file was not set\n" unless defined $instrumentor_output;
+
+if ($preprocessed) {
+    $instrumentor_input = $input;
+} else {
+    die "internal error: instrumentor input file was not set\n" unless defined $instrumentor_input;
+    if (defined $cpp0_output_slot) {
+	$$cpp0_output_slot = $instrumentor_input;
+    } else {
+	push @cpp0, '-o', $instrumentor_input;
+    }
+    run_stage @cpp0;
+}
+
+open OLDOUT, '>&', \*STDOUT;
+open STDOUT, '>', $instrumentor_output;
+run_stage "$FindBin::Bin/main", @inst, $instrumentor_input;
+open STDOUT, '>&', \*OLDOUT;
+
+-s $instrumentor_output or die "instrumentor produced no output\n";
+
+$$cc1_input_slot = $instrumentor_output;
+run_stage @cc1;
+
+exit 0;

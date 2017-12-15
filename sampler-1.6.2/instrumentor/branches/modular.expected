@@ -1,0 +1,4 @@
+modular	branches	modular-a.c	11	main	10	argc > 1	1	0
+modular	branches	modular-a.c	11	main	15	argc > 2	0	0
+modular	branches	modular-a.c	6	main	2	*(*(argv + 0) + 0)	0	1
+modular	branches	modular-b.c	6	component	3	value	1	0

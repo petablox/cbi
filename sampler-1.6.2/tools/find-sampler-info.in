@@ -1,0 +1,101 @@
+#!@PERL@ -w
+# -*- cperl -*-
+
+use strict;
+use File::Basename;
+use File::Find;
+use File::Path;
+use FileHandle;
+use FindBin;
+use Getopt::Long;
+
+
+########################################################################
+#
+#  command line processing
+#
+
+
+my $extractdir;
+my $savedir;
+my @edit;
+
+sub usage () {
+  die <<"EOT";
+Usage: $0 [options]
+
+  --extract=PATH
+  --save=PATH
+  --edit-source=PATH::PATH
+
+Extract and save paths are required.  Source editing is optional.
+EOT
+}
+
+sub parse_edit ($) {
+  usage unless $_[1] =~ /(.*)::(.*)/;
+  @edit = ($1, $2);
+  map { s{/+$}{} } @edit;
+}
+
+my $result = GetOptions ('extract=s' => \$extractdir,
+			 'save=s' => \$savedir,
+			 'edit-source=s' => \&parse_edit);
+
+usage unless $result;
+usage unless $extractdir;
+usage unless $savedir;
+usage if @ARGV;
+
+$extractdir =~ s{/+$}{};
+$savedir    =~ s{/+$}{};
+
+
+########################################################################
+#
+#  main activity
+#
+
+
+my $extractor = "$FindBin::Bin/extract-section";
+
+
+sub wanted {
+  return unless -f $_;
+
+  my $exe = new FileHandle;
+  $ENV{PATH} = '/usr/bin:/bin';
+  open $exe, '-|', 'file', $_;
+  my $magic = $exe->getline;
+  return unless $magic =~ /:[ \t]*ELF.*, not stripped/;
+  die unless $exe->close;
+
+  my $subpath = $_;
+  $subpath =~ s{^\Q$extractdir\E\/}{}
+    or die "$subpath is not under $extractdir";
+
+  my $output = "$savedir/usr/lib/sampler/sites/$subpath";
+  mkpath dirname $output;
+  my $sites = new FileHandle "$output.sites", 'w'
+    or die "cannot write $output.sites: $!\n";
+
+  $exe = new FileHandle;
+  open $exe, '-|', $extractor, '.debug_site_info', $File::Find::name;
+  while (<$exe>) {
+    s{^\Q$edit[0]\E/}{$edit[1]/}o if @edit;
+    $sites->print($_);
+  }
+  die unless $exe->close;
+
+  my $cfg = new FileHandle "$output.cfg", 'w';
+  $exe = new FileHandle;
+  open $exe, '-|', $extractor, '.debug_sampler_cfg', $File::Find::name;
+  while (<$exe>) {
+    s{(^|\t)\Q$edit[0]\E/}{$1$edit[1]/}o if @edit;
+    $cfg->print($_);
+  }
+  die unless $exe->close;
+}
+
+
+find {wanted => \&wanted, no_chdir => 1}, $extractdir;
