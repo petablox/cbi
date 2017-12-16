@@ -1,1 +1,1 @@
-~/project/cbi/sampler-1.6.2/tools/extract-section .debug_site_info build/sanity > share/sanity.sites
+../../sampler-1.6.2/tools/extract-section .debug_site_info $1 > share/sanity.sites

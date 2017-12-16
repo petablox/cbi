@@ -10,14 +10,12 @@ class virtual t tag =
     method private virtual sectionHandler : Attributes.t -> SectionLoader.t
 
     method private readOne stream start =
-      try
         if string_match startGoal start 0 then
           let attributes = Attributes.parse (matched_group 1 start) in
           let sectionStream = SectionStream.until stream endGoal in
           let handler = self#sectionHandler attributes in
           Stream.iter handler#readLine sectionStream;
         handler#finish
-      with _ -> ()
 
     method readChannel source =
       let lineStream = LineStream.of_channel source in

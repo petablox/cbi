@@ -3,7 +3,7 @@ cd src
 ./build test.c
 cp a.out ../build/sanity
 cd ..
-./get_site build/sanity > share/sanity.sites
+./get_site build/sanity 
 rm -rf data
 ../bin/make-runs $trial
 cd analysis
