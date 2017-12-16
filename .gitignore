@@ -3,3 +3,10 @@ small/test
 small/report
 large/build
 large/report
+*.cm*
+*.o
+*.dl
+*.do
+*.di
+*.lo
+*.la
