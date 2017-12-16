@@ -1,0 +1,1 @@
+sed -i 's/AM_LDFLAGS =/AM_LDFLAGS = -lm/g' lib/threads/no/Makefile
