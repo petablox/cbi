@@ -57,12 +57,11 @@ else(WIN32)
         -fno-builtin
         -w
         -g3
-        -m32
     )
 
     # Link everything 32-bit (until we have a 64-bit option)
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -m32")
-    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -m32")
+    #set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -m32")
+    #set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -m32")
 
     # Linker options
     # Dynamic by default
@@ -174,7 +173,7 @@ function(buildCB)
         foreach(path ${cb_povs})
             # Get the pov name, i.e. "pov_1"
             get_filename_component(pov ${path} NAME)
-            buildPOV(${cb_path} ${cb_id} ${pov})
+            #buildPOV(${cb_path} ${cb_id} ${pov})
         endforeach()
     endif()
 endfunction(buildCB)

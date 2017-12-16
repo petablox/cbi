@@ -21,12 +21,14 @@ echo "Creating Makefiles"
 CMAKE_OPTS="-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
 
 # Honor CC and CXX environment variables, default to clang otherwise
-CC=${CC:-gcc}
+CC=${CC:-/home/khheo/project/cbi/sampler-1.6.2/driver/sampler-cc-here}
 CXX=${CXX:-g++}
 
 CMAKE_OPTS="$CMAKE_OPTS -DCMAKE_C_COMPILER=$CC"
 CMAKE_OPTS="$CMAKE_OPTS -DCMAKE_ASM_COMPILER=$CC"
 CMAKE_OPTS="$CMAKE_OPTS -DCMAKE_CXX_COMPILER=$CXX"
+CMAKE_OPTS="$CMAKE_OPTS -DCMAKE_C_FLAGS=-fsampler-scheme=branches"
+CMAKE_OPTS="$CMAKE_OPTS -DCMAKE_VERBOSE_MAKEFILE=OFF"
 
 LINK=${LINK:-SHARED}
 case $LINK in
