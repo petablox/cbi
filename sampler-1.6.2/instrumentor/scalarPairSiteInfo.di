@@ -1,1 +1,0 @@
-scalarPairSiteInfo.cmi: siteInfo.cmi 

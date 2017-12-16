@@ -1,1 +1,0 @@
-testHarness = $(timed) $(options) testHarness.$(cmo)

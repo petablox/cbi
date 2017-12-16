@@ -1,1 +1,0 @@
-resolve.cmi: siteRegistry.cmi 

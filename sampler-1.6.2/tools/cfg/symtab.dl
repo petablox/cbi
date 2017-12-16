@@ -1,1 +1,0 @@
-symtab = $(types) $(../../ocaml/hashClass) symtab.$(cmo)

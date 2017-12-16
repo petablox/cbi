@@ -1,7 +1,0 @@
-#!/usr/bin/python -O
-
-import sys
-sys.path.extend(['/usr/local/share/sampler/tray', '/usr/local/lib/sampler/tray', '/usr/local/share/sampler/common'])
-
-import Main
-Main.main()

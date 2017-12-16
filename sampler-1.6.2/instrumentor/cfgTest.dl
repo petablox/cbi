@@ -1,1 +1,0 @@
-cfgTest = $(embedCFG) cfgTest.$(cmo)

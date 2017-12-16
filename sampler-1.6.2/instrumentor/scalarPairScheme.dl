@@ -1,1 +1,0 @@
-scalarPairScheme = $(testHarness) $(schemeName) $(schemeFactory) $(scheme) $(scalarPairFinder) $(interesting) $(counters) $(constants) scalarPairScheme.$(cmo)

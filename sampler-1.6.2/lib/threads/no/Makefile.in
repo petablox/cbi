@@ -274,7 +274,7 @@ traylibdir = @traylibdir@
 wrapperdir = @wrapperdir@
 wwwdir = @wwwdir@
 AM_CFLAGS = -ffast-math -fpic
-AM_LDFLAGS = -Wl,-wrap,fork
+AM_LDFLAGS = -Wl,-wrap,fork -lm
 headers = \
 	lock.h					\
 	once.h

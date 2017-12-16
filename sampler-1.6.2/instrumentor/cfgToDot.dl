@@ -1,1 +1,0 @@
-cfgToDot = $(dotify) cfgToDot.$(cmo)

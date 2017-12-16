@@ -1,1 +1,0 @@
-weighty = $(variableNameHash) $(testHarness) $(../ocaml/stringHash) $(statistics) $(sites) $(scanners) $(options) $(libraries) $(functionBodyVisitor) $(funcInfo) $(../ocaml/fixpoint) $(dynamic) weighty.$(cmo)

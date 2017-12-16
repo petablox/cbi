@@ -1,3 +1,0 @@
-[D-BUS Service]
-Name=edu.wisc.cs.cbi.FirstTime
-Exec=/usr/local/share/sampler/first-time/first-time

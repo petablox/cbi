@@ -1,1 +1,0 @@
-functionEntryFinder = $(siteInfo) $(siteFinder) $(counters) functionEntryFinder.$(cmo)

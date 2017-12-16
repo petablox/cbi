@@ -1,1 +1,0 @@
-siteInfo = $(schemeName) $(paths) siteInfo.$(cmo)

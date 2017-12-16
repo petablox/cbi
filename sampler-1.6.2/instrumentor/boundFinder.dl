@@ -1,1 +1,0 @@
-boundFinder = $(sites) $(siteFinder) $(site) $(locals) $(isolateInstructions) $(interesting) $(boundSiteInfo) $(boundManager) boundFinder.$(cmo)

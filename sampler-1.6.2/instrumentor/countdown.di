@@ -1,1 +1,0 @@
-countdown.cmi: weight.cmi 

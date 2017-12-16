@@ -1,1 +1,0 @@
-embedSignature = $(missing) $(findGlobal) embedSignature.$(cmo)

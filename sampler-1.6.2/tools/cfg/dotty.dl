@@ -1,1 +1,0 @@
-dotty = $(types) $(known) dotty.$(cmo)

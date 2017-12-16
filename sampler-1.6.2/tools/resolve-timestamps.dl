@@ -1,1 +1,0 @@
-resolve-timestamps = $(timestampsResolver) $(resolve) resolve-timestamps.$(cmo)

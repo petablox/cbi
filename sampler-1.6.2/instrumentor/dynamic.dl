@@ -1,1 +1,0 @@
-dynamic = $(options) dynamic.$(cmo)

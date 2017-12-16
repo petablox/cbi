@@ -1,1 +1,0 @@
-paths = $(options) paths.$(cmo)
