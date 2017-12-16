@@ -87,23 +87,23 @@ function(build path target)
     set(cb_all_src ${cb_lib} ${cb_src} ${cb_inc})
 
     add_executable(${target} ${cb_all_src})
-    add_executable(${target}_patched ${cb_all_src})
+    # add_executable(${target}_patched ${cb_all_src})
 
     target_include_directories(${target} PUBLIC ${path}/lib ${path}/src ${path}/include)
-    target_include_directories(${target}_patched PUBLIC ${path}/lib ${path}/src ${path}/include)
+    # target_include_directories(${target}_patched PUBLIC ${path}/lib ${path}/src ${path}/include)
 
     set_target_properties(${target} PROPERTIES
                           RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_BINARY_DIR}
                           RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_BINARY_DIR})
-    set_target_properties(${target}_patched PROPERTIES
-                          RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_BINARY_DIR}
-                          RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_BINARY_DIR})
+                        #set_target_properties(${target}_patched PROPERTIES
+                        # RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_BINARY_DIR}
+                        # RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_BINARY_DIR})
 
     # Add patched defines
-    target_compile_definitions(${target}_patched PUBLIC ${patch_defs})
+    # target_compile_definitions(${target}_patched PUBLIC ${patch_defs})
 
     target_link_libraries(${target} LINK_PUBLIC cgc)
-    target_link_libraries(${target}_patched LINK_PUBLIC cgc)
+    # target_link_libraries(${target}_patched LINK_PUBLIC cgc)
 
     IF(WIN32)
         # Copy required DLLs post-build
@@ -146,12 +146,12 @@ endfunction(buildPOV)
 
 function(buildCB)
     # Generate all the patched #defines for this challenge
-    set(patch_defs -DPATCHED)
-    if(VULN_COUNT)
-        foreach(i RANGE 1 ${VULN_COUNT})
-            set(patch_defs ${patch_defs} -DPATCHED_${i})
-        endforeach()
-    endif()
+    # set(patch_defs -DPATCHED)
+    # if(VULN_COUNT)
+    #        foreach(i RANGE 1 ${VULN_COUNT})
+    #            set(patch_defs ${patch_defs} -DPATCHED_${i})
+    #        endforeach()
+    #    endif()
 
     # Some challenges have multiple binaries that need to be built
     # Check if these directories exist

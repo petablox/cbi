@@ -179,11 +179,7 @@ void cgc_quit_game()
 
 void cgc_play_game()
 {
-#if PATCHED
-  hackman_state_t h_state = {0};
-#else
   hackman_state_t h_state;
-#endif
   char buf[128];
   int i, found, error;
 

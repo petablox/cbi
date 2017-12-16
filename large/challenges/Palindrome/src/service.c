@@ -47,13 +47,8 @@ int cgc_check(){
     char string[64];
     for (i = 0; i < sizeof(string); i++)
         string[i] = '\0';
-#ifdef PATCHED
-    if (cgc_receive_delim(0, string, sizeof(string), '\n') != 0)
-        return -1;
-#else    
     if (cgc_receive_delim(0, string, 128, '\n') != 0)
         return -1;
-#endif
     for(i = 0; string[i] != '\0'; i++){
         len++;
     }

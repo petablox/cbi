@@ -135,16 +135,7 @@ void * cgc_get_command_from_input(char *input){
 }
 
 void cgc_copy_new_comp_name(mixed_compound_t *mc, char *newcomp){
-
-#ifndef PATCHED
 	cgc_memcpy(mc->compound_name, newcomp, MAX_NEW_CMPND_SZ);
-#endif
-
-#ifdef PATCHED
-	cgc_memcpy(mc->compound_name, newcomp, MAX_NEW_CMPND_SZ-1);
-#endif
-
-
 }
 
 char * cgc_gen_chem_name(mixed_compound_t *mc, compounds_sample_t *rcs){
