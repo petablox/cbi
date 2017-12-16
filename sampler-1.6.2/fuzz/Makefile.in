@@ -236,7 +236,7 @@ traydir = @traydir@
 traylibdir = @traylibdir@
 wrapperdir = @wrapperdir@
 wwwdir = @wwwdir@
-AM_CFLAGS = -W -Wall -Werror -Wformat=2
+AM_CFLAGS = -W -Wall  -Wformat=2
 fuzz_SOURCES = fuzz.c
 all: all-am
 

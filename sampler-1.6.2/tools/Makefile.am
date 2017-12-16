@@ -53,7 +53,7 @@ EXTRA_DIST =					\
 	wrapper.in.in
 
 AM_LFLAGS = -f -p
-AM_CFLAGS = -W -Wall -Werror
+AM_CFLAGS = -W -Wall 
 
 decimate_samples_SOURCES = decimate-samples.l
 decimate_samples_CFLAGS = $(GSL_CFLAGS)

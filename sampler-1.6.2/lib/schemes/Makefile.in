@@ -300,7 +300,7 @@ traydir = @traydir@
 traylibdir = @traylibdir@
 wrapperdir = @wrapperdir@
 wwwdir = @wwwdir@
-AM_CFLAGS = -W -Wall -Werror -Wformat=2 -fpic
+AM_CFLAGS = -W -Wall  -Wformat=2 -fpic
 INCLUDES = @GLIB_CFLAGS@
 @WITH_GNOME_TRUE@gnome_headers = \
 @WITH_GNOME_TRUE@	g-object-unref.h			\

@@ -1,4 +1,4 @@
-AM_CPPFLAGS = -W -Wall -Werror
+AM_CPPFLAGS = -W -Wall 
 
 noinst_PROGRAMS = modernize
 modernize_SOURCES = modernize.l

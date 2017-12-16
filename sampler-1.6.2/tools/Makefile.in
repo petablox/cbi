@@ -314,7 +314,7 @@ EXTRA_DIST = $(perl_data) application.schemas.in extract-report \
 	resolve-cfg sampler.mk.in skip-test wrapper.in.in $(filter-out \
 	$(nodist_ml), $(sort $(ml) $(mli)))
 AM_LFLAGS = -f -p
-AM_CFLAGS = -W -Wall -Werror
+AM_CFLAGS = -W -Wall 
 decimate_samples_SOURCES = decimate-samples.l
 decimate_samples_CFLAGS = $(GSL_CFLAGS)
 decimate_samples_LDADD = $(GSL_LIBS) $(LEXLIB)

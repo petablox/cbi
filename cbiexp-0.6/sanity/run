@@ -1,0 +1,11 @@
+trial=4
+cd src
+./build test.c
+cp a.out ../build/sanity
+cd ..
+./get_site build/sanity > share/sanity.sites
+rm -rf data
+../bin/make-runs $trial
+cd analysis
+make
+
