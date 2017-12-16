@@ -1,1 +1,1 @@
-./configure --with-boost=/home/wslee/project/cbi/cbiexp-0.6/../boost_1_39_0/
+./configure --with-boost=/home/wslee/project/assgn6/cbi/cbiexp-0.6/../boost_1_39_0

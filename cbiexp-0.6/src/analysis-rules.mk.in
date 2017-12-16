@@ -26,7 +26,7 @@ xmlify-add-suffix := .html
 time := /usr/bin/time
 CXX := @CXX@
 CPPFLAGS := @CPPFLAGS@ -I$(tooldir)
-CXXFLAGS := @CXXFLAGS@ -W -Wall
+CXXFLAGS := @CXXFLAGS@ -W -Wall -Werror
 LEXLIB := @LEXLIB@
 HAVE_GSL_CDF := @HAVE_GSL_CDF@
 

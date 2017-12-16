@@ -20628,7 +20628,6 @@ fi
 if test "${with_boost+set}" = set; then
   withval="$with_boost"
   BOOST_CPPFLAGS="-I$withval"
-  #BOOST_CPPFLAGS="-I$withval/include"
 else
   BOOST_CPPFLAGS=''
 fi;

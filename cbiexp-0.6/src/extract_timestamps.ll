@@ -59,19 +59,19 @@ uint 0|[1-9][0-9]*
     /* Initially look for a starting <timestamps> tag. */
 
     {
-	char * signaturePtr = strchr(yytext, '\"') + 1;
+	const char * const signaturePtr = strchr(yytext, '\"') + 1;
 	char *t = strchr(signaturePtr, '\"');
 	*t = '\0';
 	signature = signaturePtr;
 
 	t++;
-	char * schemePtr = strchr(t, '\"') + 1;
+	const char * const schemePtr = strchr(t, '\"') + 1;
 	t = strchr(schemePtr, '\"');
 	*t = '\0';
 	scheme = schemePtr;
 
 	t++;
-	char * whenPtr = strchr(t, '\"') + 1;
+	const char * const whenPtr = strchr(t, '\"') + 1;
 	t = strchr(whenPtr, '\"');
 	*t = '\0';
 	when = whenPtr;
