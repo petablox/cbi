@@ -21,7 +21,7 @@ echo "Creating Makefiles"
 CMAKE_OPTS="-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
 
 # Honor CC and CXX environment variables, default to clang otherwise
-CC=${CC:-/home/khheo/project/cbi/sampler-1.6.2/driver/sampler-cc-here}
+CC=${CC:-$PWD/../../sampler-1.6.2/driver/sampler-cc-here}
 CXX=${CXX:-g++}
 
 CMAKE_OPTS="$CMAKE_OPTS -DCMAKE_C_COMPILER=$CC"

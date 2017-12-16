@@ -1,0 +1,2 @@
+#!/bin/bash
+$CBI_HOME/sampler-1.6.2/tools/extract-report samples < $2 | $CBI_HOME/sampler-1.6.2/tools/resolve-samples $1

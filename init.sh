@@ -3,3 +3,5 @@ export SAMPLER_EVENT_COUNTDOWNS=1
 export SAMPLER_FILE=report
 export SAMPLER_EXIT_SIGNAL=0
 export SAMPLER_EXIT_STATUS=0
+export CBI_HOME=`pwd`
+export PATH="$CBI_HOME/bin/:$PATH"

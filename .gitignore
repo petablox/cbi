@@ -1,0 +1,5 @@
+.*.sw*
+small/test
+small/report
+large/build
+large/report
