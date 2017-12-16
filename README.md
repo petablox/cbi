@@ -1,4 +1,5 @@
 # Setup
+Assume: ocaml-3.10.0
 ```sh
 . init.sh
 ```
