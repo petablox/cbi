@@ -21,7 +21,8 @@
 %{fsampler-random=fixed:-include sampler/threads/random-fixed.h%s} \
 %{fsampler-random=online:-include sampler/threads/random-online.h%s} \
 %{fsampler-random=offline:-include sampler/threads/random-offline.h%s} \
-%{!fsampler-random=*:-include sampler/threads/random-online.h%s}
+%{!fsampler-random=*:-include sampler/threads/random-online.h%s} \
+%{!fsampler-random=*:-lsampler-online}
 
 *cpp_schemes:
 %{fsampler-scheme=bounds:-include sampler/schemes/bounds-unit.h%s} \
@@ -59,11 +60,12 @@
 *lib_threads_yes:
 %{fsampler-random=*:-lsampler-%*_r} \
 %{!fsampler-random=*:-lsampler-online_r} \
--lpthread
+-lpthread -lm -lsampler
 
 *lib_threads_no:
 %{fsampler-random=*:-lsampler-%*} \
-%{!fsampler-random=*:-lsampler-online}
+%{!fsampler-random=*:-lsampler-online} \
+-lm -lsampler
 
 *link:
 + --wrap fork
