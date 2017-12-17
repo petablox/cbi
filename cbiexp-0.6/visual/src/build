@@ -1,2 +1,0 @@
-../../../sampler-1.6.2/driver/sampler-cc-here $1 -fsampler-random=fixed -fsampler-scheme=branches
-#../../../sampler-1.6.2/driver/sampler-cc-here $1 -fsampler-random=fixed -fsampler-scheme=branches -fsampler-scheme=scalar-pairs -fsampler-scheme=returns

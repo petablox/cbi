@@ -43,7 +43,6 @@ sub necessary_task ($$$) {
 sub run_task ($$$) {
     my ($self, $runId) = @_;
     $0 = "run $runId";
-
     # prepare a fresh run directory
     my $rundir = $self->rundir($runId);
     rmtree $rundir;

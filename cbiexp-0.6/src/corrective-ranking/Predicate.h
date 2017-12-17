@@ -89,8 +89,9 @@ Predicate::context() const
 inline double
 Predicate::score() const
 {
-  const double result = harmonic();
-  assert(result >= 0);
+  double result = harmonic();
+  //assert(result >= 0);
+  if (result < 0) result = 0;
   return result;
 }
 
