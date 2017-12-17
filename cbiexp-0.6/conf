@@ -1,1 +1,4 @@
 ./configure --with-boost=/home/wslee/project/assgn6/cbi/cbiexp-0.6/../boost_1_39_0
+git checkout -- src/analysis-rules.mk
+git checkout -- src/convert_reports.cc
+git checkout -- src/extract_timestamps.cc
