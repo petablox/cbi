@@ -1,4 +1,4 @@
-TRIAL := $(shell cat args.txt | wc -l)
+TRIAL := $(shell cat options.txt | wc -l)
 
 all:
 	@echo "# inputs: $(TRIAL)"
