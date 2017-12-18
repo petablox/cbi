@@ -202,6 +202,7 @@ CLEANFILES += all_hl_corrected-exact-complete.xml elimination-clusters.txt
 
 clean::
 	$(find-zooms) -exec rm '{}' ';'
+	rm -f log
 
 all_hl_corrected-%_complex.xml: f.runs obs.txt tru.txt $(call tool-deps, corrective-ranking/%) pairs.txt
 	$(time) $(tooldir)/corrective-ranking/$* --zoom=$(zoom) --begin-runs=$(training-runs) --runs-directory=$(datadir) $(confidence:%=--confidence=%) $(corrected_view_flags) --complex-preds
