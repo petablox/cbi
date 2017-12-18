@@ -1,6 +1,7 @@
-TRIAL := 112
+TRIAL := $(shell cat args.txt | wc -l)
 
 all:
+	@echo "# inputs: $(TRIAL)"
 	@mkdir -p build
 	@mkdir -p share
 	@cp ../test build/sanity

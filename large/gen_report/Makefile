@@ -1,5 +1,7 @@
-TRIAL := 1000
+TRIAL := $(shell cat args.txt | wc -l)
+
 all:
+	@echo "# inputs: $(TRIAL)"
 	@mkdir -p build
 	@mkdir -p share
 	@cp ../jpegtran build/sanity
