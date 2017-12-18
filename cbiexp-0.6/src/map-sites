@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 # -*- cperl -*-
-
+use File::Basename;
 
 my %schemeCode = ( 'branches' => 'B',
 		   'float-kinds' => 'F',
@@ -85,7 +85,8 @@ while (<>) {
 
     @operands = map &cleanOperand, @operands;
     local $" = ', ';
-    print "\t{ \"$fields[0]\", $fields[1], \"$fields[2]\", $cfg, '$schemeCode', { @operands } },\n";
+    my $addr = basename($fields[0]);
+    print "\t{ \"$addr\", $fields[1], \"$fields[2]\", $cfg, '$schemeCode', { @operands } },\n";
     ++$sitesInUnit;
     ++$sites;
   }
