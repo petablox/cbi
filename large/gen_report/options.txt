@@ -1,0 +1,1002 @@
+-trim -flip vertical -grayscale ../../../../testimg.jpg /dev/null
+-optimize -trim -progressive -restart 10 -maxmemory 100000000000 -flip vertical ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 7282046431001139009 -progressive -grayscale ../../../../testimg.jpg /dev/null
+-restart 65222 -optimize -copy comments -copy none -progressive -maxmemory 5765361614431803401 -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -copy comments -copy all -progressive -trim ../../../../testimg.jpg /dev/null
+-copy all -copy none -maxmemory 2485892485920847856 -optimize -grayscale ../../../../testimg.jpg /dev/null
+-copy none -optimize -restart 47660 -transpose ../../../../testimg.jpg /dev/null
+-restart 31507 -maxmemory 5512695163194948060 -copy all -progressive -transpose ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-maxmemory 800968337556075791 -copy all -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 31467 -copy none -optimize -transverse ../../../../testimg.jpg /dev/null
+-optimize -restart 25207 -flip horizontal ../../../../testimg.jpg /dev/null
+-copy all -copy none -copy comments -restart 27499 -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -copy comments -restart 26414 -maxmemory 1140152085288119992 -flip vertical ../../../../testimg.jpg /dev/null
+-progressive -copy all -transpose ../../../../testimg.jpg /dev/null
+-copy comments -copy none -copy all -optimize -restart 19020 -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 26944 -transpose ../../../../testimg.jpg /dev/null
+-copy comments -restart 62817 -copy all -progressive -maxmemory 6342434160455694284 -copy none -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 6437379106198026504 -restart 7427 -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 5171168609940216508 -copy none -progressive -restart 18580 -transverse ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-maxmemory 6815419074387489813 -restart 9544 -copy none -optimize -progressive -copy comments -copy all -transpose ../../../../testimg.jpg /dev/null
+-progressive -copy comments -copy none -restart 21850 -maxmemory 7593593145116634577 -trim ../../../../testimg.jpg /dev/null
+-optimize -restart 3405 -maxmemory 2858716941408107044 -copy comments -trim ../../../../testimg.jpg /dev/null
+-copy none -copy all -maxmemory 409804700282277185 -optimize -copy comments -restart 52634 -grayscale ../../../../testimg.jpg /dev/null
+-copy comments -progressive -trim ../../../../testimg.jpg /dev/null
+-copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 3436527883786049490 -copy comments -restart 62143 -copy all -copy none -progressive -trim ../../../../testimg.jpg /dev/null
+-copy all -copy none -copy comments -restart 59515 -optimize -progressive -rotate 180 ../../../../testimg.jpg /dev/null
+-flip vertical ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 7346079620350689421 -copy comments -optimize -copy none -progressive -transverse ../../../../testimg.jpg /dev/null
+-optimize -copy none -copy comments -restart 34940 -copy all -transverse ../../../../testimg.jpg /dev/null
+-copy comments -trim ../../../../testimg.jpg /dev/null
+-copy comments -copy all -progressive -restart 35698 -optimize -maxmemory 3466975878174089764 -trim ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 968244691723191886 -copy comments -progressive -trim ../../../../testimg.jpg /dev/null
+-maxmemory 5598250061308604939 -optimize -restart 11223 -copy comments -copy all -copy none -trim ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-copy all -restart 5344 -optimize -copy comments -copy none -maxmemory 2328024256507579262 -flip horizontal ../../../../testimg.jpg /dev/null
+-restart 33731 -optimize -copy all -copy none -copy comments -maxmemory 2126282165219316602 -progressive -flip vertical ../../../../testimg.jpg /dev/null
+-progressive -copy comments -copy all -maxmemory 3847042821133964907 -optimize -transverse ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 1690672073468977860 -copy none -restart 12988 -copy comments -copy all -progressive -grayscale ../../../../testimg.jpg /dev/null
+-copy comments -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 5590752377514024020 -progressive -copy none -transpose ../../../../testimg.jpg /dev/null
+-restart 26532 -progressive -transpose ../../../../testimg.jpg /dev/null
+-maxmemory 5462984348822347313 -trim ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-copy none -progressive -optimize -copy all -grayscale ../../../../testimg.jpg /dev/null
+-progressive -copy all -maxmemory 2399034910959162010 -restart 16143 -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 5658 -copy none -progressive -copy all -maxmemory 8978715590735559337 -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -copy all -maxmemory 2045590792296308546 -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 7819833037840549250 -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 7459705613346508344 -copy comments -optimize -copy none -restart 45161 -progressive -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 5458962164832862944 -copy comments -restart 10061 -progressive -copy none -trim ../../../../testimg.jpg /dev/null
+-copy none -grayscale ../../../../testimg.jpg /dev/null
+-optimize -trim ../../../../testimg.jpg /dev/null
+-optimize -restart 47209 -transverse ../../../../testimg.jpg /dev/null
+-copy all -restart 52409 -progressive -rotate 180 ../../../../testimg.jpg /dev/null
+-copy none -grayscale ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 2648853187964056897 -copy all -restart 2011 -copy comments -progressive -optimize -transpose ../../../../testimg.jpg /dev/null
+-copy none -progressive -copy all -restart 25315 -transpose ../../../../testimg.jpg /dev/null
+-restart 10614 -optimize -copy comments -copy all -copy none -transpose ../../../../testimg.jpg /dev/null
+-optimize -copy none -progressive -copy all -grayscale ../../../../testimg.jpg /dev/null
+-copy all -copy none -copy comments -optimize -maxmemory 6658091921314696133 -progressive -restart 5529 -transpose ../../../../testimg.jpg /dev/null
+-optimize -copy none -copy comments -progressive -maxmemory 9157830624557240961 -copy all -restart 63658 -transpose ../../../../testimg.jpg /dev/null
+-maxmemory 6051897064236322666 -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -copy none -trim ../../../../testimg.jpg /dev/null
+-maxmemory 4487188782061488938 -progressive -copy comments -copy all -copy none -restart 23342 -optimize -trim ../../../../testimg.jpg /dev/null
+-progressive -copy all -restart 53535 -maxmemory 941631521259394362 -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -copy none -progressive -copy comments -maxmemory 1843168880270782565 -restart 12709 -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -grayscale ../../../../testimg.jpg /dev/null
+-copy comments -optimize -maxmemory 6770958407329765272 -copy all -trim ../../../../testimg.jpg /dev/null
+-maxmemory 7739836155269712288 -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 591168026778578528 -copy all -progressive -copy none -optimize -trim ../../../../testimg.jpg /dev/null
+-progressive -copy all -optimize -copy none -restart 46252 -copy comments -maxmemory 8761225007740875881 -trim ../../../../testimg.jpg /dev/null
+-restart 13491 -copy comments -flip horizontal ../../../../testimg.jpg /dev/null
+-progressive -optimize -copy none -copy all -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -progressive -maxmemory 6453914663581323443 -copy comments -optimize -restart 47512 -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 6843288368458612977 -restart 31115 -transpose ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 2579898055056405384 -copy comments -copy all -copy none -optimize -restart 32566 -progressive -grayscale ../../../../testimg.jpg /dev/null
+-restart 47759 -copy none -copy comments -optimize -progressive -copy all -maxmemory 5705855952052204376 -flip vertical ../../../../testimg.jpg /dev/null
+-copy all -copy comments -optimize -copy none -restart 40431 -progressive -trim ../../../../testimg.jpg /dev/null
+-maxmemory 8558256032148322511 -progressive -restart 40451 -copy comments -optimize -transverse ../../../../testimg.jpg /dev/null
+-progressive -copy none -copy comments -restart 35038 -trim ../../../../testimg.jpg /dev/null
+-flip vertical ../../../../testimg.jpg /dev/null
+-maxmemory 6349406415845776555 -copy none -copy comments -progressive -restart 15187 -rotate 180 ../../../../testimg.jpg /dev/null
+-copy none -restart 56862 -maxmemory 9113438114906820277 -transverse ../../../../testimg.jpg /dev/null
+-restart 2045 -copy none -copy comments -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 4690535170005916559 -progressive -copy all -restart 63024 -copy none -transpose ../../../../testimg.jpg /dev/null
+-flip vertical ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 7322569822737692320 -progressive -copy none -copy comments -restart 28511 -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 2296390060976571119 -copy none -optimize -transpose ../../../../testimg.jpg /dev/null
+-copy all -progressive -trim ../../../../testimg.jpg /dev/null
+-copy all -optimize -progressive -restart 57340 -copy none -copy comments -transpose ../../../../testimg.jpg /dev/null
+-copy none -progressive -restart 34768 -maxmemory 2978327613844153518 -copy comments -optimize -copy all -flip vertical ../../../../testimg.jpg /dev/null
+-copy all -progressive -optimize -copy none -transpose ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 1440381104346154331 -restart 25053 -progressive -copy comments -optimize -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-copy comments -copy none -maxmemory 2914007919528014469 -copy all -optimize -progressive -restart 58994 -transpose ../../../../testimg.jpg /dev/null
+-restart 55221 -progressive -maxmemory 7913986886053884901 -copy all -optimize -copy comments -copy none -grayscale ../../../../testimg.jpg /dev/null
+-restart 12786 -progressive -maxmemory 2573345799055230559 -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-progressive -copy none -copy comments -restart 7706 -copy all -optimize -transpose ../../../../testimg.jpg /dev/null
+-restart 6665 -trim ../../../../testimg.jpg /dev/null
+-transverse ../../../../testimg.jpg /dev/null
+-copy comments -progressive -copy none -maxmemory 7775703542359366295 -optimize -restart 24152 -copy all -grayscale ../../../../testimg.jpg /dev/null
+-copy all -progressive -copy comments -copy none -maxmemory 6160681573859521775 -restart 33952 -optimize -grayscale ../../../../testimg.jpg /dev/null
+-rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -transpose ../../../../testimg.jpg /dev/null
+-copy all -copy none -trim ../../../../testimg.jpg /dev/null
+-copy none -transpose ../../../../testimg.jpg /dev/null
+-copy comments -optimize -copy all -copy none -progressive -grayscale ../../../../testimg.jpg /dev/null
+-copy all -progressive -copy comments -maxmemory 3396344000935042354 -transverse ../../../../testimg.jpg /dev/null
+-rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -copy none -maxmemory 7206738997077773982 -progressive -copy all -copy comments -transverse ../../../../testimg.jpg /dev/null
+-copy all -progressive -transpose ../../../../testimg.jpg /dev/null
+-maxmemory 1368518542419797245 -trim ../../../../testimg.jpg /dev/null
+-copy none -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 27412 -flip vertical ../../../../testimg.jpg /dev/null
+-restart 15990 -progressive -copy all -optimize -copy comments -transverse ../../../../testimg.jpg /dev/null
+-copy none -restart 41671 -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 6424230984803661263 -copy all -restart 31378 -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-copy none -copy all -progressive -maxmemory 1943522592140513385 -restart 28402 -rotate 180 ../../../../testimg.jpg /dev/null
+-copy comments -copy all -restart 25089 -maxmemory 885472982940844929 -progressive -copy none -trim ../../../../testimg.jpg /dev/null
+-copy comments -flip horizontal ../../../../testimg.jpg /dev/null
+-transverse ../../../../testimg.jpg /dev/null
+-copy all -progressive -copy none -grayscale ../../../../testimg.jpg /dev/null
+-restart 5977 -maxmemory 5128370010694576782 -copy all -copy none -optimize -copy comments -progressive -transpose ../../../../testimg.jpg /dev/null
+-maxmemory 362718185835793075 -copy all -copy comments -transverse ../../../../testimg.jpg /dev/null
+-copy comments -copy none -maxmemory 6928439916966302892 -restart 46981 -copy all -optimize -progressive -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -optimize -copy comments -copy none -restart 11349 -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 553890068601418843 -copy all -progressive -copy comments -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -copy comments -restart 1796 -copy none -trim ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-maxmemory 3210795479623635164 -progressive -trim ../../../../testimg.jpg /dev/null
+-progressive -restart 32149 -copy none -grayscale ../../../../testimg.jpg /dev/null
+-copy none -restart 6400 -transpose ../../../../testimg.jpg /dev/null
+-copy comments -trim ../../../../testimg.jpg /dev/null
+-restart 50798 -maxmemory 819186463988979877 -copy comments -progressive -transverse ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 254671831342814986 -flip horizontal ../../../../testimg.jpg /dev/null
+-copy comments -restart 61625 -copy all -progressive -copy none -optimize -transpose ../../../../testimg.jpg /dev/null
+-copy all -optimize -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 40452 -copy none -optimize -maxmemory 53796651740644403 -progressive -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 9213670610453935228 -copy comments -optimize -progressive -copy none -transpose ../../../../testimg.jpg /dev/null
+-copy comments -copy none -optimize -progressive -maxmemory 6805635035668048159 -restart 30079 -copy all -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 7359042011218551524 -copy none -restart 40006 -progressive -optimize -transverse ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 556032022576286181 -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -copy comments -maxmemory 6329068819208886890 -copy all -restart 48766 -copy none -flip vertical ../../../../testimg.jpg /dev/null
+-restart 14984 -progressive -transverse ../../../../testimg.jpg /dev/null
+-optimize -restart 50439 -maxmemory 3049561179005545780 -progressive -copy none -copy all -transpose ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 6538595276772407992 -restart 9320 -trim ../../../../testimg.jpg /dev/null
+-transverse ../../../../testimg.jpg /dev/null
+-copy all -progressive -restart 34258 -grayscale ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 2000692828072093574 -restart 3934 -progressive -copy all -copy comments -optimize -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 4899361476471188475 -transpose ../../../../testimg.jpg /dev/null
+-restart 23943 -progressive -copy comments -copy all -copy none -optimize -flip horizontal ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-copy all -copy none -restart 10631 -optimize -maxmemory 6764672337843303835 -copy comments -flip vertical ../../../../testimg.jpg /dev/null
+-restart 27800 -copy none -optimize -flip vertical ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 6081117095957751715 -copy all -copy none -restart 31676 -transverse ../../../../testimg.jpg /dev/null
+-restart 7097 -copy comments -copy none -copy all -maxmemory 5649774621773035197 -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 8114649580671726247 -flip horizontal ../../../../testimg.jpg /dev/null
+-restart 50480 -optimize -trim ../../../../testimg.jpg /dev/null
+-restart 29126 -progressive -copy all -copy comments -optimize -copy none -transverse ../../../../testimg.jpg /dev/null
+-restart 14977 -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -optimize -restart 51715 -progressive -copy none -transverse ../../../../testimg.jpg /dev/null
+-restart 2489 -copy none -copy all -copy comments -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 530976350876597777 -optimize -grayscale ../../../../testimg.jpg /dev/null
+-optimize -progressive -copy none -transpose ../../../../testimg.jpg /dev/null
+-copy none -progressive -maxmemory 2747000623259796637 -optimize -restart 54643 -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-copy all -progressive -maxmemory 5281197015563157710 -restart 43977 -copy comments -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 4503639587545048925 -restart 24567 -copy none -progressive -transverse ../../../../testimg.jpg /dev/null
+-progressive -restart 9216 -optimize -maxmemory 8914535967883147424 -trim ../../../../testimg.jpg /dev/null
+-maxmemory 5862588613907503597 -copy all -copy none -optimize -flip horizontal ../../../../testimg.jpg /dev/null
+-flip vertical ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-restart 2306 -copy comments -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 2323505579066294825 -progressive -transpose ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 8494309803189407582 -copy all -optimize -trim ../../../../testimg.jpg /dev/null
+-restart 64657 -transverse ../../../../testimg.jpg /dev/null
+-copy none -restart 15783 -transverse ../../../../testimg.jpg /dev/null
+-progressive -copy comments -optimize -flip horizontal ../../../../testimg.jpg /dev/null
+-progressive -copy all -copy none -copy comments -restart 17141 -transpose ../../../../testimg.jpg /dev/null
+-progressive -copy none -optimize -copy all -copy comments -flip vertical ../../../../testimg.jpg /dev/null
+-rotate 180 ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 2871572096397957823 -progressive -restart 13918 -grayscale ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 24026 -maxmemory 993204315673555550 -copy comments -optimize -copy none -transpose ../../../../testimg.jpg /dev/null
+-copy all -restart 34479 -progressive -optimize -copy none -copy comments -maxmemory 1664699397915726171 -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 7873948780040383253 -copy comments -copy none -progressive -restart 47100 -optimize -grayscale ../../../../testimg.jpg /dev/null
+-progressive -copy none -restart 55126 -trim ../../../../testimg.jpg /dev/null
+-copy none -restart 51994 -optimize -copy comments -transverse ../../../../testimg.jpg /dev/null
+-copy comments -restart 8766 -trim ../../../../testimg.jpg /dev/null
+-copy comments -copy none -copy all -progressive -maxmemory 1852434804412542823 -optimize -restart 46361 -flip vertical ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 948971863023689330 -restart 45860 -progressive -copy comments -copy all -copy none -transverse ../../../../testimg.jpg /dev/null
+-progressive -copy none -flip horizontal ../../../../testimg.jpg /dev/null
+-copy none -restart 36343 -progressive -trim ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-progressive -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 51024 -progressive -maxmemory 6296028400843197448 -copy all -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 26927 -copy none -trim ../../../../testimg.jpg /dev/null
+-copy none -copy all -grayscale ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 4867090587726039961 -copy none -progressive -copy comments -restart 3684 -flip vertical ../../../../testimg.jpg /dev/null
+-maxmemory 6624835049688109711 -grayscale ../../../../testimg.jpg /dev/null
+-progressive -flip horizontal ../../../../testimg.jpg /dev/null
+-copy comments -progressive -copy all -optimize -copy none -transverse ../../../../testimg.jpg /dev/null
+-transverse ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-progressive -grayscale ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-maxmemory 8990493366030368402 -copy all -progressive -copy comments -copy none -optimize -restart 20258 -grayscale ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-maxmemory 4004457043953524244 -copy all -copy comments -optimize -trim ../../../../testimg.jpg /dev/null
+-maxmemory 4596622063901048723 -progressive -copy none -copy comments -optimize -restart 46811 -copy all -grayscale ../../../../testimg.jpg /dev/null
+-copy none -progressive -maxmemory 3809411191056008725 -optimize -copy comments -restart 27615 -copy all -grayscale ../../../../testimg.jpg /dev/null
+-optimize -transpose ../../../../testimg.jpg /dev/null
+-copy none -optimize -progressive -copy all -transverse ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-maxmemory 5568107891520954860 -copy none -transverse ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-restart 60266 -optimize -copy all -copy none -transverse ../../../../testimg.jpg /dev/null
+-copy none -copy comments -maxmemory 8438052346046878953 -restart 28346 -copy all -grayscale ../../../../testimg.jpg /dev/null
+-optimize -copy all -copy none -progressive -restart 14719 -maxmemory 6692611865724527118 -transpose ../../../../testimg.jpg /dev/null
+-progressive -grayscale ../../../../testimg.jpg /dev/null
+-restart 60552 -copy none -optimize -grayscale ../../../../testimg.jpg /dev/null
+-progressive -copy comments -copy all -optimize -copy none -restart 63465 -transpose ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 3061428009352865816 -progressive -restart 44070 -optimize -copy all -flip horizontal ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 7946594858198435045 -optimize -copy all -restart 54477 -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -restart 1298 -maxmemory 213784233968269597 -optimize -copy comments -copy none -progressive -grayscale ../../../../testimg.jpg /dev/null
+-transverse ../../../../testimg.jpg /dev/null
+-progressive -transverse ../../../../testimg.jpg /dev/null
+-progressive -optimize -copy all -copy comments -maxmemory 7540283390997034275 -flip horizontal ../../../../testimg.jpg /dev/null
+-maxmemory 5157023040442702292 -copy none -copy all -transverse ../../../../testimg.jpg /dev/null
+-restart 52562 -copy none -copy comments -copy all -progressive -trim ../../../../testimg.jpg /dev/null
+-copy all -flip horizontal ../../../../testimg.jpg /dev/null
+-restart 28015 -progressive -copy comments -copy none -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -copy comments -maxmemory 2868759918178181375 -optimize -restart 27435 -progressive -trim ../../../../testimg.jpg /dev/null
+-copy none -transpose ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 95291822547056660 -copy comments -copy all -progressive -restart 23778 -trim ../../../../testimg.jpg /dev/null
+-copy none -optimize -restart 63513 -progressive -copy comments -maxmemory 1112948398839155316 -copy all -transpose ../../../../testimg.jpg /dev/null
+-progressive -copy comments -copy all -restart 46063 -optimize -transverse ../../../../testimg.jpg /dev/null
+-restart 62693 -progressive -copy all -transverse ../../../../testimg.jpg /dev/null
+-copy all -copy none -restart 5466 -transverse ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 2815473830586836493 -transverse ../../../../testimg.jpg /dev/null
+-copy all -transverse ../../../../testimg.jpg /dev/null
+-copy all -transverse ../../../../testimg.jpg /dev/null
+-copy none -grayscale ../../../../testimg.jpg /dev/null
+-copy none -optimize -transverse ../../../../testimg.jpg /dev/null
+-optimize -copy none -copy all -restart 32475 -progressive -trim ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 3394561922542398725 -transpose ../../../../testimg.jpg /dev/null
+-optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 7443062147688877584 -copy comments -optimize -transverse ../../../../testimg.jpg /dev/null
+-copy none -progressive -maxmemory 6874160131096182187 -restart 32553 -copy comments -flip horizontal ../../../../testimg.jpg /dev/null
+-progressive -copy all -flip horizontal ../../../../testimg.jpg /dev/null
+-copy none -copy comments -copy all -maxmemory 1371342746162816381 -optimize -flip vertical ../../../../testimg.jpg /dev/null
+-maxmemory 4996391371864610546 -copy all -progressive -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 2949782899224357867 -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-restart 26654 -copy all -maxmemory 2955148292595811594 -copy comments -copy none -grayscale ../../../../testimg.jpg /dev/null
+-restart 59761 -transpose ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-maxmemory 612395481979338656 -restart 13439 -copy none -flip vertical ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 2588119193853713555 -optimize -copy comments -trim ../../../../testimg.jpg /dev/null
+-copy all -optimize -maxmemory 7602287890162768602 -copy comments -progressive -restart 31576 -copy none -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 4395471792334483385 -progressive -copy comments -copy none -restart 52431 -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 7399214653840991810 -progressive -restart 5815 -optimize -copy comments -copy none -transpose ../../../../testimg.jpg /dev/null
+-progressive -copy all -flip horizontal ../../../../testimg.jpg /dev/null
+-transverse ../../../../testimg.jpg /dev/null
+-copy all -transpose ../../../../testimg.jpg /dev/null
+-restart 15797 -maxmemory 4272659527123876740 -optimize -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-copy none -copy all -restart 42262 -copy comments -optimize -maxmemory 3713116029213202023 -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -optimize -progressive -transpose ../../../../testimg.jpg /dev/null
+-restart 61657 -transpose ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 5418187920376380736 -progressive -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-optimize -copy none -progressive -maxmemory 6964710510341525899 -grayscale ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 1356040684394988598 -flip vertical ../../../../testimg.jpg /dev/null
+-copy none -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 7201467912476746735 -optimize -copy none -copy all -restart 11698 -copy comments -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 84679784768745938 -transpose ../../../../testimg.jpg /dev/null
+-maxmemory 1171346330541363767 -copy all -progressive -flip vertical ../../../../testimg.jpg /dev/null
+-copy none -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-maxmemory 5647745924622638230 -copy comments -transverse ../../../../testimg.jpg /dev/null
+-restart 16444 -copy all -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 62039464966327135 -progressive -copy comments -copy all -restart 16697 -copy none -trim ../../../../testimg.jpg /dev/null
+-maxmemory 6359834510651986045 -copy all -copy none -copy comments -optimize -progressive -restart 50623 -flip vertical ../../../../testimg.jpg /dev/null
+-optimize -copy comments -progressive -maxmemory 3904311915248702866 -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 1964036486326656622 -progressive -restart 54904 -copy all -copy none -optimize -copy comments -transverse ../../../../testimg.jpg /dev/null
+-copy none -optimize -restart 25656 -maxmemory 9066265087608386931 -progressive -copy comments -copy all -transpose ../../../../testimg.jpg /dev/null
+-copy none -restart 2723 -copy comments -progressive -optimize -maxmemory 6136445109256424777 -transpose ../../../../testimg.jpg /dev/null
+-copy none -copy all -restart 37617 -copy comments -progressive -optimize -transverse ../../../../testimg.jpg /dev/null
+-restart 19941 -copy comments -copy all -optimize -progressive -maxmemory 5984413407487092044 -flip horizontal ../../../../testimg.jpg /dev/null
+-progressive -optimize -maxmemory 5899659947525843178 -copy comments -copy none -grayscale ../../../../testimg.jpg /dev/null
+-copy none -copy all -maxmemory 7311848141502761819 -flip horizontal ../../../../testimg.jpg /dev/null
+-copy comments -copy none -progressive -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 53387 -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 5640240140769792734 -optimize -restart 63596 -copy all -trim ../../../../testimg.jpg /dev/null
+-copy comments -restart 25710 -optimize -progressive -copy all -maxmemory 3200896137978008487 -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -grayscale ../../../../testimg.jpg /dev/null
+-copy none -optimize -copy all -progressive -restart 17907 -grayscale ../../../../testimg.jpg /dev/null
+-restart 18201 -copy comments -copy none -copy all -transverse ../../../../testimg.jpg /dev/null
+-progressive -copy comments -copy none -copy all -maxmemory 3403090727928717776 -optimize -restart 35961 -trim ../../../../testimg.jpg /dev/null
+-optimize -copy all -copy none -copy comments -maxmemory 5287303136878312702 -trim ../../../../testimg.jpg /dev/null
+-maxmemory 2858779546814828754 -copy comments -transpose ../../../../testimg.jpg /dev/null
+-restart 6581 -optimize -copy all -copy comments -progressive -transverse ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 4765009579108123959 -transverse ../../../../testimg.jpg /dev/null
+-copy all -optimize -progressive -flip horizontal ../../../../testimg.jpg /dev/null
+-copy comments -trim ../../../../testimg.jpg /dev/null
+-flip vertical ../../../../testimg.jpg /dev/null
+-restart 6376 -progressive -copy none -maxmemory 3197883943612671242 -copy comments -optimize -trim ../../../../testimg.jpg /dev/null
+-maxmemory 6806385718575480866 -progressive -copy comments -copy none -optimize -copy all -transpose ../../../../testimg.jpg /dev/null
+-copy all -progressive -optimize -flip horizontal ../../../../testimg.jpg /dev/null
+-optimize -copy all -progressive -flip vertical ../../../../testimg.jpg /dev/null
+-copy comments -transpose ../../../../testimg.jpg /dev/null
+-copy comments -copy all -restart 49311 -maxmemory 8306303288600645851 -copy none -progressive -optimize -trim ../../../../testimg.jpg /dev/null
+-copy none -transpose ../../../../testimg.jpg /dev/null
+-copy comments -copy none -copy all -optimize -restart 26406 -progressive -trim ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 7726189964318888077 -copy all -restart 160 -grayscale ../../../../testimg.jpg /dev/null
+-copy none -copy comments -restart 8637 -progressive -copy all -optimize -maxmemory 5906062087235783891 -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 6149949650303417352 -transverse ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 4321289232918525721 -copy none -flip vertical ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 2369886777780018711 -optimize -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -progressive -restart 53553 -copy none -maxmemory 7584228860702828832 -copy comments -transpose ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 7061680872257113494 -restart 43956 -optimize -copy all -copy comments -copy none -grayscale ../../../../testimg.jpg /dev/null
+-restart 3343 -copy comments -flip vertical ../../../../testimg.jpg /dev/null
+-maxmemory 2125743483482122842 -restart 16039 -trim ../../../../testimg.jpg /dev/null
+-copy all -copy comments -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 4900252322544000781 -optimize -copy comments -progressive -copy none -copy all -restart 44049 -transverse ../../../../testimg.jpg /dev/null
+-progressive -copy all -optimize -maxmemory 5760008370511045372 -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 6187373659359429049 -optimize -trim ../../../../testimg.jpg /dev/null
+-transverse ../../../../testimg.jpg /dev/null
+-restart 20930 -copy none -copy comments -optimize -copy all -flip horizontal ../../../../testimg.jpg /dev/null
+-flip vertical ../../../../testimg.jpg /dev/null
+-copy none -restart 51690 -copy comments -maxmemory 2557735168492020665 -grayscale ../../../../testimg.jpg /dev/null
+-progressive -copy comments -trim ../../../../testimg.jpg /dev/null
+-copy comments -progressive -optimize -copy none -maxmemory 3508400123226669320 -restart 19065 -copy all -trim ../../../../testimg.jpg /dev/null
+-progressive -restart 3319 -grayscale ../../../../testimg.jpg /dev/null
+-restart 32964 -optimize -copy none -progressive -copy all -maxmemory 3987197397531223972 -copy comments -transpose ../../../../testimg.jpg /dev/null
+-maxmemory 7429769036244556050 -restart 38428 -copy all -optimize -copy none -flip vertical ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 2826662723259644292 -copy all -grayscale ../../../../testimg.jpg /dev/null
+-copy all -copy comments -restart 49320 -progressive -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 7851314056567583349 -progressive -copy none -transpose ../../../../testimg.jpg /dev/null
+-progressive -copy comments -trim ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 527214960424148326 -copy all -progressive -optimize -flip horizontal ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-optimize -copy none -restart 46628 -copy all -progressive -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 5844328424531285343 -copy none -progressive -optimize -restart 47100 -copy comments -copy all -grayscale ../../../../testimg.jpg /dev/null
+-optimize -copy comments -copy none -progressive -maxmemory 3462621438421914054 -grayscale ../../../../testimg.jpg /dev/null
+-copy all -optimize -restart 39511 -copy comments -copy none -transpose ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 7672746292006911861 -optimize -copy comments -copy all -progressive -flip horizontal ../../../../testimg.jpg /dev/null
+-restart 29097 -optimize -copy all -copy comments -progressive -grayscale ../../../../testimg.jpg /dev/null
+-copy none -flip vertical ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 8673783989512925481 -restart 46134 -trim ../../../../testimg.jpg /dev/null
+-optimize -restart 45412 -maxmemory 1692908719499519339 -copy all -copy none -progressive -copy comments -transverse ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-progressive -copy comments -copy none -maxmemory 5931138902287942884 -restart 8916 -copy all -transpose ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 1457597221832094341 -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 8969986983107883971 -transverse ../../../../testimg.jpg /dev/null
+-progressive -copy comments -optimize -copy none -trim ../../../../testimg.jpg /dev/null
+-copy all -transpose ../../../../testimg.jpg /dev/null
+-optimize -copy comments -copy none -progressive -restart 61387 -maxmemory 4582855938396562579 -transpose ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 1367453897130821544 -copy comments -restart 23999 -copy none -progressive -optimize -transpose ../../../../testimg.jpg /dev/null
+-copy comments -copy none -copy all -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-flip vertical ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-copy comments -restart 24672 -copy none -transpose ../../../../testimg.jpg /dev/null
+-progressive -rotate 180 ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 6034193789332238162 -optimize -restart 31092 -copy all -progressive -copy none -flip horizontal ../../../../testimg.jpg /dev/null
+-copy none -trim ../../../../testimg.jpg /dev/null
+-optimize -copy none -restart 60212 -copy comments -progressive -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 24119 -progressive -maxmemory 8379385042280012695 -trim ../../../../testimg.jpg /dev/null
+-optimize -copy all -maxmemory 8463891430283104054 -grayscale ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 5565554707977861268 -copy comments -restart 11812 -copy all -copy none -transpose ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 4507263034560885543 -grayscale ../../../../testimg.jpg /dev/null
+-progressive -copy all -copy comments -optimize -restart 60258 -maxmemory 1573804683223988021 -transpose ../../../../testimg.jpg /dev/null
+-copy all -restart 52748 -progressive -maxmemory 3778670155016979156 -copy comments -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 7925887861891540940 -trim ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 1255093871607045927 -restart 8450 -copy none -optimize -copy comments -copy all -grayscale ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-copy comments -optimize -progressive -copy all -copy none -restart 44376 -maxmemory 7731685025185655036 -transverse ../../../../testimg.jpg /dev/null
+-optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 8959935942663865891 -copy none -progressive -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -copy none -progressive -restart 45319 -copy comments -optimize -transverse ../../../../testimg.jpg /dev/null
+-copy comments -optimize -progressive -restart 44809 -copy all -transverse ../../../../testimg.jpg /dev/null
+-restart 57449 -copy all -copy none -progressive -maxmemory 9076979888942644173 -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-optimize -progressive -restart 37320 -copy all -maxmemory 9020312487079457072 -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 8251909912790321584 -optimize -copy none -copy comments -progressive -restart 2311 -grayscale ../../../../testimg.jpg /dev/null
+-copy all -copy comments -transpose ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 5787551369687002542 -restart 41515 -trim ../../../../testimg.jpg /dev/null
+-copy none -progressive -copy all -optimize -maxmemory 1731364327601706447 -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-copy all -copy comments -copy none -optimize -restart 30612 -maxmemory 2776937109457343556 -progressive -flip horizontal ../../../../testimg.jpg /dev/null
+-copy none -copy comments -transverse ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 95676522861026562 -copy none -copy all -optimize -copy comments -restart 36621 -grayscale ../../../../testimg.jpg /dev/null
+-copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -copy comments -trim ../../../../testimg.jpg /dev/null
+-progressive -copy all -copy none -restart 41712 -flip horizontal ../../../../testimg.jpg /dev/null
+-copy all -restart 10886 -maxmemory 8469314285380835766 -copy comments -progressive -copy none -transpose ../../../../testimg.jpg /dev/null
+-restart 55035 -optimize -progressive -copy comments -copy none -flip horizontal ../../../../testimg.jpg /dev/null
+-restart 21806 -copy all -copy none -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 5172859699054814619 -copy none -restart 6665 -copy comments -copy all -progressive -optimize -transpose ../../../../testimg.jpg /dev/null
+-copy none -copy comments -maxmemory 2963333132985960738 -restart 55377 -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 2916520046169993795 -optimize -restart 1093 -rotate 180 ../../../../testimg.jpg /dev/null
+-copy none -copy all -progressive -transpose ../../../../testimg.jpg /dev/null
+-copy none -restart 53361 -trim ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 5771269842497688614 -transpose ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 7969111760678071893 -restart 38161 -copy none -copy comments -trim ../../../../testimg.jpg /dev/null
+-progressive -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 306387091873292464 -optimize -copy all -restart 2502 -transverse ../../../../testimg.jpg /dev/null
+-progressive -optimize -restart 64672 -transpose ../../../../testimg.jpg /dev/null
+-optimize -restart 31695 -maxmemory 5441591685206094099 -flip horizontal ../../../../testimg.jpg /dev/null
+-copy all -optimize -copy none -restart 28470 -flip vertical ../../../../testimg.jpg /dev/null
+-copy none -trim ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 8715449551733929515 -progressive -copy all -flip vertical ../../../../testimg.jpg /dev/null
+-restart 2985 -transverse ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-progressive -copy all -copy none -restart 19387 -transpose ../../../../testimg.jpg /dev/null
+-restart 35900 -copy none -progressive -maxmemory 2325580281008862375 -copy all -copy comments -optimize -transpose ../../../../testimg.jpg /dev/null
+-progressive -copy comments -optimize -transpose ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 2507932166726579100 -grayscale ../../../../testimg.jpg /dev/null
+-optimize -progressive -copy none -restart 20728 -copy comments -maxmemory 1942760585036141999 -grayscale ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 9150620963188971847 -copy all -transpose ../../../../testimg.jpg /dev/null
+-restart 541 -optimize -maxmemory 5525195768421153954 -copy none -progressive -copy all -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 11806 -copy none -copy comments -transverse ../../../../testimg.jpg /dev/null
+-copy comments -grayscale ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 7032718321448286373 -grayscale ../../../../testimg.jpg /dev/null
+-copy none -progressive -optimize -copy comments -maxmemory 3413783265586013644 -copy all -transverse ../../../../testimg.jpg /dev/null
+-copy comments -copy all -maxmemory 577718920563880560 -flip vertical ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-maxmemory 8663930504562434330 -copy all -copy none -progressive -restart 51218 -trim ../../../../testimg.jpg /dev/null
+-maxmemory 6835544389426572177 -copy none -copy all -optimize -copy comments -progressive -trim ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 1515642218885060618 -copy all -copy comments -progressive -copy none -restart 47256 -trim ../../../../testimg.jpg /dev/null
+-progressive -restart 45845 -copy none -optimize -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 5446345505295112968 -progressive -optimize -transpose ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-optimize -copy comments -copy none -progressive -flip vertical ../../../../testimg.jpg /dev/null
+-maxmemory 6893731078764346437 -progressive -copy none -trim ../../../../testimg.jpg /dev/null
+-restart 33723 -transverse ../../../../testimg.jpg /dev/null
+-progressive -trim ../../../../testimg.jpg /dev/null
+-maxmemory 8062689511797897171 -copy all -progressive -flip horizontal ../../../../testimg.jpg /dev/null
+-optimize -progressive -copy all -maxmemory 3177042272197322961 -copy comments -transpose ../../../../testimg.jpg /dev/null
+-copy none -copy comments -copy all -optimize -maxmemory 5126221047186099527 -restart 7419 -flip horizontal ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 1604727924217683177 -restart 17783 -copy comments -progressive -copy none -transverse ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 3476213237104281117 -restart 33366 -copy none -progressive -optimize -copy all -grayscale ../../../../testimg.jpg /dev/null
+-progressive -restart 30988 -optimize -copy none -maxmemory 8925201098306389852 -copy comments -copy all -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 449480731841350677 -copy none -copy comments -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -copy comments -maxmemory 4207931670172582516 -copy all -restart 43819 -copy none -progressive -transverse ../../../../testimg.jpg /dev/null
+-optimize -copy comments -restart 54141 -transpose ../../../../testimg.jpg /dev/null
+-copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-maxmemory 7355654268743516503 -transverse ../../../../testimg.jpg /dev/null
+-progressive -optimize -maxmemory 7460131548236609773 -restart 2138 -trim ../../../../testimg.jpg /dev/null
+-copy none -copy comments -progressive -flip vertical ../../../../testimg.jpg /dev/null
+-copy comments -restart 50258 -trim ../../../../testimg.jpg /dev/null
+-optimize -copy comments -copy none -progressive -copy all -maxmemory 6380208696908669713 -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -optimize -grayscale ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 7394614806472944028 -copy all -restart 15968 -transverse ../../../../testimg.jpg /dev/null
+-copy comments -restart 37929 -optimize -transverse ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 1428590900311622423 -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 12256 -copy all -optimize -copy comments -copy none -maxmemory 3554553998574453551 -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 3263602762538503671 -optimize -copy all -copy none -restart 7186 -transverse ../../../../testimg.jpg /dev/null
+-optimize -restart 2519 -copy comments -copy none -copy all -maxmemory 9178556189098827012 -trim ../../../../testimg.jpg /dev/null
+-copy all -restart 53258 -copy none -copy comments -maxmemory 1616918330768650390 -optimize -flip vertical ../../../../testimg.jpg /dev/null
+-progressive -copy comments -optimize -grayscale ../../../../testimg.jpg /dev/null
+-flip vertical ../../../../testimg.jpg /dev/null
+-maxmemory 4868592953573786349 -copy none -copy all -transpose ../../../../testimg.jpg /dev/null
+-progressive -transverse ../../../../testimg.jpg /dev/null
+-transverse ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-copy none -restart 23325 -grayscale ../../../../testimg.jpg /dev/null
+-copy comments -copy all -maxmemory 6472931923523298243 -restart 17039 -copy none -optimize -progressive -transpose ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 1843149365436406713 -copy comments -copy all -copy none -optimize -restart 16528 -transpose ../../../../testimg.jpg /dev/null
+-copy all -progressive -transverse ../../../../testimg.jpg /dev/null
+-copy comments -progressive -restart 37933 -trim ../../../../testimg.jpg /dev/null
+-restart 18021 -copy comments -trim ../../../../testimg.jpg /dev/null
+-maxmemory 6278253864403027580 -copy comments -flip vertical ../../../../testimg.jpg /dev/null
+-copy all -transverse ../../../../testimg.jpg /dev/null
+-copy comments -progressive -restart 31156 -copy all -maxmemory 3123314171005936249 -transpose ../../../../testimg.jpg /dev/null
+-progressive -copy none -optimize -copy comments -maxmemory 4377354078651494328 -copy all -transverse ../../../../testimg.jpg /dev/null
+-restart 19055 -transverse ../../../../testimg.jpg /dev/null
+-progressive -copy all -grayscale ../../../../testimg.jpg /dev/null
+-optimize -progressive -copy all -restart 46710 -copy none -maxmemory 7173661324826108476 -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-copy comments -copy none -optimize -copy all -grayscale ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 6758345403509705381 -transpose ../../../../testimg.jpg /dev/null
+-copy all -restart 54236 -optimize -grayscale ../../../../testimg.jpg /dev/null
+-copy none -copy all -progressive -copy comments -maxmemory 1769769491942842540 -transpose ../../../../testimg.jpg /dev/null
+-restart 5948 -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-copy comments -copy none -restart 61884 -copy all -optimize -maxmemory 1938341248884744551 -flip horizontal ../../../../testimg.jpg /dev/null
+-copy comments -copy none -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 8355059212566756576 -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 2106865070150002088 -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -copy none -restart 52916 -progressive -copy all -maxmemory 9163985212815511007 -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-copy comments -progressive -optimize -maxmemory 9206919009966560950 -copy all -copy none -restart 921 -grayscale ../../../../testimg.jpg /dev/null
+-optimize -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-progressive -transverse ../../../../testimg.jpg /dev/null
+-restart 59406 -copy comments -progressive -maxmemory 5341819027374086860 -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 6260035972826089290 -copy none -optimize -progressive -restart 803 -copy all -flip horizontal ../../../../testimg.jpg /dev/null
+-optimize -restart 17143 -transpose ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 6972762826894571850 -copy comments -transpose ../../../../testimg.jpg /dev/null
+-copy all -copy none -copy comments -optimize -restart 26565 -maxmemory 7477664739267912035 -grayscale ../../../../testimg.jpg /dev/null
+-restart 58796 -maxmemory 2813633003324347602 -copy comments -progressive -copy none -optimize -copy all -trim ../../../../testimg.jpg /dev/null
+-copy comments -restart 23310 -trim ../../../../testimg.jpg /dev/null
+-optimize -copy all -copy comments -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 5781176016021701660 -copy comments -progressive -transverse ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 7074821512147520844 -copy all -optimize -copy none -copy comments -restart 45119 -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 7396007552123871681 -copy comments -copy none -progressive -flip vertical ../../../../testimg.jpg /dev/null
+-copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-restart 48545 -copy all -progressive -grayscale ../../../../testimg.jpg /dev/null
+-copy none -flip horizontal ../../../../testimg.jpg /dev/null
+-progressive -copy all -optimize -copy none -copy comments -transverse ../../../../testimg.jpg /dev/null
+-copy none -restart 32874 -copy comments -maxmemory 4304634652492007053 -copy all -optimize -grayscale ../../../../testimg.jpg /dev/null
+-optimize -transpose ../../../../testimg.jpg /dev/null
+-maxmemory 3616729442856544748 -progressive -optimize -copy all -copy none -restart 22452 -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-copy all -restart 63280 -copy comments -transverse ../../../../testimg.jpg /dev/null
+-copy all -optimize -copy comments -maxmemory 114365720185790915 -flip vertical ../../../../testimg.jpg /dev/null
+-copy none -optimize -maxmemory 4675375916726052424 -trim ../../../../testimg.jpg /dev/null
+-maxmemory 1336442590246069904 -copy none -copy all -restart 49924 -optimize -copy comments -progressive -rotate 180 ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-restart 2460 -maxmemory 1824238687839201902 -copy none -progressive -optimize -copy all -transpose ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-progressive -transverse ../../../../testimg.jpg /dev/null
+-copy none -progressive -maxmemory 6037212758657785704 -trim ../../../../testimg.jpg /dev/null
+-copy all -grayscale ../../../../testimg.jpg /dev/null
+-copy all -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 318779645086489985 -copy none -grayscale ../../../../testimg.jpg /dev/null
+-progressive -copy none -maxmemory 933809917993719741 -restart 53719 -optimize -grayscale ../../../../testimg.jpg /dev/null
+-restart 18457 -optimize -copy comments -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -copy comments -copy none -restart 63360 -trim ../../../../testimg.jpg /dev/null
+-copy all -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -flip vertical ../../../../testimg.jpg /dev/null
+-copy none -restart 9021 -copy comments -progressive -optimize -copy all -maxmemory 545679554265708247 -transverse ../../../../testimg.jpg /dev/null
+-restart 26531 -copy comments -copy all -progressive -copy none -maxmemory 4024448250866378524 -flip horizontal ../../../../testimg.jpg /dev/null
+-copy none -transpose ../../../../testimg.jpg /dev/null
+-restart 50799 -optimize -copy comments -maxmemory 8098124255301621096 -progressive -copy all -copy none -transpose ../../../../testimg.jpg /dev/null
+-copy none -restart 2909 -maxmemory 1467224179487166691 -optimize -copy all -progressive -trim ../../../../testimg.jpg /dev/null
+-optimize -copy none -copy comments -progressive -maxmemory 7021352537603266169 -copy all -flip vertical ../../../../testimg.jpg /dev/null
+-copy comments -flip horizontal ../../../../testimg.jpg /dev/null
+-optimize -copy comments -progressive -trim ../../../../testimg.jpg /dev/null
+-copy all -copy none -restart 42507 -copy comments -transpose ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 3470411954496435746 -restart 5727 -copy all -optimize -copy comments -trim ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 2445490042309562596 -optimize -copy none -restart 20458 -flip horizontal ../../../../testimg.jpg /dev/null
+-copy none -optimize -progressive -transpose ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 5525265536981391944 -restart 58597 -optimize -progressive -grayscale ../../../../testimg.jpg /dev/null
+-copy all -copy comments -restart 53272 -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 254115462809313934 -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -trim ../../../../testimg.jpg /dev/null
+-maxmemory 3565029433328940964 -progressive -optimize -copy all -grayscale ../../../../testimg.jpg /dev/null
+-progressive -copy none -maxmemory 7779111294219436901 -optimize -restart 18279 -copy comments -copy all -transverse ../../../../testimg.jpg /dev/null
+-copy comments -copy all -optimize -copy none -restart 16689 -progressive -maxmemory 6559078279953843936 -trim ../../../../testimg.jpg /dev/null
+-copy all -copy none -optimize -progressive -copy comments -flip horizontal ../../../../testimg.jpg /dev/null
+-copy none -copy comments -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 5233124367559403805 -restart 18399 -copy all -copy comments -flip vertical ../../../../testimg.jpg /dev/null
+-rotate 180 ../../../../testimg.jpg /dev/null
+-restart 53891 -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -progressive -copy none -copy comments -restart 7241 -trim ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 4996573424117896755 -transverse ../../../../testimg.jpg /dev/null
+-optimize -copy none -copy all -transpose ../../../../testimg.jpg /dev/null
+-optimize -progressive -restart 38378 -trim ../../../../testimg.jpg /dev/null
+-copy none -copy all -maxmemory 125695998566792807 -restart 52648 -optimize -progressive -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -optimize -copy all -copy comments -maxmemory 3510668822910583699 -trim ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 4017149594349438146 -copy none -transpose ../../../../testimg.jpg /dev/null
+-restart 4122 -copy comments -copy all -optimize -transverse ../../../../testimg.jpg /dev/null
+-copy all -copy comments -maxmemory 5716834934480374292 -optimize -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 3491415957304189020 -trim ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 2206366290683917344 -progressive -flip vertical ../../../../testimg.jpg /dev/null
+-flip vertical ../../../../testimg.jpg /dev/null
+-restart 35510 -copy comments -progressive -copy all -maxmemory 5166023818266729190 -trim ../../../../testimg.jpg /dev/null
+-copy comments -copy all -copy none -restart 58175 -flip horizontal ../../../../testimg.jpg /dev/null
+-optimize -restart 53424 -maxmemory 5447522868857410321 -progressive -copy comments -copy none -trim ../../../../testimg.jpg /dev/null
+-optimize -copy none -copy all -maxmemory 6527784687937429261 -progressive -restart 960 -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -transverse ../../../../testimg.jpg /dev/null
+-optimize -progressive -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 8526725349288563987 -optimize -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -rotate 180 ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-restart 30254 -maxmemory 257431559766237174 -transpose ../../../../testimg.jpg /dev/null
+-copy all -copy comments -restart 2112 -optimize -maxmemory 5075678373915813973 -transpose ../../../../testimg.jpg /dev/null
+-copy comments -restart 38414 -copy all -maxmemory 1171042177465041153 -copy none -progressive -optimize -trim ../../../../testimg.jpg /dev/null
+-restart 52094 -optimize -copy comments -copy all -progressive -copy none -grayscale ../../../../testimg.jpg /dev/null
+-progressive -copy all -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 6671178900276147620 -optimize -copy none -copy comments -transpose ../../../../testimg.jpg /dev/null
+-copy comments -progressive -copy all -transpose ../../../../testimg.jpg /dev/null
+-copy comments -restart 564 -optimize -copy all -progressive -maxmemory 3692552379526715789 -flip vertical ../../../../testimg.jpg /dev/null
+-progressive -copy all -optimize -restart 28643 -transverse ../../../../testimg.jpg /dev/null
+-progressive -copy none -transverse ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-copy none -progressive -restart 55534 -trim ../../../../testimg.jpg /dev/null
+-progressive -restart 6859 -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -progressive -copy all -copy comments -maxmemory 4347096940024955135 -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 4975009716360769007 -copy none -progressive -copy all -flip vertical ../../../../testimg.jpg /dev/null
+-copy all -progressive -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 8252890995587128465 -optimize -progressive -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-copy none -copy all -progressive -trim ../../../../testimg.jpg /dev/null
+-copy none -copy comments -maxmemory 6777479912968129049 -grayscale ../../../../testimg.jpg /dev/null
+-copy comments -copy none -restart 39695 -progressive -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 3848672760618743315 -copy all -optimize -progressive -copy comments -copy none -trim ../../../../testimg.jpg /dev/null
+-copy all -optimize -progressive -maxmemory 1309628789169152866 -restart 3764 -copy none -flip horizontal ../../../../testimg.jpg /dev/null
+-maxmemory 3332220562913117939 -trim ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 2927909759063121782 -optimize -restart 47246 -progressive -flip horizontal ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-maxmemory 8981825064139872642 -optimize -copy none -restart 27394 -copy comments -copy all -progressive -transverse ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-flip vertical ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 4105051473634366356 -copy all -progressive -copy comments -transpose ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 7261152998006758906 -transpose ../../../../testimg.jpg /dev/null
+-restart 58931 -progressive -copy none -flip vertical ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 1339998020223564510 -copy all -copy none -restart 56810 -grayscale ../../../../testimg.jpg /dev/null
+-copy none -optimize -maxmemory 4006980571924520266 -copy all -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-copy none -copy comments -maxmemory 5468788039599572996 -progressive -optimize -restart 60247 -copy all -transpose ../../../../testimg.jpg /dev/null
+-progressive -restart 5526 -grayscale ../../../../testimg.jpg /dev/null
+-progressive -optimize -copy comments -maxmemory 7087660969198871545 -copy none -restart 17092 -flip vertical ../../../../testimg.jpg /dev/null
+-copy none -copy all -optimize -trim ../../../../testimg.jpg /dev/null
+-progressive -copy comments -maxmemory 1125053525940589120 -copy all -restart 61138 -optimize -copy none -transverse ../../../../testimg.jpg /dev/null
+-transverse ../../../../testimg.jpg /dev/null
+-copy all -copy none -maxmemory 8106102116729071569 -restart 63020 -progressive -trim ../../../../testimg.jpg /dev/null
+-copy none -copy all -maxmemory 3234335020574348773 -copy comments -progressive -grayscale ../../../../testimg.jpg /dev/null
+-progressive -copy comments -flip vertical ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 8707591905847907795 -grayscale ../../../../testimg.jpg /dev/null
+-optimize -restart 45201 -copy comments -copy none -transpose ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 5105637282846564508 -optimize -copy comments -copy all -restart 39145 -trim ../../../../testimg.jpg /dev/null
+-copy all -progressive -copy comments -transpose ../../../../testimg.jpg /dev/null
+-maxmemory 2397304903072318127 -copy all -optimize -copy comments -progressive -restart 4906 -copy none -transverse ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-maxmemory 2479470409818441112 -copy comments -transpose ../../../../testimg.jpg /dev/null
+-progressive -restart 24248 -copy all -grayscale ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 7450866159493768646 -copy all -progressive -optimize -restart 16203 -transpose ../../../../testimg.jpg /dev/null
+-restart 61357 -optimize -progressive -copy none -maxmemory 1532478846963943306 -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -grayscale ../../../../testimg.jpg /dev/null
+-progressive -copy comments -copy all -optimize -copy none -maxmemory 6717899152863799820 -transpose ../../../../testimg.jpg /dev/null
+-optimize -progressive -copy none -copy comments -copy all -transpose ../../../../testimg.jpg /dev/null
+-copy comments -restart 60746 -copy all -optimize -progressive -copy none -grayscale ../../../../testimg.jpg /dev/null
+-transverse ../../../../testimg.jpg /dev/null
+-copy all -copy none -progressive -rotate 180 ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-restart 25621 -copy comments -copy all -copy none -progressive -optimize -transpose ../../../../testimg.jpg /dev/null
+-maxmemory 6458839295118483820 -copy all -copy none -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -progressive -maxmemory 1206104813089595144 -grayscale ../../../../testimg.jpg /dev/null
+-progressive -restart 8790 -trim ../../../../testimg.jpg /dev/null
+-progressive -restart 10250 -copy all -maxmemory 1253821440820255485 -copy none -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-restart 17174 -copy none -maxmemory 8323573543853334370 -progressive -copy comments -copy all -optimize -flip vertical ../../../../testimg.jpg /dev/null
+-optimize -copy comments -maxmemory 9146414176902492678 -progressive -copy none -copy all -flip vertical ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 7203899644320700082 -flip vertical ../../../../testimg.jpg /dev/null
+-maxmemory 4186148999600855517 -copy all -progressive -copy comments -optimize -copy none -restart 34206 -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 3441741426255487244 -rotate 180 ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-optimize -copy none -flip horizontal ../../../../testimg.jpg /dev/null
+-copy comments -restart 32988 -progressive -transverse ../../../../testimg.jpg /dev/null
+-copy comments -copy all -optimize -copy none -restart 42290 -maxmemory 294785862383998239 -grayscale ../../../../testimg.jpg /dev/null
+-optimize -restart 37743 -copy none -flip horizontal ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-copy all -progressive -copy comments -copy none -transpose ../../../../testimg.jpg /dev/null
+-copy comments -progressive -restart 43351 -maxmemory 7813002740394556011 -grayscale ../../../../testimg.jpg /dev/null
+-copy none -optimize -copy comments -copy all -progressive -restart 60043 -transpose ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 7235059451148044220 -copy all -progressive -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 3329781315851945936 -copy none -optimize -copy all -restart 9894 -copy comments -flip vertical ../../../../testimg.jpg /dev/null
+-copy comments -copy all -copy none -progressive -optimize -flip vertical ../../../../testimg.jpg /dev/null
+-copy all -progressive -maxmemory 7863703875845295264 -copy comments -restart 16813 -optimize -copy none -transverse ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 116410154335183387 -copy all -copy comments -copy none -restart 34707 -transverse ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 3723357236331416704 -trim ../../../../testimg.jpg /dev/null
+-optimize -restart 34634 -copy none -progressive -copy all -grayscale ../../../../testimg.jpg /dev/null
+-restart 56651 -copy all -copy comments -copy none -maxmemory 5173594786572182293 -optimize -progressive -flip horizontal ../../../../testimg.jpg /dev/null
+-copy none -copy all -progressive -trim ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-copy comments -progressive -copy all -trim ../../../../testimg.jpg /dev/null
+-rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -progressive -copy comments -copy all -copy none -maxmemory 7589696695938454329 -flip vertical ../../../../testimg.jpg /dev/null
+-copy comments -restart 37449 -maxmemory 1456623187709902543 -progressive -copy none -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 5562332902652033559 -copy all -copy none -progressive -restart 10695 -copy comments -flip horizontal ../../../../testimg.jpg /dev/null
+-copy none -copy all -copy comments -restart 15478 -transpose ../../../../testimg.jpg /dev/null
+-progressive -copy all -maxmemory 2218717407378426224 -flip vertical ../../../../testimg.jpg /dev/null
+-copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 12094 -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-copy comments -optimize -restart 25966 -copy all -maxmemory 5611564960978074074 -trim ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-copy all -copy none -restart 6455 -flip horizontal ../../../../testimg.jpg /dev/null
+-maxmemory 5993701089110959052 -copy none -progressive -optimize -copy comments -restart 20452 -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 34474 -maxmemory 3084910965606273113 -copy comments -copy all -optimize -progressive -transverse ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 6611725725034975053 -progressive -copy none -restart 9162 -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 2440235683888338749 -optimize -copy none -restart 12696 -progressive -copy comments -transverse ../../../../testimg.jpg /dev/null
+-transverse ../../../../testimg.jpg /dev/null
+-copy none -copy all -copy comments -progressive -transverse ../../../../testimg.jpg /dev/null
+-optimize -grayscale ../../../../testimg.jpg /dev/null
+-optimize -copy all -copy none -copy comments -transverse ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 1886400115601135312 -optimize -copy none -copy comments -copy all -restart 1788 -flip vertical ../../../../testimg.jpg /dev/null
+-restart 15652 -optimize -copy comments -copy all -copy none -progressive -maxmemory 2535404493601369598 -flip vertical ../../../../testimg.jpg /dev/null
+-restart 22631 -copy comments -progressive -copy all -copy none -grayscale ../../../../testimg.jpg /dev/null
+-copy all -optimize -progressive -maxmemory 6687883766626904916 -copy comments -copy none -restart 33935 -trim ../../../../testimg.jpg /dev/null
+-copy none -restart 5550 -copy all -copy comments -transpose ../../../../testimg.jpg /dev/null
+-copy all -copy none -copy comments -progressive -maxmemory 5866799858825095470 -restart 18245 -optimize -transpose ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-copy comments -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 8175577858848428357 -copy none -restart 17748 -copy comments -progressive -copy all -transpose ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 4658555580619094875 -copy none -progressive -restart 36437 -copy comments -copy all -transverse ../../../../testimg.jpg /dev/null
+-copy comments -copy none -optimize -copy all -flip horizontal ../../../../testimg.jpg /dev/null
+-transverse ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 4048132724364527851 -flip vertical ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-restart 22341 -copy none -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-restart 34881 -copy none -optimize -progressive -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -optimize -grayscale ../../../../testimg.jpg /dev/null
+-copy none -copy all -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 6555450436735521961 -optimize -copy all -restart 20734 -progressive -copy none -flip vertical ../../../../testimg.jpg /dev/null
+-maxmemory 6337865063292405949 -restart 32916 -copy comments -copy none -trim ../../../../testimg.jpg /dev/null
+-progressive -restart 59760 -optimize -copy comments -maxmemory 5269046234982529724 -copy none -copy all -transpose ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 7733101586817803341 -progressive -copy none -restart 47244 -trim ../../../../testimg.jpg /dev/null
+-copy comments -copy all -restart 55547 -progressive -copy none -maxmemory 8872277686810851830 -flip horizontal ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 568644420677782704 -transverse ../../../../testimg.jpg /dev/null
+-copy none -progressive -copy all -maxmemory 4830753275495954509 -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 846182986882914942 -restart 3014 -rotate 180 ../../../../testimg.jpg /dev/null
+-copy none -copy comments -maxmemory 4435439845141008172 -optimize -transpose ../../../../testimg.jpg /dev/null
+-restart 47320 -optimize -copy comments -copy none -progressive -maxmemory 1954401573523965593 -flip horizontal ../../../../testimg.jpg /dev/null
+-maxmemory 1521673345997670842 -optimize -copy all -copy comments -transverse ../../../../testimg.jpg /dev/null
+-copy comments -copy none -optimize -progressive -restart 62190 -maxmemory 2941794769435807150 -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 31886 -copy comments -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 400606079543878175 -restart 35046 -progressive -transpose ../../../../testimg.jpg /dev/null
+-optimize -copy none -copy comments -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 50586 -copy none -copy all -optimize -progressive -maxmemory 1159394605433275667 -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 6398656157026195773 -copy none -copy all -restart 18726 -optimize -transverse ../../../../testimg.jpg /dev/null
+-optimize -progressive -transverse ../../../../testimg.jpg /dev/null
+-copy none -optimize -progressive -maxmemory 785249046960665600 -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 931942501277500690 -copy comments -copy none -restart 53662 -optimize -trim ../../../../testimg.jpg /dev/null
+-optimize -copy comments -progressive -flip horizontal ../../../../testimg.jpg /dev/null
+-maxmemory 7889107632887098552 -copy none -optimize -flip vertical ../../../../testimg.jpg /dev/null
+-restart 8263 -progressive -copy comments -copy all -optimize -transpose ../../../../testimg.jpg /dev/null
+-copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-transverse ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 256561502124644164 -copy all -copy comments -restart 46229 -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-copy none -restart 30931 -progressive -copy comments -maxmemory 1557599965058332840 -optimize -copy all -transverse ../../../../testimg.jpg /dev/null
+-copy none -optimize -progressive -restart 29691 -transverse ../../../../testimg.jpg /dev/null
+-copy all -copy comments -copy none -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 653912480433057794 -progressive -optimize -transverse ../../../../testimg.jpg /dev/null
+-copy none -optimize -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -copy all -grayscale ../../../../testimg.jpg /dev/null
+-optimize -copy none -copy comments -copy all -restart 19007 -maxmemory 8862704175930965543 -flip vertical ../../../../testimg.jpg /dev/null
+-optimize -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 21080 -maxmemory 354121197995828982 -copy none -grayscale ../../../../testimg.jpg /dev/null
+-copy comments -copy all -copy none -progressive -restart 42408 -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -transpose ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 3127963570586206754 -restart 40573 -progressive -transpose ../../../../testimg.jpg /dev/null
+-copy comments -restart 51178 -copy none -optimize -progressive -copy all -maxmemory 1905785052078843738 -rotate 180 ../../../../testimg.jpg /dev/null
+-copy comments -restart 56889 -copy all -progressive -copy none -optimize -maxmemory 7492129116801025481 -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 7163512433137419168 -copy none -progressive -flip horizontal ../../../../testimg.jpg /dev/null
+-progressive -copy all -restart 21926 -copy none -trim ../../../../testimg.jpg /dev/null
+-copy comments -trim ../../../../testimg.jpg /dev/null
+-progressive -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-copy comments -copy all -restart 59040 -progressive -maxmemory 7292991216600631507 -copy none -transpose ../../../../testimg.jpg /dev/null
+-maxmemory 995264578474532913 -copy comments -restart 30498 -progressive -copy none -copy all -grayscale ../../../../testimg.jpg /dev/null
+-optimize -restart 5614 -copy comments -maxmemory 3295489551678976820 -copy none -grayscale ../../../../testimg.jpg /dev/null
+-restart 47752 -maxmemory 595522998201768378 -optimize -copy comments -copy none -trim ../../../../testimg.jpg /dev/null
+-progressive -restart 39816 -copy comments -maxmemory 5938340058931041279 -optimize -flip horizontal ../../../../testimg.jpg /dev/null
+-restart 38113 -copy comments -optimize -copy none -copy all -progressive -maxmemory 9180549869649199283 -flip horizontal ../../../../testimg.jpg /dev/null
+-restart 29683 -transpose ../../../../testimg.jpg /dev/null
+-copy comments -restart 20685 -copy all -maxmemory 173494054776959563 -copy none -flip horizontal ../../../../testimg.jpg /dev/null
+-copy all -optimize -transpose ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 2259389430438589405 -copy comments -restart 55690 -optimize -progressive -copy all -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 9106976820984893427 -copy all -progressive -restart 15548 -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -restart 16386 -flip vertical ../../../../testimg.jpg /dev/null
+-maxmemory 5216831268429926008 -copy none -copy all -progressive -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 8610331426199740333 -copy all -copy comments -copy none -restart 41270 -progressive -grayscale ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-copy none -progressive -copy all -optimize -maxmemory 4246529168382191818 -trim ../../../../testimg.jpg /dev/null
+-copy all -copy none -optimize -restart 39445 -maxmemory 4226902039018886508 -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-restart 59221 -copy none -flip horizontal ../../../../testimg.jpg /dev/null
+-maxmemory 3178929568572024308 -progressive -grayscale ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-optimize -restart 1151 -maxmemory 3975430258247269373 -grayscale ../../../../testimg.jpg /dev/null
+-restart 62976 -optimize -trim ../../../../testimg.jpg /dev/null
+-progressive -restart 50713 -copy all -optimize -copy comments -copy none -transverse ../../../../testimg.jpg /dev/null
+-progressive -grayscale ../../../../testimg.jpg /dev/null
+-copy comments -copy all -maxmemory 6138958663672049859 -optimize -copy none -flip vertical ../../../../testimg.jpg /dev/null
+-restart 36795 -maxmemory 9181973017580683568 -progressive -optimize -copy none -trim ../../../../testimg.jpg /dev/null
+-maxmemory 5169434242296580929 -optimize -copy comments -progressive -copy none -grayscale ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-optimize -copy comments -copy all -flip vertical ../../../../testimg.jpg /dev/null
+-transverse ../../../../testimg.jpg /dev/null
+-restart 49755 -progressive -copy all -copy comments -copy none -optimize -maxmemory 3021603283889597918 -flip vertical ../../../../testimg.jpg /dev/null
+-copy none -restart 47263 -optimize -grayscale ../../../../testimg.jpg /dev/null
+-restart 21889 -progressive -copy all -optimize -grayscale ../../../../testimg.jpg /dev/null
+-optimize -transverse ../../../../testimg.jpg /dev/null
+-restart 32593 -copy all -progressive -maxmemory 7431015568656302098 -copy none -optimize -transpose ../../../../testimg.jpg /dev/null
+-progressive -copy none -copy comments -copy all -restart 27645 -optimize -maxmemory 5750484227592306407 -trim ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-optimize -copy none -progressive -copy all -maxmemory 8837416706731490270 -trim ../../../../testimg.jpg /dev/null
+-copy all -flip vertical ../../../../testimg.jpg /dev/null
+-restart 7142 -progressive -copy comments -copy all -maxmemory 773359371092311014 -copy none -optimize -flip vertical ../../../../testimg.jpg /dev/null
+-maxmemory 6871993237071281500 -copy none -optimize -copy all -copy comments -progressive -restart 23671 -flip horizontal ../../../../testimg.jpg /dev/null
+-copy comments -copy none -maxmemory 1203883642051546424 -optimize -restart 25954 -progressive -flip vertical ../../../../testimg.jpg /dev/null
+-copy all -progressive -copy none -copy comments -restart 49280 -optimize -transverse ../../../../testimg.jpg /dev/null
+-progressive -copy none -copy comments -optimize -flip horizontal ../../../../testimg.jpg /dev/null
+-copy all -copy comments -progressive -maxmemory 2468368430464413257 -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-copy comments -copy none -progressive -maxmemory 4136445728601054375 -optimize -transverse ../../../../testimg.jpg /dev/null
+-copy comments -flip horizontal ../../../../testimg.jpg /dev/null
+-flip vertical ../../../../testimg.jpg /dev/null
+-copy none -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 3158206494616406619 -restart 17931 -progressive -optimize -copy all -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 8432239177476621376 -copy none -restart 13583 -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-flip vertical ../../../../testimg.jpg /dev/null
+-copy comments -copy all -optimize -progressive -restart 59126 -grayscale ../../../../testimg.jpg /dev/null
+-restart 23591 -optimize -flip vertical ../../../../testimg.jpg /dev/null
+-progressive -optimize -copy none -copy comments -maxmemory 2442018716725608185 -copy all -restart 45062 -transverse ../../../../testimg.jpg /dev/null
+-optimize -flip horizontal ../../../../testimg.jpg /dev/null
+-maxmemory 4896025660996112878 -restart 9779 -copy comments -optimize -flip vertical ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-progressive -copy comments -copy all -optimize -copy none -maxmemory 1466050736853709597 -restart 27279 -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 8260877188748853293 -copy all -restart 3853 -progressive -copy comments -trim ../../../../testimg.jpg /dev/null
+-maxmemory 2296248236140977833 -copy all -copy none -flip horizontal ../../../../testimg.jpg /dev/null
+-optimize -progressive -copy none -copy all -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-copy none -copy all -progressive -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -restart 848 -copy comments -transpose ../../../../testimg.jpg /dev/null
+-copy none -progressive -maxmemory 6705317526491626527 -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-copy none -optimize -maxmemory 8086630677770432445 -restart 38554 -copy all -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-copy none -restart 26211 -copy comments -maxmemory 3694215009774898368 -copy all -optimize -progressive -transpose ../../../../testimg.jpg /dev/null
+-progressive -copy none -restart 2965 -maxmemory 8449818653591998231 -optimize -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-copy none -maxmemory 672481873452668037 -restart 32537 -copy comments -copy all -progressive -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -copy none -copy comments -restart 49008 -maxmemory 4896544127218506085 -transverse ../../../../testimg.jpg /dev/null
+-copy all -optimize -restart 64552 -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -copy none -restart 47323 -copy all -transverse ../../../../testimg.jpg /dev/null
+-copy comments -trim ../../../../testimg.jpg /dev/null
+-optimize -restart 19857 -copy all -copy none -copy comments -progressive -maxmemory 8636636424154469048 -trim ../../../../testimg.jpg /dev/null
+-copy all -copy none -grayscale ../../../../testimg.jpg /dev/null
+-progressive -copy all -restart 22748 -copy none -maxmemory 6694944610423550 -optimize -trim ../../../../testimg.jpg /dev/null
+-copy all -grayscale ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-maxmemory 1547992313655439711 -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-progressive -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 7581959846617802856 -restart 56492 -copy all -copy comments -copy none -progressive -transverse ../../../../testimg.jpg /dev/null
+-progressive -copy none -optimize -copy all -maxmemory 2707442799198145354 -copy comments -restart 64398 -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -restart 14355 -copy none -trim ../../../../testimg.jpg /dev/null
+-transverse ../../../../testimg.jpg /dev/null
+-copy comments -restart 43903 -progressive -copy none -copy all -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 3904933290299954803 -copy comments -restart 7553 -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 737608674910044912 -optimize -copy all -progressive -flip vertical ../../../../testimg.jpg /dev/null
+-copy none -restart 65188 -copy all -progressive -optimize -maxmemory 8133094305576389625 -flip vertical ../../../../testimg.jpg /dev/null
+-copy comments -optimize -progressive -maxmemory 4773965112807110985 -restart 50773 -copy none -copy all -flip vertical ../../../../testimg.jpg /dev/null
+-restart 49115 -copy none -progressive -copy all -optimize -maxmemory 4427858480000721254 -copy comments -transpose ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-maxmemory 6176102423128707160 -restart 59400 -copy all -copy none -progressive -transverse ../../../../testimg.jpg /dev/null
+-progressive -transverse ../../../../testimg.jpg /dev/null
+-restart 32808 -progressive -maxmemory 4829600905342002738 -copy none -optimize -copy comments -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-copy none -progressive -flip horizontal ../../../../testimg.jpg /dev/null
+-progressive -transverse ../../../../testimg.jpg /dev/null
+-restart 26109 -maxmemory 3459059385524384029 -copy comments -trim ../../../../testimg.jpg /dev/null
+-copy comments -copy none -maxmemory 4144062084486100347 -restart 2098 -copy all -optimize -transpose ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 4210523915320503433 -restart 34551 -progressive -trim ../../../../testimg.jpg /dev/null
+-maxmemory 8290342218856895038 -optimize -copy comments -trim ../../../../testimg.jpg /dev/null
+-copy all -optimize -copy comments -copy none -maxmemory 7460533724942352126 -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -restart 1091 -copy none -transpose ../../../../testimg.jpg /dev/null
+-optimize -progressive -restart 30343 -copy all -copy none -maxmemory 9212626811390030247 -copy comments -flip vertical ../../../../testimg.jpg /dev/null
+-maxmemory 8534502057543498369 -copy none -restart 48828 -optimize -copy all -progressive -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 9178146106946052795 -restart 17814 -optimize -progressive -copy comments -transpose ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 97898780690813217 -copy none -copy all -restart 34661 -grayscale ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 6917910438212075815 -copy none -restart 52569 -optimize -copy all -copy comments -trim ../../../../testimg.jpg /dev/null
+-copy all -optimize -copy comments -maxmemory 5898195151584006765 -copy none -restart 34901 -progressive -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 4307437974521501425 -restart 7025 -optimize -copy comments -trim ../../../../testimg.jpg /dev/null
+-restart 14691 -copy all -copy comments -transpose ../../../../testimg.jpg /dev/null
+-grayscale ../../../../testimg.jpg /dev/null
+-restart 45435 -progressive -maxmemory 7205219648384265250 -copy all -copy comments -copy none -optimize -flip horizontal ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 3500237053105625715 -copy comments -progressive -copy none -optimize -restart 48728 -trim ../../../../testimg.jpg /dev/null
+-restart 4557 -maxmemory 7253506028476676361 -flip horizontal ../../../../testimg.jpg /dev/null
+-progressive -transverse ../../../../testimg.jpg /dev/null
+-copy all -copy comments -maxmemory 4719796669621975678 -progressive -optimize -transverse ../../../../testimg.jpg /dev/null
+-copy none -transpose ../../../../testimg.jpg /dev/null
+-maxmemory 7416475843057584608 -transverse ../../../../testimg.jpg /dev/null
+-copy none -restart 28448 -transpose ../../../../testimg.jpg /dev/null
+-copy all -maxmemory 7310289925379032603 -copy none -copy comments -restart 44021 -transverse ../../../../testimg.jpg /dev/null
+-rotate 180 ../../../../testimg.jpg /dev/null
+-restart 39844 -copy comments -copy all -optimize -grayscale ../../../../testimg.jpg /dev/null
+-optimize -restart 14845 -copy none -progressive -grayscale ../../../../testimg.jpg /dev/null
+-restart 21385 -copy all -progressive -copy comments -transpose ../../../../testimg.jpg /dev/null
+-copy all -optimize -restart 41090 -transverse ../../../../testimg.jpg /dev/null
+-progressive -copy none -trim ../../../../testimg.jpg /dev/null
+-copy all -copy comments -maxmemory 477828487787770699 -grayscale ../../../../testimg.jpg /dev/null
+-restart 12566 -maxmemory 2149234136772353011 -optimize -copy none -progressive -transverse ../../../../testimg.jpg /dev/null
+-copy comments -copy none -progressive -transverse ../../../../testimg.jpg /dev/null
+-optimize -transverse ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-optimize -trim ../../../../testimg.jpg /dev/null
+-maxmemory 4311067246196791989 -copy none -copy all -transpose ../../../../testimg.jpg /dev/null
+-maxmemory 4789329748142505180 -copy comments -restart 4486 -copy none -progressive -copy all -optimize -flip vertical ../../../../testimg.jpg /dev/null
+-maxmemory 2355915560988779378 -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-maxmemory 5968621941286536983 -grayscale ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-maxmemory 1693403579326735890 -restart 6699 -copy none -copy all -optimize -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -copy comments -maxmemory 5486272681106502787 -trim ../../../../testimg.jpg /dev/null
+-copy all -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-copy none -copy all -optimize -copy comments -restart 33985 -progressive -maxmemory 7110273728753006942 -transverse ../../../../testimg.jpg /dev/null
+-rotate 180 ../../../../testimg.jpg /dev/null
+-copy none -progressive -restart 52294 -transpose ../../../../testimg.jpg /dev/null
+-progressive -optimize -copy all -flip horizontal ../../../../testimg.jpg /dev/null
+-progressive -optimize -copy comments -transverse ../../../../testimg.jpg /dev/null
+-copy none -progressive -restart 44193 -trim ../../../../testimg.jpg /dev/null
+-restart 56000 -copy all -maxmemory 8099492130682589412 -optimize -progressive -copy comments -transpose ../../../../testimg.jpg /dev/null
+-restart 13931 -progressive -copy all -copy comments -maxmemory 7221023392531308799 -grayscale ../../../../testimg.jpg /dev/null
+-copy all -copy none -copy comments -restart 4740 -optimize -maxmemory 4558128518707206476 -progressive -flip vertical ../../../../testimg.jpg /dev/null
+-rotate 180 ../../../../testimg.jpg /dev/null
+-copy none -progressive -grayscale ../../../../testimg.jpg /dev/null
+-optimize -restart 32905 -copy comments -progressive -copy none -copy all -maxmemory 7283003256250432350 -transpose ../../../../testimg.jpg /dev/null
+-copy all -transpose ../../../../testimg.jpg /dev/null
+-optimize -copy all -copy none -progressive -grayscale ../../../../testimg.jpg /dev/null
+-optimize -transverse ../../../../testimg.jpg /dev/null
+-optimize -progressive -copy all -restart 52989 -copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-maxmemory 2808655902555292338 -progressive -restart 42249 -copy none -flip horizontal ../../../../testimg.jpg /dev/null
+-flip vertical ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-copy comments -transverse ../../../../testimg.jpg /dev/null
+-copy all -copy comments -optimize -maxmemory 3626033902983483775 -rotate 180 ../../../../testimg.jpg /dev/null
+-copy none -rotate 180 ../../../../testimg.jpg /dev/null
+-copy comments -copy all -flip vertical ../../../../testimg.jpg /dev/null
+-progressive -copy comments -maxmemory 2570862331189028751 -optimize -copy all -copy none -transpose ../../../../testimg.jpg /dev/null
+-restart 7726 -copy all -progressive -trim ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 7825638738926949693 -restart 54247 -copy none -transverse ../../../../testimg.jpg /dev/null
+-copy all -restart 37122 -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 3179835978600620243 -flip vertical ../../../../testimg.jpg /dev/null
+-copy all -copy comments -restart 15451 -progressive -maxmemory 3986857600790288542 -optimize -copy none -grayscale ../../../../testimg.jpg /dev/null
+-copy all -transverse ../../../../testimg.jpg /dev/null
+-copy all -copy none -trim ../../../../testimg.jpg /dev/null
+-restart 21285 -copy comments -copy none -optimize -maxmemory 8411621532871208004 -progressive -flip vertical ../../../../testimg.jpg /dev/null
+-optimize -progressive -maxmemory 547847809236275325 -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -grayscale ../../../../testimg.jpg /dev/null
+-copy all -copy comments -maxmemory 390648926022874875 -flip vertical ../../../../testimg.jpg /dev/null
+-transpose ../../../../testimg.jpg /dev/null
+-copy none -copy all -optimize -progressive -maxmemory 4220685214449637382 -grayscale ../../../../testimg.jpg /dev/null
+-restart 23089 -maxmemory 1191667392830495431 -copy all -progressive -optimize -copy comments -copy none -trim ../../../../testimg.jpg /dev/null
+-copy none -progressive -copy all -copy comments -rotate 180 ../../../../testimg.jpg /dev/null
+-copy comments -restart 1589 -copy none -progressive -optimize -grayscale ../../../../testimg.jpg /dev/null
+-progressive -optimize -restart 46656 -copy all -flip vertical ../../../../testimg.jpg /dev/null
+-restart 27084 -trim ../../../../testimg.jpg /dev/null
+-optimize -progressive -copy all -maxmemory 6561882954183190434 -copy none -grayscale ../../../../testimg.jpg /dev/null
+-copy comments -copy all -restart 27132 -copy none -flip vertical ../../../../testimg.jpg /dev/null
+-maxmemory 4490344570667300950 -progressive -optimize -copy comments -transpose ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-restart 9734 -transverse ../../../../testimg.jpg /dev/null
+-copy none -trim ../../../../testimg.jpg /dev/null
+-optimize -copy all -restart 61888 -copy comments -transverse ../../../../testimg.jpg /dev/null
+-copy all -grayscale ../../../../testimg.jpg /dev/null
+-copy comments -restart 14039 -copy all -flip horizontal ../../../../testimg.jpg /dev/null
+-restart 31352 -progressive -maxmemory 382045039610606543 -optimize -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-copy comments -copy all -maxmemory 1622952056363275647 -progressive -restart 53474 -copy none -optimize -transverse ../../../../testimg.jpg /dev/null
+-copy none -trim ../../../../testimg.jpg /dev/null
+-copy comments -maxmemory 5808391678148027025 -progressive -copy all -flip vertical ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-copy none -copy all -maxmemory 5039520151505501707 -restart 58707 -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-optimize -copy none -copy all -progressive -maxmemory 5874604888794100055 -copy comments -flip horizontal ../../../../testimg.jpg /dev/null
+-maxmemory 533009824760367911 -restart 39445 -copy none -copy all -transpose ../../../../testimg.jpg /dev/null
+-copy all -progressive -restart 2480 -copy none -maxmemory 8424114285345337358 -copy comments -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 931267731714513022 -copy all -progressive -copy none -transpose ../../../../testimg.jpg /dev/null
+-copy comments -restart 31438 -maxmemory 2177520864846609011 -progressive -copy none -optimize -transpose ../../../../testimg.jpg /dev/null
+-copy none -restart 38448 -rotate 180 ../../../../testimg.jpg /dev/null
+-maxmemory 1398003640587510730 -copy all -optimize -copy none -restart 19169 -progressive -trim ../../../../testimg.jpg /dev/null
+-optimize -progressive -maxmemory 1583031596440802021 -copy comments -copy none -restart 16348 -flip vertical ../../../../testimg.jpg /dev/null
+-copy none -progressive -restart 46474 -grayscale ../../../../testimg.jpg /dev/null
+-maxmemory 2248101360465154827 -copy comments -copy none -progressive -optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-optimize -maxmemory 3692698869670906068 -copy all -copy none -transpose ../../../../testimg.jpg /dev/null
+-progressive -maxmemory 5711711053601875218 -restart 61310 -copy all -copy comments -transverse ../../../../testimg.jpg /dev/null
+-copy comments -progressive -trim ../../../../testimg.jpg /dev/null
+-progressive -restart 34244 -maxmemory 5945925178195754992 -copy all -copy comments -transverse ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null
+-restart 43201 -optimize -maxmemory 873415822314596610 -grayscale ../../../../testimg.jpg /dev/null
+-optimize -rotate 180 ../../../../testimg.jpg /dev/null
+-progressive -trim ../../../../testimg.jpg /dev/null
+-progressive -copy all -grayscale ../../../../testimg.jpg /dev/null
+-copy comments -progressive -flip horizontal ../../../../testimg.jpg /dev/null
+-maxmemory 8067078567064687604 -restart 63795 -optimize -progressive -copy all -copy comments -copy none -transpose ../../../../testimg.jpg /dev/null
+-optimize -copy comments -progressive -copy all -rotate 180 ../../../../testimg.jpg /dev/null
+-restart 54642 -maxmemory 4710991361504042439 -copy none -optimize -progressive -copy all -copy comments -grayscale ../../../../testimg.jpg /dev/null
+-restart 62797 -copy comments -optimize -transpose ../../../../testimg.jpg /dev/null
+-progressive -copy all -maxmemory 2941649700405865769 -restart 48231 -rotate 180 ../../../../testimg.jpg /dev/null
+-copy all -restart 14615 -maxmemory 817852662599081988 -optimize -transverse ../../../../testimg.jpg /dev/null
+-maxmemory 7381083427526535953 -copy comments -optimize -copy all -progressive -copy none -grayscale ../../../../testimg.jpg /dev/null
+-restart 45992 -copy all -grayscale ../../../../testimg.jpg /dev/null
+-progressive -optimize -maxmemory 677319131070119252 -restart 57912 -copy all -copy comments -copy none -transpose ../../../../testimg.jpg /dev/null
+-progressive -restart 41502 -grayscale ../../../../testimg.jpg /dev/null
+-trim ../../../../testimg.jpg /dev/null
+-maxmemory 6644911912176028436 -copy all -transverse ../../../../testimg.jpg /dev/null
+-restart 59960 -optimize -transverse ../../../../testimg.jpg /dev/null
+-copy none -copy all -progressive -transpose ../../../../testimg.jpg /dev/null
+-flip vertical ../../../../testimg.jpg /dev/null
+-flip horizontal ../../../../testimg.jpg /dev/null

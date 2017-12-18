@@ -1,0 +1,1 @@
+CC='../sampler-1.6.2/driver/sampler-cc-here' CFLAGS='-fsampler-random=online -fsampler-scheme=branches' LDFLAGS='-fsampler-random=online -fsampler-scheme=branches' ./configure 
