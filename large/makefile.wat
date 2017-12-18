@@ -120,10 +120,6 @@ wrjpgcom.exe: wrjpgcom.c
 .c.obj:
 	$(CC) $(CFLAGS) -c $<
 
-jconfig.h: jconfig.doc
-	echo You must prepare a system-dependent jconfig.h file.
-	echo Please read the installation directions in install.doc.
-	exit 1
 
 clean: .SYMBOLIC
 	- del *.obj

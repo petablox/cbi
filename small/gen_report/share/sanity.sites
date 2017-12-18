@@ -1,0 +1,10 @@
+<sites unit="ed0df55542e13ec3f9aa410a11b07f8b" scheme="branches">
+/home/wslee/project/assgn6/cbi/small/test.c	11	main	15	argc != 2
+/home/wslee/project/assgn6/cbi/small/test.c	17	main	25	k < 0
+/home/wslee/project/assgn6/cbi/small/test.c	20	main	32	k % 10 > 0
+/home/wslee/project/assgn6/cbi/small/test.c	23	main	41	(unsigned long )begin != (unsigned long )end
+/home/wslee/project/assgn6/cbi/small/test.c	24	main	48	k % 2 == 0
+/home/wslee/project/assgn6/cbi/small/test.c	26	main	55	k % 3 == 0
+/home/wslee/project/assgn6/cbi/small/test.c	28	main	62	k % 5 == 0
+/home/wslee/project/assgn6/cbi/small/test.c	30	main	69	k % 7 == 0
+</sites>

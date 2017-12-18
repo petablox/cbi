@@ -19,7 +19,15 @@ sub note ($@) {
 
 ########################################################################
 
+my $filename = '../../../args.txt';
+open(my $fh, '<', $filename) or die "Could not open file '$filename' $!";
+my @rows = <$fh>;
+close($fh) or warn "Unable to close the file handle: $!";
+
 my @command = ('../../../build/sanity');
+$rows[$ARGV[0]] =~ s/\R//g;
+my @args = split /[ \n]/, $rows[$ARGV[0]];
+
 die "cannot find instrumented binary: $!" unless -x $command[0];
 push @command, $ARGV[0] if $ARGV[0] % 10 != 0;
 
@@ -27,7 +35,9 @@ $ENV{SAMPLER_FILE} = 'reports';
 $ENV{SAMPLER_REAL_EXECUTABLE} = $command[0];
 $ENV{SAMPLER_SPARSITY} = 1;
 
-my $outcome = system { $command[0]  } @command;
+#print join(' ', @args);
+#my $outcome = system { $command[0]  } @command;
+my $outcome = system ( $command[0], @args )   ;
 note 'outcome', $outcome;
 
 exit 0;

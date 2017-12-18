@@ -23,14 +23,14 @@ mandir = $(prefix)/man/man$(manext)
 CC= ../sampler-1.6.2/driver/sampler-cc-here
 
 # You may need to adjust these cc options:
-CFLAGS= -fsampler-random=online -fsampler-scheme=branches  -I$(srcdir)
+CFLAGS= -fsampler-random=online -fsampler-scheme=branches -fsampler-scheme=returns -fsampler-scheme=scalar-pairs  -I$(srcdir)
 # Generally, we recommend defining any configuration symbols in jconfig.h,
 # NOT via -D switches here.
 # However, any special defines for ansi2knr.c may be included here:
 ANSI2KNRFLAGS= 
 
 # Link-time cc options:
-LDFLAGS= -fsampler-random=online -fsampler-scheme=branches
+LDFLAGS= -fsampler-random=online -fsampler-scheme=branches -fsampler-scheme=returns -fsampler-scheme=scalar-pairs
 
 # To link any special libraries, add the necessary -l commands here.
 LDLIBS= 

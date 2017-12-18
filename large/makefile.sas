@@ -155,10 +155,6 @@ FROM LIB:c.o wrjpgcom.o
 LIB $(LDLIBS)
 <
 
-jconfig.h: jconfig.doc
-	echo You must prepare a system-dependent jconfig.h file.
-	echo Please read the installation directions in install.doc.
-	exit 1
 
 clean:
 	-$(RM) *.o cjpeg djpeg jpegtran cjpeg.030 djpeg.030 jpegtran.030

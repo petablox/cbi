@@ -132,11 +132,6 @@ rdjpgcom: rdjpgcom.o
 wrjpgcom: wrjpgcom.o
 	$(LN) $(LDFLAGS) -o wrjpgcom wrjpgcom.o $(LDLIBS)
 
-jconfig.h: jconfig.doc
-	echo You must prepare a system-dependent jconfig.h file.
-	echo Please read the installation directions in install.doc.
-	exit 1
-
 clean:
 	$(RM) *.o cjpeg djpeg jpegtran libjpeg.a rdjpgcom wrjpgcom
 	$(RM) ansi2knr core testout*

@@ -118,11 +118,6 @@ rdjpgcom.exe: rdjpgcom.o
 wrjpgcom.exe: wrjpgcom.o
 	$(LN) $(LDFLAGS) -o wrjpgcom.exe wrjpgcom.o $(LDLIBS)
 
-jconfig.h: jconfig.doc
-	echo You must prepare a system-dependent jconfig.h file.
-	echo Please read the installation directions in install.doc.
-	exit 1
-
 clean:
 	$(RM) *.o
 	$(RM) cjpeg.exe
