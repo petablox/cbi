@@ -1,7 +1,7 @@
 TRIAL := 4
 all:
 	mkdir build
-	mkdir sanity
+	mkdir share
 	cp ../test build/sanity
 	./get_site build/sanity 
 	rm -rf data
