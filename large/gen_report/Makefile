@@ -1,5 +1,7 @@
 TRIAL := 1000
 all:
+	mkdir build
+	mkdir sanity
 	cp ../jpegtran build/sanity
 	./get_site build/sanity 
 	rm -rf data
