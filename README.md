@@ -18,22 +18,20 @@ cd ..
 ```sh
 cd small
 make
-./test [number] # e.g., ./test 10 that triggers the bug
-run ./test report
+./test [number]    # e.g., ./test 10 that triggers the bug
+run ./test report  # print simple cbi report
 # for web interface
 cd gen_report
-make
+make               # run ./test with different arguments in args.txt
 # open analysis/summary.xml using Firefox 
 ```
 
 # Run the large tests
 ```sh
 cd large
-./build.sh
-build/challenges/HackMan/HackMan < input/HackMan/id:000000,sig:11,src:000129,op:havoc,rep:8
-run build/challenges/HackMan/HackMan report
+make
 # for web interface
 cd gen_report
-make
+make               # run ./jpegtran with different options in options.txt
 # open analysis/summary.xml using Firefox 
 ```
