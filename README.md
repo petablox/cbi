@@ -21,6 +21,10 @@ make
 ./test
 0
 run ./test report
+# for web interface
+cd gen_report
+make
+# open analysis/summary.xml using Firefox 
 ```
 
 # Run the large tests
@@ -29,4 +33,8 @@ cd large
 ./build.sh
 build/challenges/HackMan/HackMan < input/HackMan/id:000000,sig:11,src:000129,op:havoc,rep:8
 run build/challenges/HackMan/HackMan report
+# for web interface
+cd gen_report
+make
+# open analysis/summary.xml using Firefox 
 ```
