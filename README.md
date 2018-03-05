@@ -18,7 +18,7 @@ cd ..
 ```sh
 cd small
 make
-./test [number]    # e.g., ./test 10 that triggers the bug
+./test [number]    # e.g., ./test 10 triggers the bug
 run ./test report  # print simple cbi report
 # for web interface
 cd gen_report
